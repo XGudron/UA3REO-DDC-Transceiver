@@ -27,7 +27,6 @@ Design Rule Check*
 *.axf
 *.map
 *.dep
-*.hex
 *.jic
 *.pof
 *.rpt
