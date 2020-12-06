@@ -27,11 +27,130 @@ static bool LastMute = false;
 
 //Public variables
 bool sysmenu_swr_opened = false;
+bool sysmenu_TDM_CTRL_opened = false;				//Tisho
 
 //Prototypes
 static void SWR_DrawBottomGUI(void);				   // display status at the bottom of the screen
 static void SWR_DrawGraphCol(uint16_t x, bool clear); // display the data column
 static uint16_t SWR_getYfromX(uint16_t x);			   // get height from data id
+
+
+extern void TDM_Voltages_Start(void) //Tisho
+{
+	LCD_busy = true;
+	
+	// draw the GUI
+	LCDDriver_Fill(COLOR_BLACK);
+	//LCDDriver_drawFastVLine(graph_start_x, graph_start_y, graph_height, COLOR_WHITE);
+#if (defined(SWR_AD8307_LOG)) 
+	LCDDriver_printText("RAW    Scaled     PWR      PWR", 50, 10, COLOR_GREEN, COLOR_BLACK, 2);
+	LCDDriver_printText("[mV]    [Vp]     [dBm]     [W]", 50, 30, COLOR_GREEN, COLOR_BLACK, 2);
+	LCDDriver_drawFastHLine(0, 50, 480, COLOR_WHITE);
+
+	LCDDriver_printText("Used AD8307 for the power meter!", 45, 135, COLOR_WHITE, COLOR_BLACK, 2);
+	LCDDriver_printText("Slope=", 5, 200, COLOR_WHITE, COLOR_BLACK, 2);
+	LCDDriver_drawFastHLine(77, 207, 105, COLOR_WHITE);
+	LCDDriver_printText("RAW -RAW", 77, 185, COLOR_WHITE, COLOR_BLACK, 2);
+	LCDDriver_printText("2", 114, 192, COLOR_WHITE, COLOR_BLACK, 1);
+	LCDDriver_printText("1", 174, 192, COLOR_WHITE, COLOR_BLACK, 1);
+	LCDDriver_printText("dBm -dBm", 77, 210, COLOR_WHITE, COLOR_BLACK, 2);
+	LCDDriver_printText("2", 114, 217, COLOR_WHITE, COLOR_BLACK, 1);
+	LCDDriver_printText("1", 174, 217, COLOR_WHITE, COLOR_BLACK, 1);
+	
+	LCDDriver_printText("*dBm - signal applied for calibration", 5, 240, COLOR_WHITE, COLOR_BLACK, 2);
+	LCDDriver_printText("X", 53, 247, COLOR_WHITE, COLOR_BLACK, 1);
+	
+	LCDDriver_printText("Offset = Measured RAW at 0dbm", 5, 270, COLOR_WHITE, COLOR_BLACK, 2);
+
+#else
+	LCDDriver_printText("Scaled   PWR", 50, 10, COLOR_GREEN, COLOR_BLACK, 2);
+	LCDDriver_printText(" [V]     [W]", 50, 30, COLOR_GREEN, COLOR_BLACK, 2);
+	LCDDriver_drawFastHLine(0, 50, 480, COLOR_WHITE);
+
+	LCDDriver_printText("Used standard power meter!", 90, 135, COLOR_WHITE, COLOR_BLACK, 2);
+#endif
+
+		
+	LCD_busy = false;
+
+	LCD_UpdateQuery.SystemMenu = true;
+}
+
+extern void TDM_Voltages(void) //Tisho 
+{
+	char ctmp[64] = {0};
+	float32_t P_FW_dBm, P_BW_dBm;
+	float32_t V_FW_Scaled, V_BW_Scaled;
+	float32_t P_FW_W, P_BW_W;
+	
+	#if (defined(SWR_AD8307_LOG))  
+	// Read the signals (Voltages - raw data)
+	RF_UNIT_MeasureVoltage();
+	
+	//Calculate the values
+	//dBm is calculated using the voltage in mV (coefficients are defined as well in mV)
+	
+	//Calculate the Forward values
+	P_FW_dBm = ((TRX_VLT_forward*1000) - CALIBRATE.FW_AD8307_OFFS)/(CALIBRATE.FW_AD8307_SLP); 
+	V_FW_Scaled = pow(10,(double)((P_FW_dBm-10)/20));			//Calculate in voltage (50ohm terminated)
+	P_FW_W = pow(10,(double)((P_FW_dBm-30)/10));					//Calculate in W
+	
+	//Calculate the Backward values
+	P_BW_dBm = ((TRX_VLT_backward*1000) - CALIBRATE.BW_AD8307_OFFS)/(CALIBRATE.BW_AD8307_SLP); 
+	V_BW_Scaled = pow(10,(double)((P_BW_dBm-10)/20));			//Calculate in voltage (50ohm terminated)
+	P_BW_W = pow(10,(double)((P_BW_dBm-30)/10));					//Calculate in W 
+	
+	//Print the forward values 
+	sprintf(ctmp, "FW: %.0f ", (double)TRX_VLT_forward*1000);
+	//LCDDriver_Fill_RectWH(5, 30, 480, 18, COLOR_BLACK);
+	LCDDriver_printText(ctmp, 5, 55, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	sprintf(ctmp, "%.2f ", (double)V_FW_Scaled);
+	LCDDriver_printText(ctmp, 150, 55, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	sprintf(ctmp, "%.1f  ",(double)P_FW_dBm);
+	LCDDriver_printText(ctmp, 260, 55, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	sprintf(ctmp, "%.1f ",(double)P_FW_W);
+	LCDDriver_printText(ctmp, 380, 55, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	
+	//Print the backward values 
+	sprintf(ctmp, "BW: %.0f ", (double)TRX_VLT_backward*1000);
+	LCDDriver_printText(ctmp, 5, 80, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	sprintf(ctmp, "%.2f ", (double)V_BW_Scaled);
+	LCDDriver_printText(ctmp, 150, 80, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	sprintf(ctmp, "%.1f  ",(double)P_BW_dBm);
+	LCDDriver_printText(ctmp, 260, 80, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	sprintf(ctmp, "%.1f ",(double)P_BW_W);
+	LCDDriver_printText(ctmp, 380, 80, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	#else
+	RF_UNIT_ProcessSensors();
+	
+	//Print the forward values 
+	sprintf(ctmp, "FW: %.1f ", (double)TRX_VLT_forward);
+	//LCDDriver_Fill_RectWH(5, 30, 480, 18, COLOR_BLACK);
+	LCDDriver_printText(ctmp, 5, 55, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	sprintf(ctmp, "%.2f ", (double)TRX_PWR_Forward);
+	LCDDriver_printText(ctmp, 150, 55, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	
+	//Print the backward values 
+	sprintf(ctmp, "BW: %.1f ", (double)TRX_VLT_backward);
+	LCDDriver_printText(ctmp, 5, 80, COLOR_GREEN, COLOR_BLACK, 2);
+	
+		sprintf(ctmp, "%.2f ", (double)TRX_PWR_Backward);
+	LCDDriver_printText(ctmp, 150, 80, COLOR_GREEN, COLOR_BLACK, 2);
+	
+	#endif
+	
+}
+
 
 // prepare the spectrum analyzer
 void SWR_Start(uint32_t start, uint32_t end)

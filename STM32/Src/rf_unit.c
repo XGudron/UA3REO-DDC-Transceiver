@@ -295,8 +295,38 @@ void RF_UNIT_ProcessSensors(void)
 	float32_t backward = (float32_t)(HAL_ADCEx_InjectedGetValue(&hadc1, ADC_INJECTED_RANK_1)) * TRX_STM32_VREF / 16383.0f;
 	//float32_t alc = HAL_ADCEx_InjectedGetValue(&hadc1, ADC_INJECTED_RANK_4) * TRX_STM32_VREF / 16383.0f;
 	
-	static float32_t TRX_VLT_forward = 0.0f;
-	static float32_t TRX_VLT_backward = 0.0f;
+//	static float32_t TRX_VLT_forward = 0.0f;		//Tisho
+//	static float32_t TRX_VLT_backward = 0.0f;		//Tisho
+
+	#if (defined(SWR_AD8307_LOG)) 				//If it is used the Log amp. AD8307 
+	
+	float32_t P_FW_dBm, P_BW_dBm;
+	float32_t V_FW_Scaled, V_BW_Scaled;
+	//float32_t NewSWR;
+	
+	TRX_VLT_forward = TRX_VLT_forward + (forward - TRX_VLT_forward) / 4;
+	TRX_VLT_backward = TRX_VLT_backward + (backward - TRX_VLT_backward) / 4;
+	
+	//Calculate the Forward values
+	P_FW_dBm = ((TRX_VLT_forward*1000) - CALIBRATE.FW_AD8307_OFFS)/(CALIBRATE.FW_AD8307_SLP); 
+	V_FW_Scaled = pow(10,(double)((P_FW_dBm-10)/20));							//Calculate in voltage (Vp - 50ohm terminated)
+	TRX_PWR_Forward = pow(10,(double)((P_FW_dBm-30)/10));					//Calculate in W
+	
+	//Calculate the Backward values
+	P_BW_dBm = ((TRX_VLT_backward*1000) - CALIBRATE.BW_AD8307_OFFS)/(CALIBRATE.BW_AD8307_SLP); 
+	V_BW_Scaled = pow(10,(double)((P_BW_dBm-10)/20));								//Calculate in voltage (Vp - 50ohm terminated)
+	TRX_PWR_Backward = pow(10,(double)((P_BW_dBm-30)/10));					//Calculate in W
+	
+	TRX_SWR = (V_FW_Scaled + V_BW_Scaled) / (V_FW_Scaled - V_BW_Scaled);		//Calculate SWR
+	
+	//TRX_SWR = TRX_SWR + (NewSWR - TRX_SWR) / 2;
+	
+	if (TRX_SWR > 10.0f)
+			TRX_SWR = 10.0f;
+	if (TRX_SWR < 0.0f)
+			TRX_SWR = 0.0f;
+	
+	#else						//if it is used the standard measure (diode rectifier)
 	forward = forward / (1510.0f / (0.1f + 1510.0f)); // adjust the voltage based on the voltage divider (0.1 ohm and 510 ohm)
 	if (forward < 0.01f)							  // do not measure less than 10mV
 	{
@@ -332,6 +362,29 @@ void RF_UNIT_ProcessSensors(void)
 			TRX_PWR_Forward = 0.0f;
 		TRX_PWR_Backward = (TRX_VLT_backward * TRX_VLT_backward) / 50.0f;
 		if (TRX_PWR_Backward < 0.0f)
-			TRX_PWR_Backward = 0.0f;
+	
+		TRX_PWR_Backward = 0.0f;
 	}
+	#endif
+}
+
+//Tisho
+//used to controll the calibration of the FW and BW power measurments
+void RF_UNIT_MeasureVoltage(void)
+{
+	float32_t forward = (float32_t)(HAL_ADCEx_InjectedGetValue(&hadc1, ADC_INJECTED_RANK_2)) * TRX_STM32_VREF / 16383.0f;
+	float32_t backward = (float32_t)(HAL_ADCEx_InjectedGetValue(&hadc1, ADC_INJECTED_RANK_1)) * TRX_STM32_VREF / 16383.0f;
+	//use the TRX_VLT_forward and TRX_VLT_backward global variables 
+	//for the raw ADC input voltages 
+	//in the TDM_Voltages() the other stuff will be calculated localy 
+
+	static float32_t VLT_forward = 0.0f;		
+	static float32_t VLT_backward = 0.0f;
+//	TRX_VLT_forward = (float32_t)(HAL_ADCEx_InjectedGetValue(&hadc1, ADC_INJECTED_RANK_2)) * TRX_STM32_VREF / 16383.0f;
+//	TRX_VLT_backward= (float32_t)(HAL_ADCEx_InjectedGetValue(&hadc1, ADC_INJECTED_RANK_1)) * TRX_STM32_VREF / 16383.0f;
+	VLT_forward = VLT_forward + (forward - VLT_forward) / 10;
+	VLT_backward = VLT_backward + (backward - VLT_backward) / 10;
+	
+	TRX_VLT_forward = VLT_forward;
+	TRX_VLT_backward = VLT_backward;
 }

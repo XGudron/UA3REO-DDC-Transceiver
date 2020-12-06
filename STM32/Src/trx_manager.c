@@ -43,6 +43,8 @@ volatile float32_t TRX_MAX_TX_Amplitude = MAX_TX_AMPLITUDE;
 volatile float32_t TRX_PWR_Forward = 0;
 volatile float32_t TRX_PWR_Backward = 0;
 volatile float32_t TRX_SWR = 0;
+volatile float32_t TRX_VLT_forward = 0;				//Tisho
+volatile float32_t TRX_VLT_backward = 0;			//Tisho 
 volatile float32_t TRX_ALC = 0;
 volatile bool TRX_DAC_DIV0 = false;
 volatile bool TRX_DAC_DIV1 = false;
@@ -270,7 +272,6 @@ void TRX_setFrequency(uint32_t _freq, VFO *vfo)
 		if (vfo->Mode != mode_from_bandmap)
 		{
 			TRX_setMode(mode_from_bandmap, vfo);
-			TRX.BANDS_SAVED_SETTINGS[bandFromFreq].Mode = mode_from_bandmap;
 			LCD_UpdateQuery.TopButtons = true;
 		}
 	}

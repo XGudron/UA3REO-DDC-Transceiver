@@ -11,11 +11,15 @@
 
 //Public variabled
 extern bool sysmenu_swr_opened;
+extern bool sysmenu_TDM_CTRL_opened;			//Tisho 
 
 //Public methods
 extern void SWR_Start(uint32_t start, uint32_t end);                 //analyzer launch
 extern void SWR_Stop(void);									//stop session
 extern void SWR_Draw(void);                  //drawing analyzer
-extern void SWR_EncRotate(int8_t direction); //analyzer events per encoder
+extern void SWR_EncRotate(int8_t direction); //analyzer events per encoder 
+
+extern void TDM_Voltages_Start(void); //Tisho
+extern void TDM_Voltages(void); //Tisho
 
 #endif

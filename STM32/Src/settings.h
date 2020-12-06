@@ -3,13 +3,12 @@
 
 #include "stm32h7xx_hal.h"
 #include <stdio.h>
-#include <stdint.h>
 #include <stdbool.h>
 #include "functions.h"
 #include "bands.h"
 
 #define SETT_VERSION 207				// Settings config version
-#define CALIB_VERSION 209				// Calibration config version
+#define CALIB_VERSION 207				// Calibration config version
 #define ADC_CLOCK 122880000				// ADC generator frequency
 #define DAC_CLOCK 188160000				// DAC generator frequency
 #define MAX_RX_FREQ_HZ 750000000		// Maximum receive frequency (from the ADC datasheet)
@@ -44,13 +43,16 @@
 #define TRX_MAX_SWR		5				//maximum SWR to enable protect (NOT IN TUNE MODE!)
 
 // select LCD and Touchpad, comment on others
-#define LCD_ILI9481 true
+//#define LCD_ILI9481 true
 //#define LCD_HX8357B true
 //#define LCD_HX8357C true
 //#define LCD_R61581 true //untested
-//#define LCD_ILI9486 true
+#define LCD_ILI9486 true
 //#define LCD_RA8875 true
 //#define TOUCHPAD_GT911 true	
+
+//select how the SWR and the power is measured
+#define SWR_AD8307_LOG true			//Enable if used log amplifier for the power measurement
 
 //SPI Speed
 #define SPI_FRONT_UNIT_PRESCALER SPI_BAUDRATEPRESCALER_2
@@ -66,7 +68,7 @@
 //#define FPGA_BUS_FULL_SCALE_POW ((float64_t)FPGA_BUS_FULL_SCALE * (float64_t)FPGA_BUS_FULL_SCALE)		// maximum bus signal magnitude // (FPGA_BUS_FULL_SCALE * FPGA_BUS_FULL_SCALE)
 #define CODEC_BITS_FULL_SCALE 4294967296																// maximum signal amplitude in the bus // powf (2, FPGA_BUS_BITS)
 //#define CODEC_BITS_FULL_SCALE_POW ((float64_t)CODEC_BITS_FULL_SCALE * (float64_t)CODEC_BITS_FULL_SCALE) // maximum bus signal magnitude // (FPGA_BUS_FULL_SCALE * FPGA_BUS )_FULL_SCALE
-#define ADC_FULL_SCALE 65536																			// maximum signal amplitude in the ADC // powf (2, ADC_BITS)
+//#define ADC_FULL_SCALE 65536																			// maximum signal amplitude in the ADC // powf (2, ADC_BITS)
 #define FLOAT_FULL_SCALE_POW 4
 #define USB_DEBUG_ENABLED true	// allow using USB as a console
 #define SWD_DEBUG_ENABLED false // enable SWD as a console
@@ -74,7 +76,7 @@
 #define AUDIO_DECIM_RATE (IQ_SAMPLERATE / TRX_SAMPLERATE)
 #define DCDC_FREQ_0 1000000
 #define DCDC_FREQ_1 1200000
-#define ADC_INPUT_IMPEDANCE 200.0f //50ohm -> 1:4 trans
+#define ADC_INPUT_IMPEDANCE 800.0f //50ohm -> 1:4 trans = 800ohm
 #define ADC_RANGE 2.25f
 #define ADC_RANGE_PGA 1.5f
 #define ADC_LNA_GAIN_DB 15.0f //on 14mhz
@@ -282,7 +284,11 @@ extern struct TRX_CALIBRATE
 	uint32_t BPF_HPF;
 	float32_t swr_trans_rate;
 	int8_t VCXO_correction;
-	uint8_t ENCODER_ACCELERATION;
+	uint8_t ENCODER_ACCELERATION; 
+	float32_t FW_AD8307_SLP; 
+	float32_t FW_AD8307_OFFS;
+	float32_t BW_AD8307_SLP;
+	float32_t BW_AD8307_OFFS;
 
 	uint8_t csum; //check sum
 	uint8_t ENDBit; //end bit

@@ -45,6 +45,8 @@ volatile extern float32_t TRX_MAX_TX_Amplitude;
 volatile extern float32_t TRX_PWR_Forward;
 volatile extern float32_t TRX_PWR_Backward;
 volatile extern float32_t TRX_SWR;
+volatile extern float32_t TRX_VLT_forward;				//Tisho 
+volatile extern float32_t TRX_VLT_backward;				//Tisho
 volatile extern float32_t TRX_ALC;
 volatile extern bool TRX_DAC_DIV0;
 volatile extern bool TRX_DAC_DIV1;

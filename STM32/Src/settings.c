@@ -10,7 +10,7 @@
 #include "bands.h"
 #include "front_unit.h"
 
-char version_string[19] = "2.0.9"; //1.2.3-yymmdd.hhmm (concatinate)
+char version_string[19] = "2.0.8"; //1.2.3-yymmdd.hhmm (concatinate)
 
 //W25Q16
 static uint8_t Write_Enable = W25Q16_COMMAND_Write_Enable;
@@ -26,9 +26,9 @@ struct TRX_SETTINGS TRX;
 struct TRX_CALIBRATE CALIBRATE = {0};
 static uint8_t settings_bank = 1;
 	
-IRAM2 static uint8_t write_clone[sizeof(TRX)] = {0};
-IRAM2 static uint8_t read_clone[sizeof(TRX)] = {0};
-IRAM2 static uint8_t verify_clone[sizeof(TRX)] = {0};
+IRAM2 static uint8_t write_clone[W25Q16_SECTOR_SIZE] = {0};
+IRAM2 static uint8_t read_clone[W25Q16_SECTOR_SIZE] = {0};
+IRAM2 static uint8_t verify_clone[W25Q16_SECTOR_SIZE] = {0};
 
 volatile bool NeedSaveSettings = false;
 volatile bool NeedSaveCalibration = false;
@@ -292,9 +292,8 @@ void LoadCalibration(bool clear)
 		CALIBRATE.ENCODER2_DEBOUNCE = 50;														// time to eliminate contact bounce at the additional encoder, ms
 		CALIBRATE.ENCODER_SLOW_RATE = 25;														// slow down the encoder for high resolutions
 		CALIBRATE.ENCODER_ON_FALLING = false;													// encoder only triggers when level A falls
-		CALIBRATE.ENCODER_ACCELERATION = 75;  											//acceleration rate if rotate
-		CALIBRATE.CICFIR_GAINER_val = 47;														// Offset from the output of the CIC compensator
-		CALIBRATE.TXCICFIR_GAINER_val = 42;														// Offset from the TX-CIC output of the compensator
+		CALIBRATE.CICFIR_GAINER_val = 54;														// Offset from the output of the CIC compensator
+		CALIBRATE.TXCICFIR_GAINER_val = 58;														// Offset from the TX-CIC output of the compensator
 		CALIBRATE.DAC_GAINER_val = 26;															// DAC offset offset
 		// Calibrate the maximum output power for each band
 		CALIBRATE.rf_out_power_up2mhz = 70;
@@ -321,11 +320,15 @@ void LoadCalibration(bool clear)
 		CALIBRATE.BPF_5_START = 11500 * 1000;													//20,17m U14-RF2
 		CALIBRATE.BPF_5_END = 21000 * 1000;														//20,17m
 		CALIBRATE.BPF_6_START = 21000 * 1000;													//15,12,10,6m U14-RF4
-		CALIBRATE.BPF_6_END = 64000 * 1000;														//15,12,10,6m
+		CALIBRATE.BPF_6_END = 64000 * 1000;														//15,12,10,6m 
 		CALIBRATE.BPF_HPF = 60000 * 1000;														//HPF U14-RF1
 		CALIBRATE.swr_trans_rate = 11.0f;														//SWR Transormator rate
 		CALIBRATE.VCXO_correction = 0;															//VCXO Frequency offset
-		
+		CALIBRATE.ENCODER_ACCELERATION = 50;  											//acceleration rate if rotate
+		CALIBRATE.FW_AD8307_SLP = 25.5f;														//Slope for the log amp used to mreasure the FW power (mV/dB)
+		CALIBRATE.FW_AD8307_OFFS = 1150.0f;													//Offset to back calculate the output voltage to dBm (mV)
+		CALIBRATE.BW_AD8307_SLP = 25.5f;														//Slope for the log amp used to mreasure the BW power (mV/dB)
+		CALIBRATE.BW_AD8307_OFFS = 1150.0f;													//Offset to back calculate the output voltage to dBm (mV)
 		CALIBRATE.ENDBit = 100; // Bit for the end of a successful write to eeprom
 		sendToDebug_strln("[OK] Loaded default calibrate settings");
 		SaveCalibration();
@@ -468,9 +471,9 @@ static bool EEPROM_Sector_Erase(uint8_t sector, bool force)
 	Address[1] = (BigAddress >> 8) & 0xFF;
 	Address[0] = BigAddress & 0xFF;
 
-	SPI_Transmit(&Write_Enable, NULL, 1, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Write Enable Command
-	SPI_Transmit(&Sector_Erase, NULL, 1, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Erase Command
-	SPI_Transmit(Address, NULL, 3, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Write Address ( The first address of flash module is 0x00000000 )
+	SPI_Transmit(&Write_Enable, NULL, 1, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Write Enable Command
+	SPI_Transmit(&Sector_Erase, NULL, 1, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Erase Command
+	SPI_Transmit(Address, NULL, 3, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Write Address ( The first address of flash module is 0x00000000 )
 	EEPROM_WaitWrite();
 
 	SPI_process = false;
@@ -504,10 +507,10 @@ static bool EEPROM_Write_Data(uint8_t *Buffer, uint16_t size, uint8_t sector, bo
 		if (bsize > page_size)
 			bsize = page_size;
 
-		SPI_Transmit(&Write_Enable, NULL, 1, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Write Enable Command
-		SPI_Transmit(&Page_Program, NULL, 1, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Write Command
-		SPI_Transmit(Address, NULL, 3, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Write Address ( The first address of flash module is 0x00000000 )
-		SPI_Transmit((uint8_t *)(write_clone + page_size * page), NULL, bsize, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Write Data
+		SPI_Transmit(&Write_Enable, NULL, 1, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Write Enable Command
+		SPI_Transmit(&Page_Program, NULL, 1, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Write Command
+		SPI_Transmit(Address, NULL, 3, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Write Address ( The first address of flash module is 0x00000000 )
+		SPI_Transmit((uint8_t *)(write_clone + page_size * page), NULL, bsize, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Write Data
 		EEPROM_WaitWrite();
 	}
 
@@ -541,7 +544,7 @@ static bool EEPROM_Read_Data(uint8_t *Buffer, uint16_t size, uint8_t sector, boo
 	Address[1] = (BigAddress >> 8) & 0xFF;
 	Address[0] = BigAddress & 0xFF;
 
-	bool res = SPI_Transmit(&Read_Data, NULL, 1, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Read Command
+	bool res = SPI_Transmit(&Read_Data, NULL, 1, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Read Command
 	if (!res)
 	{
 		EEPROM_Enabled = false;
@@ -551,8 +554,8 @@ static bool EEPROM_Read_Data(uint8_t *Buffer, uint16_t size, uint8_t sector, boo
 		return true;
 	}
 
-	SPI_Transmit(Address, NULL, 3, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Write Address
-	SPI_Transmit(NULL, (uint8_t *)(Buffer), size, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Read
+	SPI_Transmit(Address, NULL, 3, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Write Address
+	SPI_Transmit(NULL, (uint8_t *)(Buffer), size, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Read
 
 	//verify
 	if (verify)
@@ -579,8 +582,8 @@ static void EEPROM_WaitWrite(void)
 	do
 	{
 		tryes++;
-		SPI_Transmit(&Get_Status, NULL, 1, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Get Status command
-		SPI_Transmit(NULL, &status, 1, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Read data
+		SPI_Transmit(&Get_Status, NULL, 1, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, true, SPI_EEPROM_PRESCALER); // Get Status command
+		SPI_Transmit(NULL, &status, 1, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Read data
 		if((status & 0x01) == 0x01)
 			HAL_Delay(1);
 	}
@@ -593,14 +596,14 @@ static void EEPROM_PowerDown(void)
 {
 	if (!EEPROM_Enabled)
 		return;
-	SPI_Transmit(&Power_Down, NULL, 1, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Power_Down Command
+	SPI_Transmit(&Power_Down, NULL, 1, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Power_Down Command
 }
 
 static void EEPROM_PowerUp(void)
 {
 	if (!EEPROM_Enabled)
 		return;
-	SPI_Transmit(&Power_Up, NULL, 1, W25Q16_CS_GPIO_Port, W25Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Power_Up Command
+	SPI_Transmit(&Power_Up, NULL, 1, W26Q16_CS_GPIO_Port, W26Q16_CS_Pin, false, SPI_EEPROM_PRESCALER); // Power_Up Command
 }
 
 void BKPSRAM_Enable(void)
