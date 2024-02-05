@@ -1,0 +1,109 @@
+﻿Field=#~Integer~#~50|Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~Wolf-Lite.PrjPcb|ReportField=ProjectFullPath~D:\YandexDisk\Разработки Altium\ВОЛК-lite\Rev-1.0\Схема Wolf-lite V1.0\Wolf-Lite1\Wolf-Lite.PrjPcb|ReportField=Title~Bill of Materials For Project [Wolf-Lite.PrjPcb] (No PCB Document Selected)|ReportField=ReportTime~22:49:01|ReportField=ReportDate~10.01.2021|ReportField=ReportDateTime~10.01.2021 22:49:01|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=TotalQuantity~369|ReportField=TotalActualPrice~0|ReportField=TotalTargetPrice~0|ReportField=VersionControl_RevNumber~|ReportField=VersionControl_ProjFolderRevNumber~|ReportField=Address1~Address1|ReportField=Address2~Address2|ReportField=Address3~Address3|ReportField=Address4~Address4|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~UA3REO/R7KBI|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=ConfigurationParameters~|ReportField=CurrentDate~10.01.2021|ReportField=CurrentTime~22:48:51|ReportField=Date~|ReportField=DocumentFullPathAndName~D:\YandexDisk\Разработки Altium\ВОЛК-lite\Rev-1.0\Схема Wolf-lite V1.0\Wolf-Lite1\WL-STUKTURNAY.SchDoc|ReportField=DocumentName~WL-STUKTURNAY.SchDoc|ReportField=DocumentNumber~Wolf-Lite|ReportField=DocumentType~Схема электрическая принципиальная|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=EngineerName~|ReportField=FirstReferrence~АБВГ.123456.001|ReportField=ImagePath~|ReportField=Letter1Column~|ReportField=Letter2Column~|ReportField=Letter3Column~|ReportField=Mass~|ReportField=ModifiedDate~10.01.2021|ReportField=NormInspection~|ReportField=Organization~|ReportField=ProcessInspection~|ReportField=ProjectName~Wolf-Lite.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=Scale~1:1|ReportField=SheetNumber~1|ReportField=SheetTotal~12|ReportField=Time~|ReportField=Title~WOLF-LITE|ReportField=Title2str~|ReportField=DocumentCode~|ReportField=ListNumber~2|ReportField=ModifiedNumber~|ReportField=DataSourceFileName~Wolf-Lite.PrjPcb|ReportField=DataSourceFullPath~D:\YandexDisk\Разработки Altium\ВОЛК-lite\Rev-1.0\Схема Wolf-lite V1.0\Wolf-Lite1\Wolf-Lite.PrjPcb|ReportField=PCBConfigurationName~Sources|ReportField=Item~|ReportField=ItemRevision~|ReportField=ItemAndRevision~|ReportField=ItemRevisionBase~|ReportField=ItemRevisionLevel1~|ReportField=ItemRevisionLevel2~|ReportField=ItemRevisionLevel1AndBase~|ReportField=ItemRevisionLevel2AndLevel1~
+1|22p||C1, C2, C38, C43, C121, C163, C164, C165, C166, C170, C171, C181, C182|CH0805C|Capacitor|13
+2|12p||C3, C4|CH0805C|Capacitor|2
+3|0.1||C5, C6, C10, C11, C12, C13, C14, C17, C19, C21, C22, C24, C25, C28, C30, C32, C33, C37, C41, C49, C57, C58, C59, C61, C66, C67, C69, C76, C78, C79, C80, C81, C82, C83, C84, C85, C86, C87, C88, C89, C90, C91, C92, C93, C94, C95, C96, C97, C98, C99, C100, C101, C102, C103, C104, C105, C106, C107, C108, C109, C110, C111, C120, C135, C136, C137, C138, C139, C140, C141, C142, C143, C183, C185, C186, C188, C190, C191, C192, C197, C198, C199, C200, C201, C202, C203, C204, C205|CH0805C|Capacitor|88
+4|1000p||C7, C8, C196|CH0805C|Capacitor|3
+5|1uF||C9, C29, C31, C53, C54, C55|CH0805C|Capacitor|6
+6|15p||C15, C40, C172, C177, C179|CH0805C|Capacitor|5
+7|10uF||C16, C18|CH0805C|Capacitor|2
+8|10uF 10V||C20, C27, C36|TANTAL_A|TantalCap|3
+9|0.01||C23, C26|CH0805C|Capacitor|2
+10|1u||C34, C45, C47, C118|CH0805C|Capacitor|4
+11|10n||C35|CH0805C|Capacitor|1
+12|91p||C39, C42, C44, C178, C180|CH0805C|Capacitor|5
+13|680p||C46, C48|CH0805C|Capacitor|2
+14|470p||C50, C117, C119|CH0805C|Capacitor|3
+15|1n||C51, C52|CH0805C|Capacitor|2
+16|220uF||C56, C62, C63|POLIMER-E|TantalCap|3
+17|10uF 10V||C60, C64, C65, C112, C113, C114, C115, C116, C124, C125, C126, C127, C128, C129, C130, C131, C132, C206|TANTAL_B|TantalCap|18
+18|1uF 10V||C70, C71, C72, C73, C74, C123, C187|TANTAL_A|TantalCap|7
+19|220p||C75, C146, C154, C156, C184|CH0805C|Capacitor|5
+20|100p||C77|CH0805C|Capacitor|1
+21|470pF||C122|CH0805C|Capacitor|1
+22|10uF 16V||C134|POLIMER-D|TantalCap|1
+23|150p||C144, C152, C159, C195|CH0805C|Capacitor|4
+24|33p||C145, C153, C168|CH0805C|Capacitor|3
+25|75p||C147, C155|CH0805C|Capacitor|2
+26|200p||C148|CH0805C|Capacitor|1
+27|56p||C149, C174, C176|CH0805C|Capacitor|3
+28|330p||C150, C158|CH0805C|Capacitor|2
+29|120p||C151|CH0805C|Capacitor|1
+30|68p||C157, C193|CH0805C|Capacitor|2
+31|39p||C160, C162, C167|CH0805C|Capacitor|3
+32|47p||C161, C169, C173|CH0805C|Capacitor|3
+33|8.2n||C175|CH0805C|Capacitor|1
+34|22uF 10V||C189|TANTAL_B|TantalCap|1
+35|390p||C194|CH0805C|Capacitor|1
+36|W25Q16|Flash|D1|SOIC-8-1|W25Q32JVZPIQ|1
+37|BAT54C||D2|SOT23_132|BAT54C|1
+38|BAV-99||D3|SOT23_132|BAV-99|1
+39|AD9226||DA1|28-SSOP|AD9226|1
+40|AMS117-5||DA2, DA6|SOT223|AMS117|2
+41|AMS117-3.3||DA3, DA4, DA5|SOT223|AMS117|3
+42|AMS117-1.2V||DA7|SOT223|AMS117|1
+43|AMS117-2.5||DA8|SOT223|AMS117|1
+44|Ferrite_Bead||FB1, FB2, FB3, FB4, FB5, FB6, FB7, FB8, FB9, FB10|CH0805L|FB|10
+45|BLM||FB11, FB12, FB13, FB14, FB15, FB16|CH0805L|Inductor|6
+46|SJ1-3525NG|SJ1-3525NG|J1, J2|3.5-stereo|SJ1-3523N|2
+47|PHONE_OUT||J3|3.5-stereo|PJ-3,5|1
+48|IM06||K1|IMG06|IM06-1|1
+49|47nH||L1, L2|L1210|Inductor|2
+50|100uH||L3, L4|CH0805L|Inductor|2
+51|150nH||L5, L7, L24, L29, L31|L1210|TRANS|5
+52|220nH||L6|L1210|TRANS|1
+53|6.2uH||L8, L12, L16|L1210|TRANS|3
+54|2.7uH||L9, L13, L17|L1210|TRANS|3
+55|12uH||L10, L14, L18|L1210|TRANS|3
+56|3.3uH||L11, L15, L19|L1210|TRANS|3
+57|0.68uH||L20, L22, L25|L1210|TRANS|3
+58|1.2uH||L21, L27, L30|L1210|TRANS|3
+59|2.2uH||L23, L26, L28|L1210|TRANS|3
+60|10k||R1, R7, R9, R10, R13, R14, R16, R17, R29, R30, R31, R34, R35, R44, R49, R53, R54, R59, R60|CH0805R|Resistor|19
+61|22||R2, R18, R55, R56, R57|CH0805R|Resistor|5
+62|1k||R3, R4, R24, R25, R39, R45, R46, R47, R48|CH0805R|Resistor|9
+63|0||R5|CH0805R|Resistor|1
+64|56||R6|CH0805R|Resistor|1
+65|200||R8|CH0805R|Resistor|1
+66|33||R11, R12|CH0805R|Resistor|2
+67|2K||R15|CH0805R|Resistor|1
+68|100||R19, R27, R28, R40, R41, R42|CH0805R|Resistor|6
+69|470||R20, R21|CH0805R|Resistor|2
+70|5.6||R22, R58|CH0805R|Resistor|2
+71|220||R26|CH0805R|Resistor|1
+72|5.6K||R32, R33, R37, R38|CH0805R|Resistor|4
+73|47K||R36, R61, R62|CH0805R|Resistor|3
+74|30k||R50, R51, R52|CH0805R|Resistor|3
+75|ADT4-6T (TC4-1)||TR1|TC1-4|TC4-1|1
+76|TC4-1||TR2, TR3, TR4|TC1-4|TC4-1|3
+77|STM32F407||U1|100-LQFP|STM32F407-Wolf-lite|1
+78|M25P80||U2|8-SOIC|M25P80|1
+79|EP4CE10E22||U3|144-QFN|EP4CE10E22C8N|1
+80|LTC6400-20||U4|16-QFN 3x3|LTC6400|1
+81|DAC904||U5|28-TSSOP|DAC904|1
+82|OPA2674||U6|14-SOIC|OPA2674|1
+83|PAM8406||U7|SOP-16|PAM8406|1
+84|WM8731||U8|28-SSOP|WM8731|1
+85|PE4302||U9|20-QFN (4x4)|PE4302|1
+86|FST3253||U10, U16, U17, U18|16-SSOP|FST3253|4
+87|74HC238||U11|16-SOIC|74HC238|1
+88|ULN2003||U12|16-SOIC|ULN2003_NEW|1
+89|MCP6001UT||U13, U14|SOT23-5|MCP6001UT_1|2
+90|LD3985M33R||U15|SOT23-5|LD3985M33R_SOT23|1
+91|MP2307||U19|MP2307 MINI360|MP2307|1
+92|1N4108||VD1, VD2, VD3|1N4148|Diod|3
+93|BSS123||VT1|SOT23_132|N-KANAL|1
+94|IRFR9024NPBF||VT2|D2PAK_132|P-KANAL|1
+95|IRFR5305||VT3|SOT23_132|N-KANAL|1
+96|FPC 0.5||X1|CON: PLD2X20|FPC-45-0.5|1
+97|JTAG||X2|CON: PLD-10|Jtag|1
+98|POWER 13.8V||X3, X11|CON: 300-02P-5.0|2-Connector|2
+99|Speaker||X4|CON: CWF-3|3-Connector|1
+100|SMA|RF|X5|CON: SMA|SMA|1
+101|"PTT"||X6|RJ25-6pin|6-Connector|1
+102|"USB"|USB|X7|USB-mini|miniUSB-B|1
+103|ST-Link||X8|CON: PLS-4|4-Connector|1
+104|PLD10||X9|CON: PLD-10|10-Connector|1
+105|||X10|CON: PLS-4|4-Connector|1
+106|8 мГц||Z1|OSC-dip|Oscillator|1
+107|32768 кГ||Z2|Qz|Oscillator|1
+108|64.320мГц||Z3|OSC: 5070|Generator|1

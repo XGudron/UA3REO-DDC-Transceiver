@@ -1,0 +1,8 @@
+[ProjectGroup]
+Version=1.0
+[Project1]
+ProjectPath=FRONT-UNIT\FRONT-UNIT.PrjPcb
+[Project2]
+ProjectPath=MOTHERBOARD\MOTHERBOARD.PrjPcb
+[Project3]
+ProjectPath=RF-UNIT\RF-UNIT.PrjPcb

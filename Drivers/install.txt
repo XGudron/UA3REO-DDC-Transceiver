@@ -1,0 +1,2 @@
+This driver uses windows USB Virtual com port driver files
+If it;s dont work, please update system drivers from https://my.st.com/content/my_st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-stm32102.html

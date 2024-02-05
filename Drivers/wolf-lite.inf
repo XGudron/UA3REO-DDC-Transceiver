@@ -1,0 +1,69 @@
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%PRVDR%
+DriverVer=11/10/2022,1.1.4.0
+CatalogFile=ua3reo.cat
+
+[SourceDisksNames]
+1=%DriversDisk%,,,
+
+[SourceDisksFiles]
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NT,NTx86,NTamd64,NTarm
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[DeviceList.NT]
+%DESCRIPTION%=DriverInstall, USB\VID_0483&PID_F002 ; root driver
+%COMPOSITE0% =DriverInstall, USB\VID_0483&PID_F002&MI_00 ; CAT/KEY/DEBUG driver
+
+[DeviceList.NTx86]
+%DESCRIPTION%=DriverInstall, USB\VID_0483&PID_F002 ; root driver
+%COMPOSITE0% =DriverInstall, USB\VID_0483&PID_F002&MI_00 ; CAT/KEY/DEBUG driver
+
+[DeviceList.NTamd64]
+%DESCRIPTION%=DriverInstall, USB\VID_0483&PID_F002 ; root driver
+%COMPOSITE0% =DriverInstall, USB\VID_0483&PID_F002&MI_00 ; CAT/KEY/DEBUG driver
+
+[DeviceList.NTarm]
+%DESCRIPTION%=DriverInstall, USB\VID_0483&PID_F002 ; root driver
+%COMPOSITE0% =DriverInstall, USB\VID_0483&PID_F002&MI_00 ; CAT/KEY/DEBUG driver
+
+[DriverInstall]
+Include=mdmcpq.inf,usb.inf
+CopyFiles=FakeModemCopyFileSection
+AddReg=DriverInstall.AddReg
+
+[DriverInstall.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[DriverInstall.Services]
+Include=mdmcpq.inf
+AddService=usbser, 0x00000002, DriverService
+
+[DriverService]
+DisplayName=%SERVICE%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\usbser.sys
+LoadOrderGroup = Base
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+
+[Strings]
+PRVDR       = "WOLF-Lite"
+MFGNAME = "WOLF-Lite"
+SERVICE = "WOLF-Lite Driver"
+DESCRIPTION = "WOLF-Lite"
+COMPOSITE0 = "WOLF-Lite CAT/CW Port"
+INSTDISK="WOLF-Lite Driver Installer"
+DRIVERFILENAME ="usbser"

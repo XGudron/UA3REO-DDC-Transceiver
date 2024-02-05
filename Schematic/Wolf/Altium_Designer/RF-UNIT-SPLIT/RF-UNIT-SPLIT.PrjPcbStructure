@@ -1,0 +1,4 @@
+Record=TopLevelDocument|FileName=RF-UNIT-SPLIT.SCHDOC|SheetNumber=12
+Record=SheetSymbol|SourceDocument=RF-UNIT-SPLIT.SCHDOC|Designator=U_CONN|SchDesignator=U_CONN|FileName=CONN.SchDoc|SheetNumber=14|SymbolType=Normal|RawFileName=CONN.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=RF-UNIT-SPLIT.SCHDOC|Designator=U_CONTROL|SchDesignator=U_CONTROL|FileName=CONTROL.SchDoc|SheetNumber=15|SymbolType=Normal|RawFileName=CONTROL.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=RF-UNIT-SPLIT.SCHDOC|Designator=U_LNA|SchDesignator=U_LNA|FileName=LNA.SchDoc|SheetNumber=16|SymbolType=Normal|RawFileName=LNA.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
