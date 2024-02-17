@@ -218,8 +218,8 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Auto Input Switch** - Auto input switch (PTT - mix, CAT - USB)
 * **CESSB** - Enable controlled-envelope single-sideband modulation
 * **CESSB Compress, dB** - Signal pre-amplification level before compression in CESSB
-* **Compressor MaxGain** - Maximum comressor gain
-* **Compressor Speed** - TX compressor response speed for transmission (more-faster)
+* **TX AGC MaxGain** - Maximum AGC gain
+* **TX AGC Speed** - TX compressor response speed for transmission (more-faster)
 * **CTCSS Frequency** - Transmit FM CTCSS sub-tone frequency
 * **FT8 Auto CQ** - Automatic transition to CQ mode after FT8 communication
 * **Input Type** - Select audio input (microphone, line in, USB)
@@ -236,7 +236,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Repeater offset, kHz"** -  Transmission frequency offset in repeater mode
 * **SelfHear Volume** - Self Hearing (CW/DIGI) volume relative to the overall transceiver volume
 * **TUNER Enabled** - Turning on the antenna tuner
-* **Two Signal tune** - Two-signal generator in TUNE mode (1.0 + 2.2kHz)
+* **Tune Type** - TUNE operating mode (carrier, two signal tone, multi-tone, white noise)
 * **VOX Threshold, dbFS** - VOX Threshold, dbFS
 * **VOX Timeout, ms** - VOX transmission delay after silence, milliseconds
 * **VOX** - TX Voice activation
@@ -408,6 +408,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Transverter xxx RF, MHz** - Setting the RF frequency of the transceiver to match the IF
 * **VHF Mixer Board** - Enable VHF board with RF mixer support (Wolf-2)
 * **VHF Mixer IF, MHz** - Select IF frequency for VHF board mixer (Wolf-2)
+* **VHF TCXO, kHz** - Select TCXO frequency for VHF board (Wolf-2)
 
 ### Memory Channels
 
