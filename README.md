@@ -12,7 +12,21 @@ The I and Q quadrature signals from the conversions are fed to the STM32 micropr
 It filters, (de) modulates and outputs audio to an audio codec / USB. It also handles the entire user interface. <br>
 When transmitting, the process occurs in the opposite order, only at the end of the chain there is a DAC, which converts the digital signal back to analog RF. <br>
 
-## Specifications
+## Specifications TRX Wolf-2
+
+* Receiving frequencies: 0 Mhz - 2700 Mhz, band filters for ham bands (23cm included)
+* Transmission frequencies: 0 MHz - 2700 Mhz, amplifiers for ham bands (23cm included)
+* TX power: 100W (HF), 50W+ (VHF/UHF), 15W+ (SHF)
+* Two antenna inputs on HF, four for VHF/UHF/SHF/Wideband
+* Automatic antenna tuner
+* Modulation types (TX / RX): CW, LSB, USB, AM, FM, WFM, DIGI
+* LNA, Preamplifier
+* Adjustable attenuator 0-31dB
+* Band pass filters
+* ADC dynamic range (16 bit) ~100dB
+* Supply voltage: 13.8V
+
+## Specifications TRX Wolf-1
 
 * Receiving frequencies: 0 MHz - 750 MHz with fading each 61.44 MHz (above 145 MHz - without input filters)
 * Transmission frequencies: 0 MHz - 150 MHz with fading on 110 MHz
@@ -159,6 +173,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### FILTERS Settings
 
+* **Adaptive FM Filter** - Automatic adjustment of the width of the NFM filter relative to the strength of the received signal (VHF)
 * **AM/FM/CW/SSB LPF Stages** - Adjusting the slopes of the LPF filters in defferent modes
 * **CW LPF Pass** - LPF cutoff frequency when working in CW
 * **CW Gauss filter** - Gauss responce LPF filter
@@ -174,7 +189,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **ADC Driver** - Turn on the preamplifier-ADC driver
 * **ADC Preamp** - Turn on the preamplifier built into the ADC
 * **ADC Randomizer** - Enables ADC digital line encryption
-* **ADC Shutdown** - Turn off the ADC
 * **AGC Gain target, LKFS** - Maximum AGC gain (Maximum volume with AGC on)
 * **AGC Spectral** - Enable FFT-based AGC
 * **AGC Threshold** - Enabling the AGC opening threshold
@@ -210,6 +224,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### TX Settings
 
+* **ADC Shutdown** - Turn off the ADC while TXing
 * **ATU Cap** - Tuner Capacitance Combination
 * **ATU Enabled** - Turning on the automatic antenna tuner
 * **ATU Ind** - Combination of tuner inductances
@@ -387,6 +402,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RTC COARSE CALIBR** - Very coarse clock crystal calibration
 * **RTC FINE CALIBR** - Clock crystal calibration, one division is 0.954 ppm
 * **S METER** - S-meter calibration
+* **Sequencer support** - External sequencer support (output throught line EXT_TUNE)
 * **SSB Power addition** - Addition of RF power in SSB power, %
 * **SWR FWD/BWD RATE** - Adjustment of the transformation ratio of the SWR meter (forward / return)
 * **Swap USB IQ** - Swap USB IQ output
@@ -449,6 +465,10 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 ### DX Cluster 
 
 * Show DX Cluster info by current band (from internet)
+
+### WOLF Cluster 
+
+Displays information about radio amateurs currently in the current band using "Wolf" transceivers (internet connection required)
 
 ### Propagation 
 
