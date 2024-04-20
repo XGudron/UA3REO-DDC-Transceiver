@@ -15,9 +15,9 @@ LifeCycleDefinitionGUID=
 RevisionNamingSchemeGUID=
 
 [PublishSettings]
-OutputFilePath2=C:\Users\ANTON\YandexDisk\Разработки Altium\UA3REO-DDC-Transceiver\Schematic\Wolf-Lite\Altium_Designer\Main-Unit\.PDF
+OutputFilePath2=C:\Users\ANTON\Desktop\Main-Unit\.PDF
 ReleaseManaged2=0
-OutputBasePath2=C:\Users\ANTON\YandexDisk\Разработки Altium\UA3REO-DDC-Transceiver\Schematic\Wolf-Lite\Altium_Designer\Main-Unit\
+OutputBasePath2=C:\Users\ANTON\Desktop\Main-Unit\
 OutputPathMedia2=
 OutputPathMediaValue2=
 OutputPathOutputer2=[Output Type]
@@ -94,7 +94,7 @@ WmvVideoCodecName4=Windows Media Video V7
 WmvQuality4=80
 
 [GeneratedFilesSettings]
-RelativeOutputPath2=C:\Users\ANTON\YandexDisk\Разработки Altium\UA3REO-DDC-Transceiver\Schematic\Wolf-Lite\Altium_Designer\Main-Unit\.PDF
+RelativeOutputPath2=C:\Users\ANTON\Desktop\Main-Unit\.PDF
 OpenOutputs2=1
 RelativeOutputPath3=
 OpenOutputs3=1
