@@ -42,7 +42,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * Supply voltage: 13.8V (overvoltage and polarity reversal protection)
 * Consumption current when receiving: ~0.7А (3'2 QRP), 0.9A (7' BIG)
 * Current consumption during transmission: ~2.5А+ (QRP), 15A+ (BIG)
-* Support for different displays: RA8875/HX8357B/HX8357C/ST7789/ST7796S/ST7735S/ILI9341/ILI9481/ILI9486
+* Support for different displays: RA8875/HX8357B/HX8357C/ST7789/ST7796S/ST7735S/ILI9341/ILI9481/ILI9486/ILI9488
 
 ## Transceiver Features
 
@@ -214,8 +214,9 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RX AGC Max gain** - Limit of AGC gain, dB
 * **RX AGC Speed** - AGC (automatic signal level control) response speed for reception (more-faster)
 * **RX EQ xxx** - Receiver equalizer levels
-* **TRX Samplerate** - Max FFT/samplerate on CW/SSB/NFM/DIGI/etc modes
+* **TRX Samplerate** - Max FFT/samplerate on SSB/DIGI/etc modes
 * **FM Samplerate** - Max FFT/samplerate on NFM/WFM mode
+* **CW Samplerate** - Max FFT/samplerate on CW mode
 * **VAD Threshold** - VAD voice detector threshold (noise suppressor for SSB mode and SCAN mode)
 * **Volume step** - AF gain step by ENC2 (X1, Lite)
 * **Volume** - AF gain
@@ -224,7 +225,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### TX Settings
 
-* **ADC Shutdown** - Turn off the ADC while TXing
+* **ADC Shutdown** - Turn off the ADC while TX
 * **ATU Cap** - Tuner Capacitance Combination
 * **ATU Enabled** - Turning on the automatic antenna tuner
 * **ATU Ind** - Combination of tuner inductances
@@ -233,6 +234,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Auto Input Switch** - Auto input switch (PTT - mix, CAT - USB)
 * **CESSB** - Enable controlled-envelope single-sideband modulation
 * **CESSB Compress, dB** - Signal pre-amplification level before compression in CESSB
+* **DRV Shutdown** - Turn off the DAC driver while RX
 * **TX AGC MaxGain** - Maximum AGC gain
 * **TX AGC Speed** - TX compressor response speed for transmission (more-faster)
 * **CTCSS Frequency** - Transmit FM CTCSS sub-tone frequency
@@ -346,8 +348,10 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 ### Satellites
 
 * **SAT Mode** - Enable satellite mode
+* **Auto Doppler** - Automatically shifts the transceiver frequency based on the calculated Doppler effect
 * **Download TLE** - Download current satellite data
 * **Select SAT** - Select a satellite from the downloaded TLE file
+* **Calc Pass** - Calculate future sattelite passes over QTH (Local time)
 * **QTH xxx** - Setting the Latitude\Longitude\Altitude of your location
 
 ### Calibration [appears by long pressing the MENU button in the settings menu]
@@ -425,6 +429,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **VHF Mixer Board** - Enable VHF board with RF mixer support (Wolf-2)
 * **VHF Mixer IF, MHz** - Select IF frequency for VHF board mixer (Wolf-2)
 * **VHF TCXO, kHz** - Select TCXO frequency for VHF board (Wolf-2)
+* **VHF TCXO Correction** - Correction for VHF board TCXO generator frequency offset (Wolf-2)
 
 ### Memory Channels
 
@@ -485,6 +490,10 @@ Displays information about radio amateurs currently in the current band using "W
 ### Ionogram 
 
 * Displaying the ionogram for the selected URSI Code (from internet)
+
+### foF2 Map 
+
+* Displaying the foF2 frequency map (from internet)
 
 ### SWR Analyser
 
