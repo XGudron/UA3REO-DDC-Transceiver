@@ -55,7 +55,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * Switchable AGC (AGC) with adjustable attack rate
 * Range map, with the ability to automatically switch modes
 * Digital Noise Reduction (DNR), Pulse Noise Reduction (NB)
-* CAT virtual COM port (FT-450 / TS-2000 emulation, RTS - PTT, DTR - CW)
+* CAT virtual COM port (TS-2000 / FT-450 emulation, RTS - PTT, DTR - CW)
 * USB operation (audio transmission, IQ, CAT, KEY, PTT)
 * RDS/CW/RTTY decoder, self-control, gauss filter
 * SWR Graphs
@@ -70,7 +70,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * WAV files radio recording and playback, fast broadcast recorded CQ message
 * AGC takes into account the characteristics of human hearing (K-Weighting)
 * TCXO frequency stabilization (it is possible to use an external clock source, such as GPS)
-* WiFi operation: Time synchronization, virtual CAT interface (see Scheme/WIFI-CAT-instruction.txt)
+* WiFi operation: Time synchronization, external WiFi services
 * Tangent support Yaesu MH-36 и MH-48
 * Hardware self-testing
 * Firmware update over USB, SD, WiFi
@@ -190,7 +190,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **ADC Preamp** - Turn on the preamplifier built into the ADC
 * **ADC Randomizer** - Enables ADC digital line encryption
 * **AGC Gain target, LKFS** - Maximum AGC gain (Maximum volume with AGC on)
-* **AGC Spectral** - Enable FFT-based AGC
 * **AGC Threshold** - Enabling the AGC opening threshold
 * **Att step, dB** - Attenuator tuning step
 * **Attenuation, dB** - Current attenuation
@@ -332,7 +331,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **WIFI Network** - WiFi hotspot selection
 * **WIFI Network Pass** - Set password for WiFi hotspot
 * **WIFI Timezone** - Time zone (for updating the time via the Internet)
-* **WIFI CAT Server** - Server for receiving CAT commands via WIFI
 * **WIFI Update ESP firmware** - Start cloud autoupdate firmware for ESP-01 (if present)
 * **ALLQSO.RU Token/LogId** - Token и LogID from https://allqso.ru/ web-log
 
@@ -363,7 +361,8 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **BPF x** - Bandpass filter parameters
 * **CAT Type** - Type of CAT subsystem (FT-450 / TS-2000)
 * **COM CAT DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the CAT port
-* **COM DEBUG DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the Debug port
+* **SEC COM Mode** - Select the operating mode of the secondary COM port (debugging, CAT)
+* **SEC COM DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the Debug port
 * **CICCOMP Shift** - Bit shift after CIC compensator
 * **Calibrate reset** - Reset all calibrations to defaults
 * **DAC Driver Mode** - DAC Driver OPA2673 bias mode (2 = 100% bias, 1 = 75% bias, 0 = 50% bias)
@@ -405,7 +404,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RF-Unit Type** - RF-Unit Type (QRP / BIG)
 * **RTC COARSE CALIBR** - Very coarse clock crystal calibration
 * **RTC FINE CALIBR** - Clock crystal calibration, one division is 0.954 ppm
-* **S METER** - S-meter calibration
+* **S METER** - S-meter calibration  (LHF 160/80, MHF 40/30/20/17, HHF 15/12/10, 6M, VHF, SHF)
 * **Sequencer support** - External sequencer support (output throught line EXT_TUNE)
 * **SSB Power addition** - Addition of RF power in SSB power, %
 * **SWR FWD/BWD RATE** - Adjustment of the transformation ratio of the SWR meter (forward / return)
