@@ -250,9 +250,11 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RF Power** - Transmission power,%
 * **Repeater Mode"** -  Operation mode via repeater
 * **Repeater offset, kHz"** -  Transmission frequency offset in repeater mode
+* **SelfHear SSB** - Self-monitoring for SSB/AM modes, always active for DIGI/RTTY/LOOPBACK
 * **SelfHear Volume** - Self Hearing (CW/DIGI) volume relative to the overall transceiver volume
 * **TUNER Enabled** - Turning on the antenna tuner
 * **Tune Type** - TUNE operating mode (carrier, two signal tone, multi-tone, white noise)
+* **TOT, min** - Protection of the transmitter from long-term operation, automatic shutdown after time has elapsed
 * **VOX Threshold, dbFS** - VOX Threshold, dbFS
 * **VOX Timeout, ms** - VOX transmission delay after silence, milliseconds
 * **VOX** - TX Voice activation
@@ -311,6 +313,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **FFT dBm Grid** - FFT signal power grid
 * **LCD Brightness** - Set LCD brightness (not all lcd support)
 * **LCD Sleep Timeout** - Idle time before the screen brightness decreases, sec (0 - disabled)
+* **S-Meter style** - Selecting layout of the analog S-Meter
 * **Show Sec VFO** - Show secondary VFO position on spectrum
 * **WTF Color** - Waterfall colors: 1(blue -> yellow -> red), 2(black -> yellow -> red), 3(black -> yellow -> green), 4(black -> red), 5(black -> green), 6(black -> blue), 7(black -> white)
 * **WTF Moving** - Mowe waterfall with frequency changing
@@ -354,20 +357,32 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### Calibration [appears by long pressing the MENU button in the settings menu]
 
-* **ALC Port Enabled** - Activation of transceiver power control by an external amplifier via the ALC line: up to 1 volt - ALC is disabled and the power set in the transceiver is used. from 1.0v to 3.0v - power adjustment from 0 to 100%
-* **ALC Inverted** - Invert ALC logic (3.0v - 0%, 1.0v - 100%)
-* **AM Modulation Index** - Set TX AM Modulation Scale
-* **ATU Averaging** - The number of steps of averaging SWR values during measurements in the operation of an automatic tuner
-* **BPF x** - Bandpass filter parameters
+### Calibration Bands
+* **ENABLE 2200m/60m/6m/4m/FM/2m/AIR/Marine Band/70cm** - Enable hidden bands
+* **NOTX xxx** - Disable TX on selected bands
+
+### Calibration Control
 * **CAT Type** - Type of CAT subsystem (FT-450 / TS-2000)
 * **COM CAT DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the CAT port
 * **SEC COM Mode** - Select the operating mode of the secondary COM port (debugging, CAT)
 * **SEC COM DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the Debug port
-* **CICCOMP Shift** - Bit shift after CIC compensator
-* **Calibrate reset** - Reset all calibrations to defaults
+* **FAN Full start** - Temperature of the PA for starting the fan at full speed
+* **FAN Medium start** - Temperature of the PA for starting the fan at medium speed
+* **FAN Medium stop** - Temperature of the PA for stopping the fan
+* **FAN Medium PWM** - Adjusting the duty cycle of a PWM fan in Medium mode
+* **FAN Motherboard** - Starting the fan not only by the sensor, but also by the temperature of the STM32 processor
+* **IF Gain MIN/MAX** - IF Gain adjusting limits
+* **OTA Update** - Enable OTA firmware update over WiFi
+
+### Calibration Hardware
+* **RF-Unit Type** - RF-Unit Type (QRP / BIG)
+* **ALC Port Enabled** - Activation of transceiver power control by an external amplifier via the ALC line: up to 1 volt - ALC is disabled and the power set in the transceiver is used. from 1.0v to 3.0v - power adjustment from 0 to 100%
+* **ALC Inverted** - Invert ALC logic (3.0v - 0%, 1.0v - 100%)
+* **BPF x** - Bandpass filter parameters
+* **HPF START** - HPF filter parameters
+* **LPF END** - LPF filter parameters
 * **DAC Driver Mode** - DAC Driver OPA2673 bias mode (2 = 100% bias, 1 = 75% bias, 0 = 50% bias)
-* **DAC Shift** - Bit shift of the output to the DAC
-* **ENABLE 2200m/60m/6m/4m/FM/2m/AIR/Marine Band/70cm** - Enable hidden bands
+* **DAC Interpolation** - Using interpolation in the first DAC frequency zone (HF)
 * **EXT xxx** - External port control by band (EXT3, EXT2, EXT1, EXT0) - open drain
 * **Encoder acceleration** - The encoder acceleration on faster rotation speeds
 * **Encoder debounce** - Time of debouncing contacts of the main encoder
@@ -377,39 +392,14 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Encoder2 debounce** - Time of debouncing contacts of the additional encoder
 * **Encoder2 invert** - Invert the rotation of the additional encoder
 * **Encoder2 on fall** - Mode of operation of the secondary encoder (some encoders skip a step or make an extra one)
-* **FAN Full start** - Temperature of the PA for starting the fan at full speed
-* **FAN Medium start** - Temperature of the PA for starting the fan at medium speed
-* **FAN Medium stop** - Temperature of the PA for stopping the fan
-* **FAN Medium PWM** - Adjusting the duty cycle of a PWM fan in Medium mode
-* **FAN Motherboard** - Starting the fan not only by the sensor, but also by the temperature of the STM32 processor
-* **FM Deviation Scale** - Set TX FM Deviation Scale
 * **Flash GT911** - Starting the touchpad update procedure according to LCD screen resolution
-* **HPF START** - HPF filter parameters
-* **IF Gain MIN/MAX** - IF Gain adjusting limits
 * **INA226** - Activation and calibration of the INA226 voltage/current sensor on the I2C bus
 * **KTY81 Calibration** - Calibration of the KTY81 sensor (setting the resistance of the divider arm)
 * **LCD Rotate** - Rotate screen at 180 degrees
-* **LNA Compensation** - Compensates the S-meter value when the LNA is turned on, dBm
-* **ATT Compensation** - Compensates the S-meter value when the ATT is turned on
-* **LPF END** - LPF filter parameters
-* **Linear Pwr Control** - Sets a linear way to change the signal amplitude when adjusting the power (if disabled - logarithmic)
 * **MAX ChargePump, kHz** - Maximum PWM frequency for ChargePump circuit
-* **MAX PWR on Meter** - Maximim RF power (for indication)
-* **MAX Power in TUNE** - Maximum RF power in Tune mode
-* **MAX RF Temp** - Maximum temperature of the PA before the protection operation
-* **MAX SWR** - Maximum VSWR before protection operation
-* **NOTX xxx** - Disable TX on selected bands
-* **OTA Update** - Enable OTA firmware update over WiFi
-* **RF GAIN xxx** - Calibration of the maximum TX output power for each range
-* **RF-Unit Type** - RF-Unit Type (QRP / BIG)
 * **RTC COARSE CALIBR** - Very coarse clock crystal calibration
 * **RTC FINE CALIBR** - Clock crystal calibration, one division is 0.954 ppm
-* **S METER** - S-meter calibration  (LHF 160/80, MHF 40/30/20/17, HHF 15/12/10, 6M, VHF, SHF)
 * **Sequencer support** - External sequencer support (output throught line EXT_TUNE)
-* **SSB Power addition** - Addition of RF power in SSB power, %
-* **SWR FWD/BWD RATE** - Adjustment of the transformation ratio of the SWR meter (forward / return)
-* **Swap USB IQ** - Swap USB IQ output
-* **Settings reset** - Reset all settings to defaults
 * **TCXO Frequency, kHz** - Frequency adjustment of the reference oscillator
 * **VCXO Correction** - Correction for main generator frequency offset
 * **Touchpad flip** - Flip the touchpad operation horizontally/vertically
@@ -418,17 +408,46 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Touchpad click timeout** - Maximum time for triggering a short click, ms
 * **Touchpad hold timeout** - Time before a long press is triggered, ms
 * **Touchpad swipe threshold** - Minimum distance to trigger a swipe, px
-* **TSignal Balance** - Sets the power balance between signals in Two signal tune mode
-* **TX CICCOMP Shift** - Bit shift after TX CIC compensator
-* **TX Start Delay** - Delay before the RF signal is applied (ms), so that the relay has time to trigger
 * **Tangent Type** - Select tangent type
 * **Transverter Offset, MHz** - Offset frequency shown on the display (for custom transverters)
 * **Transverter xxx IF, MHz** - Setting the IF frequency of the transverter
 * **Transverter xxx RF, MHz** - Setting the RF frequency of the transceiver to match the IF
+* **Transv only TX** - Use transverter only for TX
 * **VHF Mixer Board** - Enable VHF board with RF mixer support (Wolf-2)
 * **VHF Mixer IF, MHz** - Select IF frequency for VHF board mixer (Wolf-2)
 * **VHF TCXO, kHz** - Select TCXO frequency for VHF board (Wolf-2)
 * **VHF TCXO Correction** - Correction for VHF board TCXO generator frequency offset (Wolf-2)
+
+### Calibration RX
+* **ATT Compensation** - Compensates the S-meter value when the ATT is turned on
+* **LNA Compensation** - Compensates the S-meter value when the LNA is turned on, dBm
+* **CICCOMP Shift** - Bit shift after CIC compensator
+* **S METER** - S-meter calibration  (LHF 160/80, MHF 40/30/20/17, HHF 15/12/10, 6M, VHF, SHF)
+* **Swap USB IQ** - Swap USB IQ output
+
+### Calibration TX
+* **AM Modulation Index** - Set TX AM Modulation Scale
+* **ATU Averaging** - The number of steps of averaging SWR values during measurements in the operation of an automatic tuner
+* **TX CICCOMP Shift** - Bit shift after TX CIC compensator
+* **DAC Shift** - Bit shift of the output to the DAC
+* **FM Deviation Scale** - Set TX FM Deviation Scale
+* **Linear Pwr Control** - Sets a linear way to change the signal amplitude when adjusting the power (if disabled - logarithmic)
+* **MAX PWR on Meter** - Maximim RF power (for indication)
+* **MAX Power in TUNE** - Maximum RF power in Tune mode
+* **MAX RF Temp** - Maximum temperature of the PA before the protection operation
+* **MAX SWR** - Maximum VSWR before protection operation
+* **Max Current, Amp** - Current protection, turns off transmission when the threshold is reached
+* **RF GAIN xxx** - Calibration of the maximum TX output power for each range
+* **SSB Power addition** - Addition of RF power in SSB power, %
+* **SWR FWD/BWD RATE** - Adjustment of the transformation ratio of the SWR meter (forward / return)
+* **SWR Protector** - SWR protection mode selection: Off, low power, transmission off
+* **TSignal Balance** - Sets the power balance between signals in Two signal tune mode
+* **TX Start Delay** - Delay before the RF signal is applied (ms), so that the relay has time to trigger
+
+### Calibration Reset
+* **Settings reset** - Reset all settings to defaults
+* **Calibrate reset** - Reset all calibrations to defaults
+* **WiFi Settings reset** - Reset all WiFi setings to defaults
 
 ### Memory Channels
 
