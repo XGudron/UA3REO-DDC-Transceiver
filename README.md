@@ -243,15 +243,18 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **MIC Boost** - +20db hardware mic amplifier
 * **MIC EQ xxx** - Microphone equalizer levels
 * **MIC Gain** - Microphone gain
-* **MIC Noise Gate** - The level below which the microphone signal is muted, dbFS
+* **MIC DSP Type** - Type of DSP processing of the microphone path: None, Downward Expander, Upward/Downward Compressor, Limiter, Noise Gate
+* **MIC DSP Threshold** - Threshold of selected microphone DSP processing
+* **MIC DSP Ratio** - Level of slope for selected microphone DSP processing
 * **MIC Reverber** - Microphone reverberator level
 * **Power for each band** - Save power settings for each band individually
 * **Power for each mode** - Save power settings for each mode individually
 * **RF Power** - Transmission power,%
 * **Repeater Mode"** -  Operation mode via repeater
 * **Repeater offset, kHz"** -  Transmission frequency offset in repeater mode
-* **SelfHear SSB** - Self-monitoring for SSB/AM modes, always active for DIGI/RTTY/LOOPBACK
-* **SelfHear Volume** - Self Hearing (CW/DIGI) volume relative to the overall transceiver volume
+* **SelfHear on SSB** - Self-monitoring for SSB/AM modes, always active for DIGI/RTTY/LOOPBACK
+* **SelfHear VOICE** - Self Hearing volume at voice modes relative to the overall transceiver volume
+* **SelfHear DIGI** - Self Hearing volume at DIGI modes relative to the overall transceiver volume
 * **TUNER Enabled** - Turning on the antenna tuner
 * **Tune Type** - TUNE operating mode (carrier, two signal tone, multi-tone, white noise)
 * **TOT, min** - Protection of the transmitter from long-term operation, automatic shutdown after time has elapsed
@@ -261,8 +264,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### CW Settings
 
-* **Auto CW Mode** - Automatic transition to CW mode when the key is pressed
-* **CW In SSB** - Allow CW TX manipulation in SSB mode
+* **Auto CW Mode** - Automatic switching to CW mode when pressing the key, or only manipulation during transmission
 * **DotToDash Rate** - Keyer dash to dot length rate
 * **Edges smooth, ms** - Smoothing signal edges
 * **Iambic Keyer** - Enable Iambic mode keyer
@@ -308,8 +310,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **FFT Speed** - FFT and waterfall speed
 * **FFT Style** - FFT style: 1(gradient), 2(fill), 3(dots), 4(contour), 5(gradient + contour)
 * **FFT Window** - Select FFT window (1-Dolph–Chebyshev 2-Blackman-Harris 3-Nutall 4-Blackman-Nutall 5-Hann 6-Hamming 7-No window)
-* **FFT Zoom CW** - FFT spectrum zooming for CW Mode
-* **FFT Zoom** - FFT spectrum zooming
 * **FFT dBm Grid** - FFT signal power grid
 * **LCD Brightness** - Set LCD brightness (not all lcd support)
 * **LCD Sleep Timeout** - Idle time before the screen brightness decreases, sec (0 - disabled)
