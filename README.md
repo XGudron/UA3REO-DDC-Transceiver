@@ -1,5 +1,5 @@
 # Transceiver "Wolf"
-DDC-DUC SDR Tranceiver project https://ua3reo.ru/tag/transiver-ua3reo/
+DDC-DUC SDR Transceiver project https://ua3reo.ru/tag/transiver-ua3reo/
 
 * Community telegram channel: https://t.me/TRX_Wolf
 * На русском https://github.com/XGudron/UA3REO-DDC-Transceiver/blob/master/README.ru-RU.md
@@ -108,7 +108,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **BAND -** - Switch to the band below
 * **BAND +** - Switch to higher band
 * **MODE -** - Mode group switching SSB-> CW-> DIGI-> FM-> AM
-* **MODE +** - Switching subgroup mod LSB-> USB, CW_L-> CW_U, DIGI_U-> DIGI_L, NFM-> WFM, AM-> IQ-> LOOP
+* **MODE +** - Switching subgroup mode LSB-> USB, CW_L-> CW_U, DIGI_U-> DIGI_L, NFM-> WFM, AM-> IQ-> LOOP
 * **FAST** - Mode of fast x10 rewinding of the frequency by the main encoder (configurable)
 * **FAST [clamp]** - Frequency step settings
 * **PRE** - Turn on the preamplifier (LNA)
@@ -127,7 +127,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RF POWER** - Transmitter power selection
 * **RF POWER [clamp]** - Squelch setting
 * **A / B** - Switches between VFO-A / VFO-B receiver settings banks
-* **A / B [clamp]** - Enable automatic mode change by bendmap
+* **A / B [clamp]** - Enable automatic mode change by bandmap
 * **DOUBLE** - Turn on the dual receiver
 * **DOUBLE [clamp]** - Switching between the modes of the dual receiver A&B (each channel of the headphones has its own path) or A + B (mixing signals of 2 receivers)
 * **DNR** - Enable digital noise reduction
@@ -167,16 +167,16 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RIT Interval** - Offset range RIT (+ -)
 * **XIT Interval** - Offset range XIT (+ -)
 * **Transverter XXcm** - Enable external ham band transverter support
-* **URSI Code** - Ionogramm URSI Code https://digisonde.com/index.html#stationmap-section
+* **URSI Code** - Ionogram URSI Code https://digisonde.com/index.html#stationmap-section
 * **Tropo Region** - Region for tropospheric forecast https://www.dxinfocentre.com/tropo.html 
 * **Wolf Cluster** - Display Wolf TRX users on spectrum and send self data
 
 ### FILTERS Settings
 
 * **Adaptive FM Filter** - Automatic adjustment of the width of the NFM filter relative to the strength of the received signal (VHF)
-* **AM/FM/CW/SSB LPF Stages** - Adjusting the slopes of the LPF filters in defferent modes
+* **AM/FM/CW/SSB LPF Stages** - Adjusting the slopes of the LPF filters in different modes
 * **CW LPF Pass** - LPF cutoff frequency when working in CW
-* **CW Gauss filter** - Gauss responce LPF filter
+* **CW Gauss filter** - Gauss response LPF filter
 * **DIGI LPF Pass** - LPF cutoff frequency when working in DIGI
 * **FM LPF Pass** - LPF cutoff frequency when working in FM
 * **SSB HPF Pass** - HPF cutoff frequency when operating in SSB
@@ -193,7 +193,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **AGC Threshold** - Enabling the AGC opening threshold
 * **Att step, dB** - Attenuator tuning step
 * **Attenuation, dB** - Current attenuation
-* **Auto Snap** - Automaticly track and snap to near signal frequency (CW mode)
+* **Auto Snap** - Automatically track and snap to near signal frequency (CW mode)
 * **AutoGainer** - Automatic ATT / PREAMP control depending on the signal level on the ADC
 * **A/B Balance** - Channels balance in dual RX modes A+B and A&B
 * **CODEC Gain** - Adjusting AF gain in audio codec
@@ -275,7 +275,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Keyer** - Automatic Key
 * **One symbol memory** - Keyer memory for one symbol for transmit
 * **PTT Type** - RX/TX switch type for CW: by key or external PTT (tangent, etc.)
-* **Pitch** - Detuning the receive generator from the transmit frequency
+* **Pitch** - Detuning the receiver generator from the transmit frequency
 * **Self Hear** - Self-control CW (key press is heard)
 * **SelfHear Volume CW** - Self-control CW Gain
 * **Macros x** - Setting up macros for CW transmission
@@ -283,7 +283,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### SCREEN Settings
 
-* **Bottom navi buttons** - Show bottm menu navigation buttons (for 7 inch displays)
+* **Bottom navi buttons** - Show bottom menu navigation buttons (for 7 inch displays)
 * **Color Theme** - Select colors theme (0 - black, 1 - white, 2 - black with colored frequency)
 * **Layout Theme** - Select interface theme (0 - default)
 * **DX Cluster Type** - Selecting a Data Source for a DX Cluster
@@ -296,7 +296,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **FFT Color** - FFT colors: 1(blue -> yellow -> red), 2(black -> yellow -> red), 3(black -> yellow -> green), 4(black -> red), 5(black -> green), 6(black -> blue), 7(black -> white)
 * **FFT Compressor** - Enable FFT peak comressor
 * **FFT DXCluster Azimuth** - Add azimuth data to DX-cluster
-* **FFT DXCluster Timeout** - Timeout of DX-cluser spots in minutes
+* **FFT DXCluster Timeout** - Timeout of DX-cluster spots in minutes
 * **FFT DXCluster** - Show DXCluster info over FFT
 * **FFT Enabled** - Enable waterfall and FFT
 * **FFT Freq Grid** - FFT and waterfall grids: 1(no grid), 2(fft grid), 3(fft+wtf grids), 4(wtf grid)
@@ -339,7 +339,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### SD Card
 
-* **File Manager** - Show SD Card file manager, support WAV playback and deleteing files, listening and broadcasting recordings, as well as updating firmware from a memory card
+* **File Manager** - Show SD Card file manager, support WAV playback and deleting files, listening and broadcasting recordings, as well as updating firmware from a memory card
 * **Record CQ message** - Record a short message for quick broadcast
 * **USB SD Card Reader** - Enable USB SD Card reader
 * **Export Settings** - Export settings and calibration data to SD card
@@ -352,7 +352,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Auto Doppler** - Automatically shifts the transceiver frequency based on the calculated Doppler effect
 * **Download TLE** - Download current satellite data
 * **Select SAT** - Select a satellite from the downloaded TLE file
-* **Calc Pass** - Calculate future sattelite passes over QTH (Local time)
+* **Calc Pass** - Calculate future satellite passes over QTH (Local time)
 * **QTH xxx** - Setting the Latitude\Longitude\Altitude of your location
 
 ### Calibration [appears by long pressing the MENU button in the settings menu]
@@ -399,7 +399,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **MAX ChargePump, kHz** - Maximum PWM frequency for ChargePump circuit
 * **RTC COARSE CALIBR** - Very coarse clock crystal calibration
 * **RTC FINE CALIBR** - Clock crystal calibration, one division is 0.954 ppm
-* **Sequencer support** - External sequencer support (output throught line EXT_TUNE)
+* **Sequencer support** - External sequencer support (output through line EXT_TUNE)
 * **TCXO Frequency, kHz** - Frequency adjustment of the reference oscillator
 * **VCXO Correction** - Correction for main generator frequency offset
 * **Touchpad flip** - Flip the touchpad operation horizontally/vertically
@@ -432,7 +432,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **DAC Shift** - Bit shift of the output to the DAC
 * **FM Deviation Scale** - Set TX FM Deviation Scale
 * **Linear Pwr Control** - Sets a linear way to change the signal amplitude when adjusting the power (if disabled - logarithmic)
-* **MAX PWR on Meter** - Maximim RF power (for indication)
+* **MAX PWR on Meter** - Maximum RF power (for indication)
 * **MAX Power in TUNE** - Maximum RF power in Tune mode
 * **MAX RF Temp** - Maximum temperature of the PA before the protection operation
 * **MAX SWR** - Maximum VSWR before protection operation
@@ -447,7 +447,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 ### Calibration Reset
 * **Settings reset** - Reset all settings to defaults
 * **Calibrate reset** - Reset all calibrations to defaults
-* **WiFi Settings reset** - Reset all WiFi setings to defaults
+* **WiFi Settings reset** - Reset all WiFi setitngs to defaults
 
 ### Memory Channels
 
@@ -513,9 +513,9 @@ Displays information about radio amateurs currently in the current band using "W
 
 * Displaying the foF2 frequency map (from internet)
 
-### SWR Analyser
+### SWR Analyzer
 
-* Run SWR analizer (Band SWR - on current band, HF SWR - on all HF bands, Custom SWR - in selected range)
+* Run SWR analyzer (Band SWR - on current band, HF SWR - on all HF bands, Custom SWR - in selected range)
 
 ### RDA Statistics 
 
