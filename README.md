@@ -74,7 +74,6 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * Tangent support Yaesu MH-36 и MH-48
 * Hardware self-testing
 * Firmware update over USB, SD, WiFi
-* Digital pre-distortion
 * And other.. (see menu)
 
 ### RF Parameters
@@ -176,7 +175,8 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Adaptive FM Filter** - Automatic adjustment of the width of the NFM filter relative to the strength of the received signal (VHF)
 * **AM/FM/CW/SSB LPF Stages** - Adjusting the slopes of the LPF filters in different modes
 * **CW LPF Pass** - LPF cutoff frequency when working in CW
-* **CW Gauss filter** - Gauss response LPF filter
+* **CW Gauss filter** - Use a filter with a Gaussian distribution (for CW), accepts only the peak in the center of the BW
+* **CW Gauss Q** - Quality of Gauss filter
 * **DIGI LPF Pass** - LPF cutoff frequency when working in DIGI
 * **FM LPF Pass** - LPF cutoff frequency when working in FM
 * **SSB HPF Pass** - HPF cutoff frequency when operating in SSB
@@ -212,7 +212,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RX AGC Hold step down** - AGC Delay Falloff Step at Peaks
 * **RX AGC Max gain** - Limit of AGC gain, dB
 * **RX AGC Speed** - AGC (automatic signal level control) response speed for reception (more-faster)
-* **RX EQ xxx** - Receiver equalizer levels
 * **TRX Samplerate** - Max FFT/samplerate on SSB/DIGI/etc modes
 * **FM Samplerate** - Max FFT/samplerate on NFM/WFM mode
 * **CW Samplerate** - Max FFT/samplerate on CW mode
@@ -241,7 +240,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Input Type** - Select audio input (microphone, line in, USB)
 * **LINE Gain** - Line input codec gain
 * **MIC Boost** - +20db hardware mic amplifier
-* **MIC EQ xxx** - Microphone equalizer levels
 * **MIC Gain** - Microphone gain
 * **MIC DSP Type** - Type of DSP processing of the microphone path: None, Downward Expander, Upward/Downward Compressor, Limiter, Noise Gate
 * **MIC DSP Threshold** - Threshold of selected microphone DSP processing
@@ -252,6 +250,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RF Power** - Transmission power,%
 * **Repeater Mode"** -  Operation mode via repeater
 * **Repeater offset, kHz"** -  Transmission frequency offset in repeater mode
+* **SelfHear CW** - Self-control CW Gain
 * **SelfHear on SSB** - Self-monitoring for SSB/AM modes, always active for DIGI/RTTY/LOOPBACK
 * **SelfHear VOICE** - Self Hearing volume at voice modes relative to the overall transceiver volume
 * **SelfHear DIGI** - Self Hearing volume at DIGI modes relative to the overall transceiver volume
@@ -277,9 +276,13 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **PTT Type** - RX/TX switch type for CW: by key or external PTT (tangent, etc.)
 * **Pitch** - Detuning the receiver generator from the transmit frequency
 * **Self Hear** - Self-control CW (key press is heard)
-* **SelfHear Volume CW** - Self-control CW Gain
 * **Macros x** - Setting up macros for CW transmission
 * **Macros x name** - Setting the macro name to be displayed in the interface
+
+### Equalizer Settings
+
+* **RX EQ xxx** - Receiver equalizer levels
+* **MIC EQ xxx** - Microphone equalizer levels
 
 ### SCREEN Settings
 
@@ -369,6 +372,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **FAN Full start** - Temperature of the PA for starting the fan at full speed
 * **FAN Medium start** - Temperature of the PA for starting the fan at medium speed
 * **FAN Medium stop** - Temperature of the PA for stopping the fan
+* **FAN MB ---** - STM32 Temperature fan enable settings
 * **FAN Medium PWM** - Adjusting the duty cycle of a PWM fan in Medium mode
 * **FAN Motherboard** - Starting the fan not only by the sensor, but also by the temperature of the STM32 processor
 * **IF Gain MIN/MAX** - IF Gain adjusting limits
