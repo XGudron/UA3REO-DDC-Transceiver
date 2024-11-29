@@ -224,6 +224,8 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 ### TX Settings
 
 * **ADC Shutdown** - Turn off the ADC while TX
+* **AGC MaxGain** - Maximum AGC gain
+* **AGC Speed** - TX compressor response speed for transmission (more-faster)
 * **ATU Cap** - Tuner Capacitance Combination
 * **ATU Enabled** - Turning on the automatic antenna tuner
 * **ATU Ind** - Combination of tuner inductances
@@ -233,8 +235,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **CESSB** - Enable controlled-envelope single-sideband modulation
 * **CESSB Compress, dB** - Signal pre-amplification level before compression in CESSB
 * **DRV Shutdown** - Turn off the DAC driver while RX
-* **TX AGC MaxGain** - Maximum AGC gain
-* **TX AGC Speed** - TX compressor response speed for transmission (more-faster)
 * **CTCSS Frequency** - Transmit FM CTCSS sub-tone frequency
 * **FT8 Auto CQ** - Automatic transition to CQ mode after FT8 communication
 * **Input Type** - Select audio input (microphone, line in, USB)
