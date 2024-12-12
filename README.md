@@ -199,6 +199,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **CODEC Gain** - Adjusting AF gain in audio codec
 * **DNR xxx** - Digital squelch adjustment
 * **Squelch** - Enable SSB/AM/CW/FM Squelch
+* **FM Demodulator** - Algorithm of FM demodulator operation
 * **FM Squelch level** - FM squelch level
 * **IF Gain, dB** - IF gain
 * **NB Threshold** - Threshold of Noise blanker
@@ -255,6 +256,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **SelfHear VOICE** - Self Hearing volume at voice modes relative to the overall transceiver volume
 * **SelfHear DIGI** - Self Hearing volume at DIGI modes relative to the overall transceiver volume
 * **TUNER Enabled** - Turning on the antenna tuner
+* **TUNER Enbl per band** - Save tuner on/off state for each band independently
 * **Tune Type** - TUNE operating mode (carrier, two signal tone, multi-tone, white noise)
 * **TOT, min** - Protection of the transmitter from long-term operation, automatic shutdown after time has elapsed
 * **VOX Threshold, dbFS** - VOX Threshold, dbFS
