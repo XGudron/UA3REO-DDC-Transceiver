@@ -434,8 +434,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 ### Calibration TX
 * **AM Modulation Index** - Set TX AM Modulation Scale
 * **ATU Averaging** - The number of steps of averaging SWR values during measurements in the operation of an automatic tuner
-* **TX CICCOMP Shift** - Bit shift after TX CIC compensator
-* **DAC Shift** - Bit shift of the output to the DAC
 * **FM Deviation Scale** - Set TX FM Deviation Scale
 * **Linear Pwr Control** - Sets a linear way to change the signal amplitude when adjusting the power (if disabled - logarithmic)
 * **MAX PWR on Meter** - Maximum RF power (for indication)
