@@ -206,6 +206,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Free tune** - Allows you to move the reception frequency across the spectrum without changing the center frequency of the spectrum itself
 * **Center After Idle** - Center the spectrum with Free Tune active after 20 seconds of inactivity
 * **Noise Blanker** - Activating the Surge Suppressor
+* **Pseudo stereo** - RX path pseudo-stereophony mode
 * **RX AUDIO Mode** - Audio lines control: Stereo\Left\Right
 * **RX AGC Hold time** - Time before release of AGC gain in signal peaks, ms
 * **RX AGC Hold limit** - Burst limit for AGC delay time
@@ -272,11 +273,13 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Iambic Type** - Type of Iambic keyer (A/B)
 * **Key Invert** - Invert dash/dot on key
 * **Key timeout** - Time before stopping the transmission mode after releasing the key
-* **Keyer WPM** - Key Speed, WPM
 * **Keyer** - Automatic Key
+* **Keyer WPM** - Key Speed, WPM
+* **Mode** - Sideband Type CW-LSB / CW-USB
 * **One symbol memory** - Keyer memory for one symbol for transmit
 * **PTT Type** - RX/TX switch type for CW: by key or external PTT (tangent, etc.)
 * **Pitch** - Detuning the receiver generator from the transmit frequency
+* **Stereo** - Splitting the CW bandwidth into headphone channels (audio panorama)
 * **Self Hear** - Self-control CW (key press is heard)
 * **Macros x** - Setting up macros for CW transmission
 * **Macros x name** - Setting the macro name to be displayed in the interface
@@ -487,6 +490,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 * **WSPR Beacon START** - Start WSPR beacon
 * **Freq offset** - Offset from center of WSPR band
+* **WSPR Power, dBm** - Sets the power report sent in the beacon message
 * **WSPR Band xxx** - Select bands to WSPR beacon
 
 ### DX Cluster 
