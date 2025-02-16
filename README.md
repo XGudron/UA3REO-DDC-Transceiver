@@ -228,6 +228,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **ADC Shutdown** - Turn off the ADC while TX
 * **AGC MaxGain** - Maximum AGC gain
 * **AGC Speed** - TX compressor response speed for transmission (more-faster)
+* **TX AGC Clipping** - Determines whether the AGC will sharply limit the signal gain during large amplitude spikes
 * **ATU Cap** - Tuner Capacitance Combination
 * **ATU Enabled** - Turning on the automatic antenna tuner
 * **ATU Ind** - Combination of tuner inductances
@@ -288,6 +289,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 * **RX EQ xxx** - Receiver equalizer levels
 * **MIC EQ xxx** - Microphone equalizer levels
+* **EQ Q xxx** - The quality factor of each equalizer channel
 
 ### SCREEN Settings
 
@@ -450,6 +452,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **SWR Protector** - SWR protection mode selection: Off, low power, transmission off
 * **TSignal Balance** - Sets the power balance between signals in Two signal tune mode
 * **TX Start Delay** - Delay before the RF signal is applied (ms), so that the relay has time to trigger
+* **TX End Delay** - Delay when switching from TX to RX (stopping the signal until the relay turns off)
 
 ### Calibration Reset
 * **Settings reset** - Reset all settings to defaults
@@ -492,6 +495,12 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Freq offset** - Offset from center of WSPR band
 * **WSPR Power, dBm** - Sets the power report sent in the beacon message
 * **WSPR Band xxx** - Select bands to WSPR beacon
+
+### Efficiency
+
+* **Cable Type** - Selecting the cable used in the antenna-feeder device
+* **Cable Length** - Cable length from transceiver to antenna
+* **Calc Efficiency** - Starting the efficiency calculation. To calculate, you need to turn off the tuner (to know the SWR of the antenna-feeder device) and apply the RF carrier
 
 ### DX Cluster 
 
@@ -553,3 +562,7 @@ Displays information about radio amateurs currently in the current band using "W
 
 * **Calibrate SWR** - Assistant in measuring SWR and power meter
 * **Calibrate Power** - Assistant in adjusting RF Power output
+
+### Debug Console
+
+* Display console with system debug information (copy of what is sent to debug COM port)
