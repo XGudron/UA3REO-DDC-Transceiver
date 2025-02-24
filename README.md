@@ -387,6 +387,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### Calibration Hardware
 * **RF-Unit Type** - RF-Unit Type (QRP / BIG)
+* **ADC Offset** - Additional virtual offset to ADC signal
 * **ALC Port Enabled** - Activation of transceiver power control by an external amplifier via the ALC line: up to 1 volt - ALC is disabled and the power set in the transceiver is used. from 1.0v to 3.0v - power adjustment from 0 to 100%
 * **ALC Inverted** - Invert ALC logic (3.0v - 0%, 1.0v - 100%)
 * **BPF x** - Bandpass filter parameters
