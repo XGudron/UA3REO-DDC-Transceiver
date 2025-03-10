@@ -168,7 +168,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Transverter XXcm** - Enable external ham band transverter support
 * **URSI Code** - Ionogram URSI Code https://digisonde.com/index.html#stationmap-section
 * **Tropo Region** - Region for tropospheric forecast https://www.dxinfocentre.com/tropo.html 
-* **Wolf Cluster** - Display Wolf TRX users on spectrum and send self data
+* **Wolf Interface I2C** - Connect TRX to external I2C interface device (See STUFF folder for example)
 
 ### FILTERS Settings
 
@@ -327,6 +327,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Show Sec VFO** - Show secondary VFO position on spectrum
 * **WTF Color** - Waterfall colors: 1(blue -> yellow -> red), 2(black -> yellow -> red), 3(black -> yellow -> green), 4(black -> red), 5(black -> green), 6(black -> blue), 7(black -> white)
 * **WTF Moving** - Mowe waterfall with frequency changing
+* **Wolf Cluster** - Display Wolf TRX users on spectrum and send self data
 
 ### Decoders
 * **CW Decoder** - Software CW receive decoder
