@@ -148,12 +148,14 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### TRX Settings
 
+* **ANT type** - Select antenna type (TX/RX or RX only)
 * **Band Map** - Band Map, automatically switches mode depending on the frequency
 * **Beeper** - Beep on key press
 * **Callsign** - User callsign
 * **Channel Mode** - Channel frequency mode (for LPD/PMR and etc.)
 * **Custom Transverter** - Enable external transverter on non-ham band (just offset display frequency)
-* **DEBUG Type** - Output of debug and service information to USB / UART ports
+* **Debug Type** - Output of debug and service information to USB / UART ports
+* **Debug Console** - Display console with system debug information (copy of what is sent to debug COM port)
 * **Encoder Accelerate** - Accelerate encoder on fast rates
 * **Fine RIT Tune** - Fine or coarse tuning for RIT/XIT (encoder or resistor)
 * **Freq Step xxx** - Frequency step by main encoder in each mode, Hz
@@ -324,6 +326,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **LCD Brightness** - Set LCD brightness (not all lcd support)
 * **LCD Sleep Timeout** - Idle time before the screen brightness decreases, sec (0 - disabled)
 * **S-Meter style** - Selecting layout of the analog S-Meter
+* **S-Meter smooth** - Smoothing coefficient of the S-meter value
 * **Show Sec VFO** - Show secondary VFO position on spectrum
 * **WTF Color** - Waterfall colors: 1(blue -> yellow -> red), 2(black -> yellow -> red), 3(black -> yellow -> green), 4(black -> red), 5(black -> green), 6(black -> blue), 7(black -> white)
 * **WTF Moving** - Mowe waterfall with frequency changing
@@ -384,6 +387,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **FAN Medium PWM** - Adjusting the duty cycle of a PWM fan in Medium mode
 * **FAN Motherboard** - Starting the fan not only by the sensor, but also by the temperature of the STM32 processor
 * **IF Gain MIN/MAX** - IF Gain adjusting limits
+* **Min Voltage protect** - Minimum supply voltage threshold, below which the protection will be triggered and the transceiver will be switched off (INA226)
 * **OTA Update** - Enable OTA firmware update over WiFi
 
 ### Calibration Hardware
@@ -449,6 +453,8 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **MAX SWR** - Maximum VSWR before protection operation
 * **Max Current, Amp** - Current protection, turns off transmission when the threshold is reached
 * **RF GAIN xxx** - Calibration of the maximum TX output power for each range
+* **SD Macros power** - Signal gain when playing SSB macros
+* **SD Recording power** - Signal gain coefficient when playing live recordings
 * **SSB Power addition** - Addition of RF power in SSB power, %
 * **SWR FWD/BWD RATE** - Adjustment of the transformation ratio of the SWR meter (forward / return)
 * **SWR Protector** - SWR protection mode selection: Off, low power, transmission off
@@ -564,7 +570,3 @@ Displays information about radio amateurs currently in the current band using "W
 
 * **Calibrate SWR** - Assistant in measuring SWR and power meter
 * **Calibrate Power** - Assistant in adjusting RF Power output
-
-### Debug Console
-
-* Display console with system debug information (copy of what is sent to debug COM port)
