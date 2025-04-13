@@ -61,6 +61,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * SWR Graphs
 * Spectrum analyzer
 * FT8 receiver/transmitter
+* SSTV decoder 
 * Automatic send FT8 qso to log https://allqso.ru/
 * WSPR Beacon
 * VOX
@@ -167,6 +168,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **SPLIT type** - In DX mode - the TX frequency is controlled, in the CrossBand mode synchronously for two VFOs, for Free only the RX frequency changes
 * **RIT Interval** - Offset range RIT (+ -)
 * **XIT Interval** - Offset range XIT (+ -)
+* **Lock in IQ Mode** - Lock TRX in IQ Mode for external program
 * **Transverter XXcm** - Enable external ham band transverter support
 * **URSI Code** - Ionogram URSI Code https://digisonde.com/index.html#stationmap-section
 * **Tropo Region** - Region for tropospheric forecast https://www.dxinfocentre.com/tropo.html 
@@ -252,7 +254,8 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **MIC Reverber** - Microphone reverberator level
 * **Power for each band** - Save power settings for each band individually
 * **Power for each mode** - Save power settings for each mode individually
-* **RF Power** - Transmission power,%
+* **RF Power** - Transmission power, %
+* **RF Power ENC3 step** - Power adjustment step by encoder (Wolf-2)
 * **Repeater Mode"** -  Operation mode via repeater
 * **Repeater offset, kHz"** -  Transmission frequency offset in repeater mode
 * **SelfHear CW** - Self-control CW Gain
@@ -277,9 +280,9 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Key Invert** - Invert dash/dot on key
 * **Key timeout** - Time before stopping the transmission mode after releasing the key
 * **Keyer** - Automatic Key
+* **Keyer Memory** - Keyer memory for one symbol for transmit
 * **Keyer WPM** - Key Speed, WPM
 * **Mode** - Sideband Type CW-LSB / CW-USB
-* **One symbol memory** - Keyer memory for one symbol for transmit
 * **PTT Type** - RX/TX switch type for CW: by key or external PTT (tangent, etc.)
 * **Pitch** - Detuning the receiver generator from the transmit frequency
 * **Stereo** - Splitting the CW bandwidth into headphone channels (audio panorama)
@@ -341,6 +344,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RTTY Shift** - RTTY carrier shifts
 * **RTTY Speed** - Speed of RTTY data
 * **RTTY StopBits** - RTTY Stop bits
+* **SSTV Decoder** - Launching SSTV decoder (PD 50/90/120/180, Scottie 1/2, Martin 1/2)
 
 ### WIFI Settings
 
