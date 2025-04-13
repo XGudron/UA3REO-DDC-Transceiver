@@ -74,7 +74,6 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * WiFi operation: Time synchronization, external WiFi services
 * Tangent support Yaesu MH-36 и MH-48
 * Hardware self-testing
-* Firmware update over USB, SD, WiFi
 * And other.. (see menu)
 
 ### RF Parameters
