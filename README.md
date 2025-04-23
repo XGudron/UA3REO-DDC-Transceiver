@@ -60,9 +60,9 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * RDS/CW/RTTY decoder, self-control, gauss filter
 * SWR Graphs
 * Spectrum analyzer
-* FT8 receiver/transmitter
+* FT8/FT4 receiver/transmitter
 * SSTV decoder 
-* Automatic send FT8 qso to log https://allqso.ru/
+* Automatic send FT8/FT4 qso to log https://allqso.ru/
 * WSPR Beacon
 * VOX
 * Equalizer TX/RX, reverber
@@ -96,54 +96,6 @@ After assembly, you need to flash FPGA and STM32 chips. <br>
 If necessary, calibrate the transceiver through the appropriate menu <br>
 WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT commands 1.7.4 and higher <br>
 
-
-## Management
-
-* **AF GAIN** - Volume
-* **RIT / GAIN** - When the RIT function is active - smooth offset from the selected transceiver frequency. Inactive - IF gain control
-* **ENC MAIN** - Main encoder for frequency control and menu settings
-* **ENC 2** - Auxiliary encoder for menu operation. In normal mode, quickly switches the frequency, in CW fast change WPM
-* **ENC 2[click]** - In CW mode, toggles between fast step and WPM selection, in other modes it opens the bandwidth properties.
-* **BAND -** - Switch to the band below
-* **BAND +** - Switch to higher band
-* **MODE -** - Mode group switching SSB-> CW-> DIGI-> FM-> AM
-* **MODE +** - Switching subgroup mode LSB-> USB, CW_L-> CW_U, DIGI_U-> DIGI_L, NFM-> WFM, AM-> IQ-> LOOP
-* **FAST** - Mode of fast x10 rewinding of the frequency by the main encoder (configurable)
-* **FAST [clamp]** - Frequency step settings
-* **PRE** - Turn on the preamplifier (LNA)
-* **PRE [clamp]** - Turn on the driver and / or amplifier ADC
-* **ATT** - Turn on the attenuator
-* **REC** - Save audio to SD card
-* **CQ** - Play recorded CQ-message from SD card
-* **MUTE** - Mute the sound
-* **MUTE [clamp]** - Scanner mode
-* **AGC** - Turn on AGC (automatic gain control)
-* **AGC [clamp]** - AGC settings
-* **A = B** - Setting the second bank of the receiver equal to the current
-* **BW** - Switch to bandwidth selection menu (LPF)
-* **BW [clamp]** - Switch to bandwidth selection menu (HPF)
-* **TUNE** - Turn on the carrier for tuning the antenna
-* **RF POWER** - Transmitter power selection
-* **RF POWER [clamp]** - Squelch setting
-* **A / B** - Switches between VFO-A / VFO-B receiver settings banks
-* **A / B [clamp]** - Enable automatic mode change by bandmap
-* **DOUBLE** - Turn on the dual receiver
-* **DOUBLE [clamp]** - Switching between the modes of the dual receiver A&B (each channel of the headphones has its own path) or A + B (mixing signals of 2 receivers)
-* **DNR** - Enable digital noise reduction
-* **DNR [clamp]** - Turn on the impulse noise suppressor (NB)
-* **NOTCH** - Turn on the automatic Notch filter to eliminate narrowband interference
-* **NOTCH [clamp]** - Turn on the manual Notch filter to eliminate narrowband interference
-* **SPLIT** - Allows you to split transmission and reception to different VFO banks
-* **RIT [clamp]** - Enables RIT control from the front panel
-* **WPM** - Switch to key speed selection menu (WPM)
-* **WPM [clamp]** - Automatic key enable
-* **MENU** - Go to the menu
-* **MENU [clamp]** - Enable key lock LOCK
-* **MENU [at power on]** - Reset transceiver settings
-* **MENU [at power on+PRE]** - Reset transceiver settings and calibration
-* **RIT** - Offset of the receiving frequency relative to the current frequency (TX without offset)
-* **XIT** - Offset of the transmission frequency relative to the current frequency (RX without offset)
-
 ## Settings
 
 ### TRX Settings
@@ -151,7 +103,8 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **ANT type** - Select antenna type (TX/RX or RX only)
 * **Band Map** - Band Map, automatically switches mode depending on the frequency
 * **Beeper** - Beep on key press
-* **Callsign** - User callsign
+* **Callsign** - Operator callsign
+* **Operator Name** - Operator name
 * **Channel Mode** - Channel frequency mode (for LPD/PMR and etc.)
 * **Custom Transverter** - Enable external transverter on non-ham band (just offset display frequency)
 * **Debug Type** - Output of debug and service information to USB / UART ports
@@ -242,7 +195,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **CESSB Compress, dB** - Signal pre-amplification level before compression in CESSB
 * **DRV Shutdown** - Turn off the DAC driver while RX
 * **CTCSS Frequency** - Transmit FM CTCSS sub-tone frequency
-* **FT8 Auto CQ** - Automatic transition to CQ mode after FT8 communication
+* **FT8 Auto CQ** - Automatic transition to CQ mode after FT8/FT4 communication
 * **Input Type** - Select audio input (microphone, line in, USB)
 * **LINE Gain** - Line input codec gain
 * **MIC Boost** - +20db hardware mic amplifier
@@ -286,8 +239,20 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Pitch** - Detuning the receiver generator from the transmit frequency
 * **Stereo** - Splitting the CW bandwidth into headphone channels (audio panorama)
 * **Self Hear** - Self-control CW (key press is heard)
-* **Macros x** - Setting up macros for CW transmission
-* **Macros x name** - Setting the macro name to be displayed in the interface
+
+### Macros
+
+* **CW Macros x** - Setting up macros for CW transmission
+* **CW Macros x name** - Setting the CW-macro name to be displayed in the interface
+* **SSB Macros x name** - Setting the SSB-macro name to be displayed in the interface
+
+Allowed insertions in macros:
+
+* {MYCALL} - Operator callsign
+* {DXCALL} - Correspondent callsign
+* {MYNAME} - Operator name
+* {MYLOC} - Operator locator
+* {CLRDX} - Clear correspondent callsign
 
 ### Equalizer Settings
 
@@ -420,6 +385,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RTC COARSE CALIBR** - Very coarse clock crystal calibration
 * **RTC FINE CALIBR** - Clock crystal calibration, one division is 0.954 ppm
 * **Sequencer support** - External sequencer support (output through line EXT_TUNE)
+* **Swap AF & IF** - Swap AF Gain & IF Gain resistors
 * **TCXO Frequency, kHz** - Frequency adjustment of the reference oscillator
 * **VCXO Correction** - Correction for main generator frequency offset
 * **Touchpad flip** - Flip the touchpad operation horizontally/vertically
@@ -468,7 +434,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 ### Calibration Reset
 * **Settings reset** - Reset all settings to defaults
 * **Calibrate reset** - Reset all calibrations to defaults
-* **WiFi Settings reset** - Reset all WiFi setitngs to defaults
+* **Personal reset** - Reset all personal and WiFi setitngs to defaults
 
 ### Memory Channels
 
@@ -548,6 +514,10 @@ Displays information about radio amateurs currently in the current band using "W
 ### RDA Statistics 
 
 * Print statistics from RDA award (from internet)
+
+### FT4
+
+* FT4 Receiver / transmitter
 
 ### FT8
 
