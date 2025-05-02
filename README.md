@@ -57,10 +57,11 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * Digital Noise Reduction (DNR), Pulse Noise Reduction (NB)
 * CAT virtual COM port (TS-2000 / FT-450 emulation, RTS - PTT, DTR - CW)
 * USB operation (audio transmission, IQ, CAT, KEY, PTT)
-* RDS/CW/RTTY decoder, self-control, gauss filter
+* RDS/CW decoder, self-control, gauss filter
 * SWR Graphs
 * Spectrum analyzer
-* FT8/FT4 receiver/transmitter
+* FT8/FT4 decoder/encoder
+* RTTY decoder/encoder
 * SSTV decoder 
 * Automatic send FT8/FT4 qso to log https://allqso.ru/
 * WSPR Beacon
@@ -195,7 +196,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **CESSB Compress, dB** - Signal pre-amplification level before compression in CESSB
 * **DRV Shutdown** - Turn off the DAC driver while RX
 * **CTCSS Frequency** - Transmit FM CTCSS sub-tone frequency
-* **FT8 Auto CQ** - Automatic transition to CQ mode after FT8/FT4 communication
 * **Input Type** - Select audio input (microphone, line in, USB)
 * **LINE Gain** - Line input codec gain
 * **MIC Boost** - +20db hardware mic amplifier
@@ -302,6 +302,7 @@ Allowed insertions in macros:
 ### Decoders
 * **CW Decoder** - Software CW receive decoder
 * **CW Decoder Threshold** - CW receive decoder sensivity
+* **FT8 Auto CQ** - Automatic transition to CQ mode after FT8/FT4 communication
 * **RDS Decoder** - Enable RDS Decoder for WFM mode
 * **RTTY Freq** - Central frequency of RTTY decoding
 * **RTTY InvertBits** - RTTY invert 0 and 1 bits
