@@ -106,6 +106,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Beeper** - Beep on key press
 * **Callsign** - Operator callsign
 * **Operator Name** - Operator name
+* **Locator** - User QTH locator
 * **Channel Mode** - Channel frequency mode (for LPD/PMR and etc.)
 * **Custom Transverter** - Enable external transverter on non-ham band (just offset display frequency)
 * **Debug Type** - Output of debug and service information to USB / UART ports
@@ -117,7 +118,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **ENC2 Step Mult** - Frequency step multiplier for ENC2 rotation (for CW/SSB)
 * **Notch Step** - Frequency step of manual notch filter
 * **Full Duplex** - Full duplex RX+TX mode
-* **Locator** - User QTH locator
+* **Second COM Mode** - Select the operating mode of the secondary COM port (debugging, CAT, DATA)
 * **SPLIT type** - In DX mode - the TX frequency is controlled, in the CrossBand mode synchronously for two VFOs, for Free only the RX frequency changes
 * **RIT Interval** - Offset range RIT (+ -)
 * **XIT Interval** - Offset range XIT (+ -)
@@ -209,7 +210,8 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **RF Power** - Transmission power, %
 * **RF Power ENC3 step** - Power adjustment step by encoder (Wolf-2)
 * **Repeater Mode"** -  Operation mode via repeater
-* **Repeater offset, kHz"** -  Transmission frequency offset in repeater mode
+* **Repeater offset, kHz** -  Transmission frequency offset in repeater mode
+* **Repeater tone** - Adds 1750Hz tone at the beginning of transmission to open the repeater (in FM mode)
 * **SelfHear CW** - Self-control CW Gain
 * **SelfHear on SSB** - Self-monitoring for SSB/AM modes, always active for DIGI/RTTY/LOOPBACK
 * **SelfHear VOICE** - Self Hearing volume at voice modes relative to the overall transceiver volume
@@ -218,7 +220,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **TUNER Enbl per band** - Save tuner on/off state for each band independently
 * **Tune Type** - TUNE operating mode (carrier, two signal tone, multi-tone, white noise)
 * **TOT, min** - Protection of the transmitter from long-term operation, automatic shutdown after time has elapsed
-* **VOX Threshold, dbFS** - VOX Threshold, dbFS
+* **VOX Threshold, dBFS** - VOX Threshold, dBFS
 * **VOX Timeout, ms** - VOX transmission delay after silence, milliseconds
 * **VOX** - TX Voice activation
 
@@ -347,7 +349,6 @@ Allowed insertions in macros:
 ### Calibration Control
 * **CAT Type** - Type of CAT subsystem (FT-450 / TS-2000)
 * **COM CAT DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the CAT port
-* **SEC COM Mode** - Select the operating mode of the secondary COM port (debugging, CAT)
 * **SEC COM DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the Debug port
 * **FAN Full start** - Temperature of the PA for starting the fan at full speed
 * **FAN Medium start** - Temperature of the PA for starting the fan at medium speed
@@ -402,6 +403,7 @@ Allowed insertions in macros:
 * **Transv only TX** - Use transverter only for TX
 * **VHF Mixer Board** - Enable VHF board with RF mixer support (Wolf-2)
 * **VHF Mixer IF, MHz** - Select IF frequency for VHF board mixer (Wolf-2)
+* **VHF Mixer Current** - Selecting the mixer current level (Wolf-2)
 * **VHF TCXO, kHz** - Select TCXO frequency for VHF board (Wolf-2)
 * **VHF TCXO Correction** - Correction for VHF board TCXO generator frequency offset (Wolf-2)
 
