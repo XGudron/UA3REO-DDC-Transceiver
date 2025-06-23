@@ -244,6 +244,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### Macros
 
+* **AutoCQ Macros 1** - Auto-call CQ macro CW/SSB/RTTY at specified interval
 * **CW Macros x** - Setting up macros for CW transmission
 * **CW Macros x name** - Setting the CW-macro name to be displayed in the interface
 * **SSB Macros x name** - Setting the SSB-macro name to be displayed in the interface
