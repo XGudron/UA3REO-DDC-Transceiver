@@ -75,6 +75,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * WiFi operation: Time synchronization, external WiFi services
 * Tangent support Yaesu MH-36 и MH-48
 * Hardware self-testing
+* CTCSS subtones and 1750 kHz start tone for opening repeaters
 * And other.. (see menu)
 
 ### RF Parameters
@@ -112,6 +113,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Debug Type** - Output of debug and service information to USB / UART ports
 * **Debug Console** - Display console with system debug information (copy of what is sent to debug COM port)
 * **Encoder Accelerate** - Accelerate encoder on fast rates
+* **ENC2 Priority** - Selection of the secondary encoder priority function to which automatic switching occurs after 30 seconds of inactivity
 * **Fine RIT Tune** - Fine or coarse tuning for RIT/XIT (encoder or resistor)
 * **Freq Step xxx** - Frequency step by main encoder in each mode, Hz
 * **FAST Step Multiplier** - Frequency step multiplier for FAST mode
@@ -237,7 +239,9 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Keyer Memory** - Keyer memory for one symbol for transmit
 * **Keyer WPM** - Key Speed, WPM
 * **Mode** - Sideband Type CW-LSB / CW-USB
-* **PTT Type** - RX/TX switch type for CW: by key or external PTT (tangent, etc.)
+* **Memory size** - Number of characters to be memorized by the key
+* **Memory debounce, ms** - Adjustment of protection against bounce of key contacts
+* **CW PTT Type** - RX/TX switch type for CW: by key or external PTT (tangent, etc.)
 * **Pitch** - Detuning the receiver generator from the transmit frequency
 * **Stereo** - Splitting the CW bandwidth into headphone channels (audio panorama)
 * **Self Hear** - Self-control CW (key press is heard)
@@ -287,11 +291,12 @@ Allowed insertions in macros:
 * **FFT Lens** - Enable FFT lens mode (magnify center of spectrum)
 * **FFT Manual Bottom, dBm** - Bottom FFT threshold in manual mode
 * **FFT Manual Top, dBm** - Top FFT threshold in manual mode
+* **FFT Measurements** - Display various spectrum measurements on the waterfall (noise spectral density, SNR, etc.)
 * **FFT Scale Type** - Y-axis style on FFT between signal amplitude and dBm to fit more dynamic range on screen (Useful when manually adjusting FFT range).
 * **FFT Sensitivity** - Top threshold of FFT sensitivity in automatic mode (30 - scale to strongest signal)
 * **FFT Speed** - FFT and waterfall speed
 * **FFT Style** - FFT style: 1(gradient), 2(fill), 3(dots), 4(contour), 5(gradient + contour)
-* **FFT Window** - Select FFT window (1-Dolph–Chebyshev 2-Blackman-Harris 3-Nutall 4-Blackman-Nutall 5-Hann 6-Hamming 7-No window)
+* **FFT Window** - Select FFT window (1-Dolph-Chebyshev 2-Blackman-Harris 3-Nutall 4-Blackman-Nutall 5-Hann 6-Hamming 7-No window)
 * **FFT dBm Grid** - FFT signal power grid
 * **LCD Brightness** - Set LCD brightness (not all lcd support)
 * **LCD Sleep Timeout** - Idle time before the screen brightness decreases, sec (0 - disabled)
@@ -363,6 +368,7 @@ Allowed insertions in macros:
 
 ### Calibration Hardware
 * **RF-Unit Type** - RF-Unit Type (QRP / BIG)
+* **ADC Driver Gain** - Setting the ADC driver gain (depending on the one installed on the board), dB
 * **ADC Offset** - Additional virtual offset to ADC signal
 * **ALC Port Enabled** - Activation of transceiver power control by an external amplifier via the ALC line: up to 1 volt - ALC is disabled and the power set in the transceiver is used. from 1.0v to 3.0v - power adjustment from 0 to 100%
 * **ALC Inverted** - Invert ALC logic (3.0v - 0%, 1.0v - 100%)
@@ -384,6 +390,7 @@ Allowed insertions in macros:
 * **INA226** - Activation and calibration of the INA226 voltage/current sensor on the I2C bus
 * **KTY81 Calibration** - Calibration of the KTY81 sensor (setting the resistance of the divider arm)
 * **LCD Rotate** - Rotate screen at 180 degrees
+* **LPF Timeout** - Disable TX LPF after 3 minutes of switching to RX
 * **MAX ChargePump, kHz** - Maximum PWM frequency for ChargePump circuit
 * **RTC COARSE CALIBR** - Very coarse clock crystal calibration
 * **RTC FINE CALIBR** - Clock crystal calibration, one division is 0.954 ppm
@@ -474,7 +481,7 @@ Allowed insertions in macros:
 
 * **WSPR Beacon START** - Start WSPR beacon
 * **Freq offset** - Offset from center of WSPR band
-* **WSPR Power, dBm** - Sets the power report sent in the beacon message
+* **WSPR Power, W** - Sets the target power
 * **WSPR Band xxx** - Select bands to WSPR beacon
 
 ### Efficiency
