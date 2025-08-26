@@ -113,14 +113,14 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Debug Type** - Output of debug and service information to USB / UART ports
 * **Debug Console** - Display console with system debug information (copy of what is sent to debug COM port)
 * **Encoder Accelerate** - Accelerate encoder on fast rates
-* **ENC2 Priority** - Selection of the secondary encoder priority function to which automatic switching occurs after 30 seconds of inactivity
+* **ENC2 Priority enbl** - Enables the encoder priority function, which is automatically switched to after 30 seconds of inactivity
+* **ENC2 Priority** - Selection of the secondary encoder priority function
 * **Fine RIT Tune** - Fine or coarse tuning for RIT/XIT (encoder or resistor)
 * **Freq Step xxx** - Frequency step by main encoder in each mode, Hz
 * **FAST Step Multiplier** - Frequency step multiplier for FAST mode
 * **ENC2 Step Mult** - Frequency step multiplier for ENC2 rotation (for CW/SSB)
 * **Notch Step** - Frequency step of manual notch filter
 * **Full Duplex** - Full duplex RX+TX mode
-* **Second COM Mode** - Select the operating mode of the secondary COM port (debugging, CAT, DATA)
 * **SPLIT type** - In DX mode - the TX frequency is controlled, in the CrossBand mode synchronously for two VFOs, for Free only the RX frequency changes
 * **RIT Interval** - Offset range RIT (+ -)
 * **XIT Interval** - Offset range XIT (+ -)
@@ -211,6 +211,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Power for each mode** - Save power settings for each mode individually
 * **RF Power** - Transmission power, %
 * **RF Power ENC3 step** - Power adjustment step by encoder (Wolf-2)
+* **Pwr by main ENC** - Allow power change by main encoder in TX mode
 * **Repeater Mode"** -  Operation mode via repeater
 * **Repeater offset, kHz** -  Transmission frequency offset in repeater mode
 * **Repeater tone** - Adds 1750Hz tone at the beginning of transmission to open the repeater (in FM mode)
@@ -355,6 +356,7 @@ Allowed insertions in macros:
 ### Calibration Control
 * **CAT Type** - Type of CAT subsystem (FT-450 / TS-2000)
 * **COM CAT DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the CAT port
+* **Second COM Mode** - Select the operating mode of the secondary COM port (debugging, CAT, DATA)
 * **SEC COM DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the Debug port
 * **FAN Full start** - Temperature of the PA for starting the fan at full speed
 * **FAN Medium start** - Temperature of the PA for starting the fan at medium speed
