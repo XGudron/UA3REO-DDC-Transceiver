@@ -33,6 +33,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * TX power (QRP version): 7W+ (HF), 5W (VHF)
 * TX power (QRP++ DB5AT version): 20W (HF), 7W (VHF)
 * TX power (RU4PN/WF-100D version): 100W (HF), 50W+ (VHF)
+* It is possible to install a VHF board from Wolf-2 to expand the VHF characteristics
 * Two antenna inputs
 * Modulation types (TX / RX): CW, LSB, USB, AM, FM, WFM, DIGI
 * LNA, Preamplifier
@@ -162,10 +163,10 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **FM Demodulator** - Algorithm of FM demodulator operation
 * **FM Squelch level** - FM squelch level
 * **IF Gain, dB** - IF gain
+* **Noise Blanker** - Activating the Surge Suppressor
 * **NB Threshold** - Threshold of Noise blanker
 * **Free tune** - Allows you to move the reception frequency across the spectrum without changing the center frequency of the spectrum itself
 * **Center After Idle** - Center the spectrum with Free Tune active after 20 seconds of inactivity
-* **Noise Blanker** - Activating the Surge Suppressor
 * **Pseudo stereo** - RX path pseudo-stereophony mode
 * **RX AUDIO Mode** - Audio lines control: Stereo\Left\Right
 * **RX AGC Hold time** - Time before release of AGC gain in signal peaks, ms
@@ -356,7 +357,7 @@ Allowed insertions in macros:
 ### Calibration Control
 * **CAT Type** - Type of CAT subsystem (FT-450 / TS-2000)
 * **COM CAT DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the CAT port
-* **Second COM Mode** - Select the operating mode of the secondary COM port (debugging, CAT, DATA)
+* **Second COM Mode** - Select the operating mode of the secondary COM port (debugging, CAT, CW/RTTY DATA, ESP module brigde)
 * **SEC COM DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the Debug port
 * **FAN Full start** - Temperature of the PA for starting the fan at full speed
 * **FAN Medium start** - Temperature of the PA for starting the fan at medium speed
@@ -502,23 +503,14 @@ Displays information about radio amateurs currently in the current band using "W
 
 ### Propagation 
 
-* Show propagation statistics (from internet)
-
-### Tropo 
-
-* Show tropospheric forecast
+* **foF2** - Displaying the foF2 frequency map (from internet)
+* **Propagation Data** - Show propagation statistics (from internet)
+* **Tropo** - Show tropospheric forecast (from internet)
+* **Ionogram** - * Displaying the ionogram for the selected URSI Code (from internet)
 
 ### DayNight Map 
 
 * Displaying the day/night terminator on the map (from internet)
-
-### Ionogram 
-
-* Displaying the ionogram for the selected URSI Code (from internet)
-
-### foF2 Map 
-
-* Displaying the foF2 frequency map (from internet)
 
 ### SWR Analyzer
 
@@ -556,3 +548,9 @@ Displays information about radio amateurs currently in the current band using "W
 
 * **Calibrate SWR** - Assistant in measuring SWR and power meter
 * **Calibrate Power** - Assistant in adjusting RF Power output
+
+### Web Skimmers 
+
+* **Pskreporter** - View skimmers that have received your DIGI signal (requires internet connection)
+* **ReverseBeacon** - View skimmers that have received your CW signal (requires internet connection)
+* **WSPRnet** - View skimmers that have received your WSPR signal (requires internet connection)
