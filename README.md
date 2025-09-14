@@ -77,6 +77,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * Tangent support Yaesu MH-36 и MH-48
 * Hardware self-testing
 * CTCSS subtones and 1750 kHz start tone for opening repeaters
+* Assistance for visually impaired operators
 * And other.. (see menu)
 
 ### RF Parameters
@@ -103,6 +104,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 
 ### TRX Settings
 
+* **Accessibility** - Assistance to visually impaired operators, telegraphing current transceiver parameters into the speaker when switching
 * **ANT type** - Select antenna type (TX/RX or RX only)
 * **Band Map** - Band Map, automatically switches mode depending on the frequency
 * **Beeper** - Beep on key press
@@ -190,16 +192,20 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **AGC MaxGain** - Maximum AGC gain
 * **AGC Speed** - TX compressor response speed for transmission (more-faster)
 * **TX AGC Clipping** - Determines whether the AGC will sharply limit the signal gain during large amplitude spikes
+* **TUNER Enabled** - Turning on the antenna tuner
+* **TUNER Enbl per band** - Save tuner on/off state for each band independently
 * **ATU Cap** - Tuner Capacitance Combination
 * **ATU Enabled** - Turning on the automatic antenna tuner
 * **ATU Ind** - Combination of tuner inductances
 * **ATU T** - Tuner capacitive arm position
 * **ATU Mem step, kHz** - Step of saving tuner values for frequencies into memory
-* **Auto Input Switch** - Auto input switch (PTT - mix, CAT - USB)
 * **CESSB** - Enable controlled-envelope single-sideband modulation
 * **CESSB Compress, dB** - Signal pre-amplification level before compression in CESSB
-* **DRV Shutdown** - Turn off the DAC driver while RX
 * **CTCSS Frequency** - Transmit FM CTCSS sub-tone frequency
+* **DRV Shutdown** - Turn off the DAC driver while RX
+* **EXT PA mode** - Operating mode with external amplifier, separately installed RF Gain calibrations are used
+* **EXT PTT in PA mode** - Send PTT signal to External connector only in "EXT Amplifier mode"
+* **Input Auto Switch** - Auto input switch (PTT - mix, CAT - USB)
 * **Input Type** - Select audio input (microphone, line in, USB)
 * **LINE Gain** - Line input codec gain
 * **MIC Boost** - +20db hardware mic amplifier
@@ -220,8 +226,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **SelfHear on SSB** - Self-monitoring for SSB/AM modes, always active for DIGI/RTTY/LOOPBACK
 * **SelfHear VOICE** - Self Hearing volume at voice modes relative to the overall transceiver volume
 * **SelfHear DIGI** - Self Hearing volume at DIGI modes relative to the overall transceiver volume
-* **TUNER Enabled** - Turning on the antenna tuner
-* **TUNER Enbl per band** - Save tuner on/off state for each band independently
 * **Tune Type** - TUNE operating mode (carrier, two signal tone, multi-tone, white noise)
 * **TOT, min** - Protection of the transmitter from long-term operation, automatic shutdown after time has elapsed
 * **VOX Threshold, dBFS** - VOX Threshold, dBFS
@@ -274,7 +278,6 @@ Allowed insertions in macros:
 * **Bottom navi buttons** - Show bottom menu navigation buttons (for 7 inch displays)
 * **Color Theme** - Select colors theme (0 - black, 1 - white, 2 - black with colored frequency)
 * **Layout Theme** - Select interface theme (0 - default)
-* **DX Cluster Type** - Selecting a Data Source for a DX Cluster
 * **FFT 3D Mode** - Enable FFT 3D mode (0 - disabled, 1 - lines, 2 - pixels)
 * **FFT Automatic** - Automatic FFT scale
 * **FFT Averaging** - FFT burst averaging level. Full - automatic selection of upper and lower boundaries, Half - auto lower and manual upper, No - manual setting of the range of spectrum levels. (Remember to select the correct FFT Scale Type so that your range will fit on the screen)
@@ -283,9 +286,13 @@ Allowed insertions in macros:
 * **FFT Background** - Gradient FFT background
 * **FFT Color** - FFT colors: 1(blue -> yellow -> red), 2(black -> yellow -> red), 3(black -> yellow -> green), 4(black -> red), 5(black -> green), 6(black -> blue), 7(black -> white)
 * **FFT Compressor** - Enable FFT peak comressor
+* **DX Cluster Type** - Selecting a Data Source for a DX Cluster (RBN, DXSummit, Telnet)
+* **FFT DXCluster** - Show DXCluster info over FFT
 * **FFT DXCluster Azimuth** - Add azimuth data to DX-cluster
 * **FFT DXCluster Timeout** - Timeout of DX-cluster spots in minutes
-* **FFT DXCluster** - Show DXCluster info over FFT
+* **TELNET Cluster Host** - Telnet server address for DX cluster
+* **TELNET Cluster Port** - Telnet server port for DX cluster
+* **Wolf Cluster** - Display Wolf TRX users on spectrum and send self data
 * **FFT Enabled** - Enable waterfall and FFT
 * **FFT Freq Grid** - FFT and waterfall grids: 1(no grid), 2(fft grid), 3(fft+wtf grids), 4(wtf grid)
 * **FFT Height** - FFT and waterfall proportional height
@@ -307,7 +314,6 @@ Allowed insertions in macros:
 * **Show Sec VFO** - Show secondary VFO position on spectrum
 * **WTF Color** - Waterfall colors: 1(blue -> yellow -> red), 2(black -> yellow -> red), 3(black -> yellow -> green), 4(black -> red), 5(black -> green), 6(black -> blue), 7(black -> white)
 * **WTF Moving** - Mowe waterfall with frequency changing
-* **Wolf Cluster** - Display Wolf TRX users on spectrum and send self data
 
 ### Decoders
 * **CW Decoder** - Software CW receive decoder
@@ -418,6 +424,15 @@ Allowed insertions in macros:
 * **VHF TCXO, kHz** - Select TCXO frequency for VHF board (Wolf-2)
 * **VHF TCXO Correction** - Correction for VHF board TCXO generator frequency offset (Wolf-2)
 
+### Calibration RF Power
+* **Linear Pwr Control** - Sets a linear way to change the signal amplitude when adjusting the power (if disabled - logarithmic)
+* **MAX Power in TUNE** - Maximum RF power in Tune mode
+* **SD Macros power** - Signal gain when playing SSB macros
+* **SD Recording power** - Signal gain coefficient when playing live recordings
+* **SSB Power addition** - Addition of RF power in SSB power, %
+* **RF GAIN xxx** - Calibration of the maximum TX output power for each range (DAC Amplitude)
+* **PA RF GAIN xxx** - Analogue of RF GAIN, but for operation with an external amplifier (EXT PA Mode)
+
 ### Calibration RX
 * **ATT Compensation** - Compensates the S-meter value when the ATT is turned on
 * **LNA Compensation** - Compensates the S-meter value when the LNA is turned on, dBm
@@ -429,16 +444,10 @@ Allowed insertions in macros:
 * **AM Modulation Index** - Set TX AM Modulation Scale
 * **ATU Averaging** - The number of steps of averaging SWR values during measurements in the operation of an automatic tuner
 * **FM Deviation Scale** - Set TX FM Deviation Scale
-* **Linear Pwr Control** - Sets a linear way to change the signal amplitude when adjusting the power (if disabled - logarithmic)
 * **MAX PWR on Meter** - Maximum RF power (for indication)
-* **MAX Power in TUNE** - Maximum RF power in Tune mode
 * **MAX RF Temp** - Maximum temperature of the PA before the protection operation
 * **MAX SWR** - Maximum VSWR before protection operation
 * **Max Current, Amp** - Current protection, turns off transmission when the threshold is reached
-* **RF GAIN xxx** - Calibration of the maximum TX output power for each range
-* **SD Macros power** - Signal gain when playing SSB macros
-* **SD Recording power** - Signal gain coefficient when playing live recordings
-* **SSB Power addition** - Addition of RF power in SSB power, %
 * **SWR FWD/BWD RATE** - Adjustment of the transformation ratio of the SWR meter (forward / return)
 * **SWR Protector** - SWR protection mode selection: Off, low power, transmission off
 * **TSignal Balance** - Sets the power balance between signals in Two signal tune mode
