@@ -204,7 +204,8 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **CTCSS Frequency** - Transmit FM CTCSS sub-tone frequency
 * **DRV Shutdown** - Turn off the DAC driver while RX
 * **EXT PA mode** - Operating mode with external amplifier, separately installed RF Gain calibrations are used
-* **EXT PTT in PA mode** - Send PTT signal to External connector only in "EXT Amplifier mode"
+* **EXT PTT in PA mode** - Send PTT signal to External connector only in "EXT PA mode"
+* **Enbl ATU in PA mode** - Determines whether to enable the tuner in "EXT PA mode"
 * **Input Auto Switch** - Auto input switch (PTT - mix, CAT - USB)
 * **Input Type** - Select audio input (microphone, line in, USB)
 * **LINE Gain** - Line input codec gain
