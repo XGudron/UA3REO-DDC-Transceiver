@@ -158,8 +158,11 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Attenuation, dB** - Current attenuation
 * **Auto Snap** - Automatically track and snap to near signal frequency (CW mode)
 * **AutoGainer** - Automatic ATT / PREAMP control depending on the signal level on the ADC
-* **A/B Balance** - Channels balance in dual RX modes A+B and A&B
 * **CODEC Gain** - Adjusting AF gain in audio codec
+* **Dual RX** - Activating the dual receiver
+* **Dual RX Balance** - Channels balance in dual RX modes
+* **Dual RX Type** - Dual receiver signal mixing type: A+B, A&B, A Only, B Only
+* **Dual RX IQ** - Specifies the source (VFO) of the IQ signal to send to the USB audio card in Dual RX mode
 * **DNR xxx** - Digital squelch adjustment
 * **Squelch** - Enable SSB/AM/CW/FM Squelch
 * **FM Demodulator** - Algorithm of FM demodulator operation
@@ -229,6 +232,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **SelfHear DIGI** - Self Hearing volume at DIGI modes relative to the overall transceiver volume
 * **Tune Type** - TUNE operating mode (carrier, two signal tone, multi-tone, white noise)
 * **TOT, min** - Protection of the transmitter from long-term operation, automatic shutdown after time has elapsed
+* **Use Keyer for RTTY** - Enable use of CW key (or USB-COM line of keyer) for keying in RTTY mode
 * **VOX Threshold, dBFS** - VOX Threshold, dBFS
 * **VOX Timeout, ms** - VOX transmission delay after silence, milliseconds
 * **VOX** - TX Voice activation
@@ -319,7 +323,8 @@ Allowed insertions in macros:
 ### Decoders
 * **CW Decoder** - Software CW receive decoder
 * **CW Decoder Threshold** - CW receive decoder sensivity
-* **FT8 Auto CQ** - Automatic transition to CQ mode after FT8/FT4 communication
+* **FTx Auto CQ** - Automatic transition to CQ mode after FT8/FT4 communication
+* **FTx Freq** - Selected transmission frequency
 * **RDS Decoder** - Enable RDS Decoder for WFM mode
 * **RTTY Freq** - Central frequency of RTTY decoding
 * **RTTY InvertBits** - RTTY invert 0 and 1 bits
