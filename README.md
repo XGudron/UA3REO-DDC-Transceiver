@@ -145,6 +145,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **SSB HPF Pass** - HPF cutoff frequency when operating in SSB
 * **SSB LPF Pass** - LPF cutoff frequency when operating in SSB
 * **NOTCH Filter width** - Cutting width of Manual Notch filter
+* **RX Filter Margin** - Filter width relative to carrier signal frequencies
 
 ### RX Settings
 
@@ -230,6 +231,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **SelfHear on SSB** - Self-monitoring for SSB/AM modes, always active for DIGI/RTTY/LOOPBACK
 * **SelfHear VOICE** - Self Hearing volume at voice modes relative to the overall transceiver volume
 * **SelfHear DIGI** - Self Hearing volume at DIGI modes relative to the overall transceiver volume
+* **SWR Hold Peaks** - Hold the power meter at signal power peaks
 * **Tune Type** - TUNE operating mode (carrier, two signal tone, multi-tone, white noise)
 * **TOT, min** - Protection of the transmitter from long-term operation, automatic shutdown after time has elapsed
 * **Use Keyer for RTTY** - Enable use of CW key (or USB-COM line of keyer) for keying in RTTY mode
@@ -455,6 +457,7 @@ Allowed insertions in macros:
 * **MAX SWR** - Maximum VSWR before protection operation
 * **Max Current, Amp** - Current protection, turns off transmission when the threshold is reached
 * **SWR FWD/BWD RATE** - Adjustment of the transformation ratio of the SWR meter (forward / return)
+* **SWR ISO RATE** - Adjusting the compensation factor for poor isolation of a SWR meter when the forward wave leaks into the reverse
 * **SWR Protector** - SWR protection mode selection: Off, low power, transmission off
 * **TSignal Balance** - Sets the power balance between signals in Two signal tune mode
 * **TX Start Delay** - Delay before the RF signal is applied (ms), so that the relay has time to trigger
