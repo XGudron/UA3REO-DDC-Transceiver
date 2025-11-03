@@ -30,7 +30,7 @@ void loop() {
 	String CAT_Answer = WOLF_catCommand("SM2"); // run CAT command and get answer
 	Serial.println("CAT Answer (S-Meter dBm RX1): " + CAT_Answer);
 
-	WOLF_setMessage("Hello World! " + String(millis())); // set message over FFT, may be disabled if not set
+	WOLF_setMessage("Hello World! " + String(millis()) + " " + CAT_Answer); // set message over FFT, may be disabled if not set
 
 	Serial.println("---");
 

@@ -203,6 +203,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **ATU Ind** - Combination of tuner inductances
 * **ATU T** - Tuner capacitive arm position
 * **ATU Mem step, kHz** - Step of saving tuner values for frequencies into memory
+* **ATU AutoRun** - Automatic ATU start at high SWR
 * **CESSB** - Enable controlled-envelope single-sideband modulation
 * **CESSB Compress, dB** - Signal pre-amplification level before compression in CESSB
 * **CTCSS Frequency** - Transmit FM CTCSS sub-tone frequency
@@ -433,7 +434,7 @@ Allowed insertions in macros:
 * **VHF TCXO Correction** - Correction for VHF board TCXO generator frequency offset (Wolf-2)
 
 ### Calibration RF Power
-* **Linear Pwr Control** - Sets a linear way to change the signal amplitude when adjusting the power (if disabled - logarithmic)
+* **Power Control** - Specifies how the DAC signal level changes when adjusting the RF Power %: changing the power or changing the signal amplitude
 * **MAX Power in TUNE** - Maximum RF power in Tune mode
 * **SD Macros power** - Signal gain when playing SSB macros
 * **SD Recording power** - Signal gain coefficient when playing live recordings
