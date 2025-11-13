@@ -283,6 +283,7 @@ Allowed insertions in macros:
 
 ### SCREEN Settings
 
+* **Language** - Select interface language
 * **Bottom navi buttons** - Show bottom menu navigation buttons (for 7 inch displays)
 * **Color Theme** - Select colors theme (0 - black, 1 - white, 2 - black with colored frequency)
 * **Layout Theme** - Select interface theme (0 - default)
@@ -326,6 +327,7 @@ Allowed insertions in macros:
 ### Decoders
 * **CW Decoder** - Software CW receive decoder
 * **CW Decoder Threshold** - CW receive decoder sensivity
+* **CW Multi-Decoding** - Multiple signal decoding mode in the visible bandwidth
 * **FTx Auto CQ** - Automatic transition to CQ mode after FT8/FT4 communication
 * **FTx Freq** - Selected transmission frequency
 * **RDS Decoder** - Enable RDS Decoder for WFM mode
@@ -342,8 +344,8 @@ Allowed insertions in macros:
 * **WIFI Network** - WiFi hotspot selection
 * **WIFI Network Pass** - Set password for WiFi hotspot
 * **WIFI Timezone** - Time zone (for updating the time via the Internet)
-* **WIFI Update ESP firmware** - Start cloud autoupdate firmware for ESP-01 (if present)
-* **ALLQSO.RU Token/LogId** - Token и LogID from https://allqso.ru/ web-log
+* **WIFI NTP Server** - Selecting the NTP time synchronization server address
+* **ALLQSO.RU Token/LogId** - Token and LogID from https://allqso.ru/ web-log
 
 ### SD Card
 
