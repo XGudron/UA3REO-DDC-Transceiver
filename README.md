@@ -373,6 +373,7 @@ Allowed insertions in macros:
 
 ### Calibration Control
 * **CAT Type** - Type of CAT subsystem (FT-450 / TS-2000)
+* **CAT Transverters IF** - When using a transverter, send to CAT the IF frequency or the VFO frequency
 * **COM CAT DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the CAT port
 * **Second COM Mode** - Select the operating mode of the secondary COM port (debugging, CAT, CW/RTTY DATA, ESP module brigde)
 * **SEC COM DTR/RTS** - Configuring the functions of the DTR/RTS control lines of the Debug port
@@ -440,6 +441,7 @@ Allowed insertions in macros:
 * **MAX Power in TUNE** - Maximum RF power in Tune mode
 * **SD Macros power** - Signal gain when playing SSB macros
 * **SD Recording power** - Signal gain coefficient when playing live recordings
+* **SD TX Record level** - The recording level of your own signal on the memory card during transmission / macros recording
 * **SSB Power addition** - Addition of RF power in SSB power, %
 * **RF GAIN xxx** - Calibration of the maximum TX output power for each range (DAC Amplitude)
 * **PA RF GAIN xxx** - Analogue of RF GAIN, but for operation with an external amplifier (EXT PA Mode)
