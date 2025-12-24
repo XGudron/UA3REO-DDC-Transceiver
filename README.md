@@ -173,7 +173,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **NB Threshold** - Threshold of Noise blanker
 * **Free tune** - Allows you to move the reception frequency across the spectrum without changing the center frequency of the spectrum itself
 * **Center After Idle** - Center the spectrum with Free Tune active after 20 seconds of inactivity
-* **Pseudo stereo** - RX path pseudo-stereophony mode
 * **RX AUDIO Mode** - Audio lines control: Stereo\Left\Right
 * **RX AGC Hold time** - Time before release of AGC gain in signal peaks, ms
 * **RX AGC Hold limit** - Burst limit for AGC delay time
@@ -235,6 +234,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **SWR Hold Peaks** - Hold the power meter at signal power peaks
 * **Tune Type** - TUNE operating mode (carrier, two signal tone, multi-tone, white noise)
 * **TOT, min** - Protection of the transmitter from long-term operation, automatic shutdown after time has elapsed
+* **TX Inhibit** - Prohibit switching to TX
 * **Use Keyer for RTTY** - Enable use of CW key (or USB-COM line of keyer) for keying in RTTY mode
 * **VOX Threshold, dBFS** - VOX Threshold, dBFS
 * **VOX Timeout, ms** - VOX transmission delay after silence, milliseconds
@@ -253,8 +253,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Keyer Memory** - Keyer memory for one symbol for transmit
 * **Keyer WPM** - Key Speed, WPM
 * **Mode** - Sideband Type CW-LSB / CW-USB
-* **Memory size** - Number of characters to be memorized by the key
-* **Memory debounce, ms** - Adjustment of protection against bounce of key contacts
 * **CW PTT Type** - RX/TX switch type for CW: by key or external PTT (tangent, etc.)
 * **Pitch** - Detuning the receiver generator from the transmit frequency
 * **Stereo** - Splitting the CW bandwidth into headphone channels (audio panorama)
@@ -277,6 +275,10 @@ Allowed insertions in macros:
 
 ### Equalizer Settings
 
+* **Add 2nd harmonics** - Artificial addition of 2nd order harmonics to the receiver's low-frequency signal to simulate the nonlinearity of the analog path
+* **Add 3rd harmonics** - Artificial addition of 3rd order harmonics to the receiver's low-frequency signal to simulate the nonlinearity of the analog path
+* **Add Asymmetry** - Artificial addition of asymmetry to the receiver's low-frequency signal to simulate the nonlinearity of the analog path
+* **Pseudo stereo** - RX path pseudo-stereophony mode
 * **RX EQ xxx** - Receiver equalizer levels
 * **MIC EQ xxx** - Microphone equalizer levels
 * **EQ Q xxx** - The quality factor of each equalizer channel
@@ -508,6 +510,7 @@ Allowed insertions in macros:
 * **WSPR Beacon START** - Start WSPR beacon
 * **Freq offset** - Offset from center of WSPR band
 * **WSPR Power, W** - Sets the target power
+* **WSPR Skip Cycles** - Skipping cycles after each transmission session
 * **WSPR Band xxx** - Select bands to WSPR beacon
 
 ### Efficiency
