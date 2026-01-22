@@ -66,7 +66,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * SSTV decoder 
 * Automatic send FT8/FT4 qso to log https://allqso.ru/
 * WSPR Beacon
-* VOX
+* VOX / USB-VOX
 * Equalizer TX/RX, reverber
 * SSB/FM Scanner mode
 * Support SDHC/SDSC/SDXC memory cards up to 16Gb
@@ -236,14 +236,16 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **TOT, min** - Protection of the transmitter from long-term operation, automatic shutdown after time has elapsed
 * **TX Inhibit** - Prohibit switching to TX
 * **Use Keyer for RTTY** - Enable use of CW key (or USB-COM line of keyer) for keying in RTTY mode
+* **VOX** - TX Voice activation
 * **VOX Threshold, dBFS** - VOX Threshold, dBFS
 * **VOX Timeout, ms** - VOX transmission delay after silence, milliseconds
-* **VOX** - TX Voice activation
+* **USB VOX** - Activating TX when transmitting sound to a USB audio card
 
 ### CW Settings
 
 * **Auto CW Mode** - Automatic switching to CW mode when pressing the key, or only manipulation during transmission
 * **DotToDash Rate** - Keyer dash to dot length rate
+* **Debounce Rate** - The response threshold of the CW key anti-bounce system relative to the dot length
 * **Edges smooth, ms** - Smoothing signal edges
 * **Iambic Keyer** - Enable Iambic mode keyer
 * **Iambic Type** - Type of Iambic keyer (A/B)
@@ -459,7 +461,7 @@ Allowed insertions in macros:
 * **AM Modulation Index** - Set TX AM Modulation Scale
 * **ATU Averaging** - The number of steps of averaging SWR values during measurements in the operation of an automatic tuner
 * **FM Deviation Scale** - Set TX FM Deviation Scale
-* **MAX PWR on Meter** - Maximum RF power (for indication)
+* **MAX PWR Meter** - Maximum RF power (for indication)
 * **MAX RF Temp** - Maximum temperature of the PA before the protection operation
 * **MAX SWR** - Maximum VSWR before protection operation
 * **Max Current, Amp** - Current protection, turns off transmission when the threshold is reached
