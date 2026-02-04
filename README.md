@@ -78,6 +78,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * Hardware self-testing
 * CTCSS subtones and 1750 kHz start tone for opening repeaters
 * Assistance for visually impaired operators
+* Digital Pre Distortion
 * And other.. (see menu)
 
 ### RF Parameters
@@ -183,7 +184,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **TRX Samplerate** - Max FFT/samplerate on SSB/DIGI/etc modes
 * **FM Samplerate** - Max FFT/samplerate on NFM/WFM mode
 * **CW Samplerate** - Max FFT/samplerate on CW mode
-* **VAD Threshold** - VAD voice detector threshold (noise suppressor for SSB mode and SCAN mode)
+* **VAD SQL Threshold** - VAD voice detector threshold (noise SQL for SSB mode and SCAN mode)
 * **Volume step** - AF gain step by ENC2 (X1, Lite)
 * **Volume** - AF gain
 * **WFM Stereo** - select WFM stereo or mono decoder
@@ -209,7 +210,8 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **DRV Shutdown** - Turn off the DAC driver while RX
 * **EXT PA mode** - Operating mode with external amplifier, separately installed RF Gain calibrations are used
 * **EXT PTT in PA mode** - Send PTT signal to External connector only in "EXT PA mode"
-* **Enbl ATU in PA mode** - Determines whether to enable the tuner in "EXT PA mode"
+* **INT ATU in PA mode** - Determines whether to enable the internal tuner in "EXT PA Mode"
+* **EXT ATU in PA mode** - Determines whether to block the external PA while the external ATU is being tuned
 * **Input Auto Switch** - Auto input switch (PTT - mix, CAT - USB)
 * **Input Type** - Select audio input (microphone, line in, USB)
 * **LINE Gain** - Line input codec gain
@@ -305,6 +307,7 @@ Allowed insertions in macros:
 * **FFT DXCluster Timeout** - Timeout of DX-cluster spots in minutes
 * **TELNET Cluster Host** - Telnet server address for DX cluster
 * **TELNET Cluster Port** - Telnet server port for DX cluster
+* **Cluster Mask** - Cluster spot filtering by callsign mask: * - any count of characters, ? - any one character, numbers-letters - full match. For example "?A3R*"
 * **Wolf Cluster** - Display Wolf TRX users on spectrum and send self data
 * **FFT Enabled** - Enable waterfall and FFT
 * **FFT Freq Grid** - FFT and waterfall grids: 1(no grid), 2(fft grid), 3(fft+wtf grids), 4(wtf grid)
@@ -334,6 +337,7 @@ Allowed insertions in macros:
 * **CW Multi-Decoding** - Multiple signal decoding mode in the visible bandwidth
 * **FTx Auto CQ** - Automatic transition to CQ mode after FT8/FT4 communication
 * **FTx Freq** - Selected transmission frequency
+* **FTx Correct time** - Allows you to adjust the time on the transceiver by calculating the average deviation from the FT8/FT4 decodes
 * **RDS Decoder** - Enable RDS Decoder for WFM mode
 * **RTTY Freq** - Central frequency of RTTY decoding
 * **RTTY InvertBits** - RTTY invert 0 and 1 bits
@@ -341,6 +345,23 @@ Allowed insertions in macros:
 * **RTTY Speed** - Speed of RTTY data
 * **RTTY StopBits** - RTTY Stop bits
 * **SSTV Decoder** - Launching SSTV decoder (PD 50/90/120/180, Scottie 1/2, Martin 1/2)
+
+### Pre-Distortion (Digital Pre-Distortion is experimental for Wolf-2)
+
+* **DPD Enabled** - Activation of the digital pre-distortion system
+* **DPD Calibration** - Starts DPD calibration for the current bend
+* **DPD Reset** - Resets calibration coefficients for the current bend
+* **Draw chart** - Display a graph of applied distortion in amplitude and phase
+
+* The function is experimental, be sure to check your signal on the control receiver after calibration
+* DPD is designed to create an artificially distorted signal that, after passing through the PA, compensates for its non-linearities. In this regard, the IMD3 and IMD5 of the final signal decrease.
+* Calibration takes approximately 30 seconds
+* Calibration can produce excellent results between attempts, it is always worth monitoring the result and repeating if the required parameters have not been achieved
+* After resetting the coefficients, DPD has no effect, it is useful if you need to disable DPD for part of the bands, but not disable the entire system
+* Do not allow high SWR and overload of the ADC during calibration. If necessary, use an attenuator and a feedback circuit from the PA output to the RX input
+* If you change the PA settings (quiescent current, swing power), you must perform the calibration again
+* Weak growth of IMD7 and higher orders is possible due to compensation of IMD3/5
+* The result depends on the types of PA nonlinearity, on a high level of RF Gain calibrations, and on the quality of feedback (a 50db+ attenuator between the PA output and the RX input is preferable to capacitive coupling inside the transceiver)
 
 ### WIFI Settings
 
