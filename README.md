@@ -79,6 +79,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * CTCSS subtones and 1750 kHz start tone for opening repeaters
 * Assistance for visually impaired operators
 * Digital Pre Distortion
+* CW-trainer
 * And other.. (see menu)
 
 ### RF Parameters
@@ -455,11 +456,12 @@ Allowed insertions in macros:
 * **Transverter xxx IF, MHz** - Setting the IF frequency of the transverter
 * **Transverter xxx RF, MHz** - Setting the RF frequency of the transceiver to match the IF
 * **Transv only TX** - Use transverter only for TX
-* **VHF Mixer Board** - Enable VHF board with RF mixer support (Wolf-2)
-* **VHF Mixer IF, MHz** - Select IF frequency for VHF board mixer (Wolf-2)
-* **VHF Mixer Current** - Selecting the mixer current level (Wolf-2)
-* **VHF TCXO, kHz** - Select TCXO frequency for VHF board (Wolf-2)
-* **VHF TCXO Correction** - Correction for VHF board TCXO generator frequency offset (Wolf-2)
+* **VBAT Rechargable** - Enable battery charging if installed instead of the non-rechargable battery
+* **VHF Mixer Board** - Enable VHF board with RF mixer support
+* **VHF Mixer IF, MHz** - Select IF frequency for VHF board mixer
+* **VHF Mixer Current** - Selecting the mixer current level
+* **VHF TCXO, kHz** - Select TCXO frequency for VHF board
+* **VHF TCXO Correction** - Correction for VHF board TCXO generator frequency offset
 
 ### Calibration RF Power
 * **Power Control** - Specifies how the DAC signal level changes when adjusting the RF Power %: changing the power or changing the signal amplitude
@@ -592,6 +594,13 @@ Displays information about radio amateurs currently in the current band using "W
 ### Self Test
 
 * Run hardware self diagnostic
+
+### CW Trainer
+
+* **Check sending skill** - Should transmission skills be checked after receiving each line?
+* **CW Trainer Letters** - Letter reception training
+* **CW Trainer Numbers** - Training in receiving numbers
+* **CW Trainer Mixed** - Letter + number receiving training
 
 ### Auto calibration
 
