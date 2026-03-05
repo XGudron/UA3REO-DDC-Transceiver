@@ -1,3 +1,7 @@
+----Version 14.7.1----
++STM32: Улучшен процесс инициализации VHF платы
++STM32: Исправлена работа 3D FFT, Tnx RV9CT
+
 ----Version 14.7.0----
 +STM32: Исправление работы функции "EXT ATU in PA mode", Tnx SP7MFR
 +STM32: Wolf-Mini: EXT PTT сигнал теперь корректно работает с "EXT PA Mode"
