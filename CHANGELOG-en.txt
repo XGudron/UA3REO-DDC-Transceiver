@@ -1,0 +1,54 @@
+----Version 15.0.0----
++FPGA: Experimental DDC/DUC changes aimed at improving overload performance, reducing internal noise, and stabilizing bus timings
++FPGA: During the experiment, the STM32 will work with both FPGA versions 14 and 15, but the S-meter will need to be recalibrated
++HARDW: Wolf-2: A schematic for an external attenuator and input stage protection, Tnx RM0A, has been published in the repository folder "Schematic/Wolf-2/Addons/ATT&Protector"
++HARDW: Updated the values on the W2-VHF V4 board schematic, added setup instructions
++STM32: Added support for the 5-inch version of the Wolf-1 front panel from RA6UAC
++STM32: Improved support for the WF-110D from R6WAM
++STM32: Wolf-2: Added "External" calibration ATT", allowing you to connect an external 3-6-12dB attenuator to the vacated control connector of the old VHF board, Tnx RM0A
++STM32: Added PSK31 decoder/encoder, by DJ7NT
++STM32: Added integration with Wavelog via WiFi, by DJ7NT
++STM32: If there is a QSO in the Wavelog, the cluster spot is highlighted in color, by DJ7NT
++STM32: Improvements and fixes to the CAT and WiFi subsystems, by DJ7NT
++STM32: Fixed a bug where FT4 was mistakenly written as FT4 instead of MFSK/FT4, by DJ7NT
++STM32: Wolf-1/Mini: Added secondary encoder function for fast output power adjustment, Author DJ7NT
++STM32: Start of work on experimental DNR3 (not yet completed), by DL2FW
++STM32: Added "Mute AF AMP on TX" calibration for forced disabling of the low frequency amplifier during transmission (if self-test is not active), Tnx R7KBI
++STM32: Improvements to the shutdown process: now the ADC/low frequency amplifier/screen/drivers/codec/WiFi/etc are disabled until the power is turned off
++STM32: RIT/XIT/SPLIT are disabled when the transceiver is powered off, Tnx R7KBI
++STM32: Fixed the setup behavior "NOTX 23cm", Tnx Vitaly
++STM32: Shifted the "SelfHear DIGI" adjustment range
++STM32: Increased the thickness of the AGC indicator on the FFT, Tnx RD3ZE
++STM32: The menu no longer closes when tapping an area of the screen free of buttons, Tnx Dimazavr
++STM32: If space allows on the CN+ theme, the "CB" band is displayed in the band line, Tnx Dimazavr
++STM32: Added an experimental "Sigmoid" mode for the "Power Control" calibration (and the "Sigmoid coeff" item for adjusting for PA nonlinearity), Tnx DL9VS
++STM32: The tuner mute button is inactive on VHF bands, Tnx Vitaly
++STM32: Improved error correction for measurements via MCP3008
++STM32: Fixed incorrect font anti-aliasing in CW Trainer, Tnx R4PHD
++STM32: In auto-calibration mode, SWR/Power values are reset when switching bands, Tnx R1CDZ
++STM32: Minor optimization of settings import/export code
++STM32: Improvements to the "FFT dBm Grid" function, Tnx ats
++STM32: Added VFO-B, RTTY, PSK markers to the 3D FFT, Tnx Dire Wolf
++STM32: Added "FFT 3D Slides", "FFT 3D X Offset", and "FFT 3D Y Offset" settings to control the 3D FFT appearance
++STM32: The currently active filter settings preset is highlighted in color in the lower function panel, Tnx EA5GSA
++STM32: The audio response to IF Gain changes has been softened.
++STM32: Fixed occasional errors during communication between the FPGA and STM32.
++STM32: If the SWR becomes 3 or more during WSPR beacon operation, the ATU is automatically enabled (the transmit slot is skipped). Tnx Vitaly
++STM32: Added the "WOLF Cluster Models" setting, which enables the display of user transceiver models in the wolf cluster. Tnx RV9CT
++STM32: Swiping on the screen with Free Tune mode enabled moves the sweep band, not the receive band (as with pressing). Tnx EA5GSA
++STM32: The "SWR Analyzer" service draws a graph of the measured power in addition to the SWR (the service uses power calibration in Tune mode). Tnx UT8EU
++STM32: When playing a CW macro with When Break-In is disabled, a TX Start Delay is emulated to avoid character loss, Tnx SP7MFR
++STM32: In FT8/FT4, the country and approximate distance to the correspondent are displayed, Tnx PY2MDA, Vitaly
++STM32: Added the "Touchpad Test" service to check touchpad operation
++STM32: Added "Touchpad Offset X" / "Touchpad Offset Y" calibrations, allowing you to set the offset for the touchpad click point (when working at an angle to the screen or due to hardware issues)
++STM32: Added the ability to reset the settings/calibration parameter to the default value; only user-changed values are highlighted
++STM32: Added "DeEmphasis NFM, us" and "DeEmphasis WFM, us" settings for adjusting filters that reduce high-frequency noise in NFM/WFM
++STM32: Fixed an issue with jittery markers Callsigns on the spectrum, Tnx R3TKS
++STM32: Fixes for interrupting the AutoCQ cycle with PTT, Tnx EA5GSA
++STM32: All transceiver operator settings have been moved to a separate menu
++STM32: Improved compatibility with 5MContest, Tnx R3YA
++STM32: To prevent accidental pressing, the TUN button is inverted: a short power supply turns off the tuner, a long one turns on the tuning
++STM32: Wolf-Mini: Microwave gigahertz digit moved to the left, Tnx R6DLC
++STM32: SelfHear function button renamed to MONI, Tnx RM0A
++STM32: Slightly improved FT8 performance with non-standard callsigns requiring hashed transmission, Tnx R4PHD
++STM32: Wolf-2: Added "FAN Always on HF" / "FAN Always on VHF" settings to force fan operation (for heavy operating conditions)

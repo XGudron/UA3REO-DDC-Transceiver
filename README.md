@@ -41,8 +41,8 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * Band pass filters
 * ADC dynamic range (16 bit) ~100dB
 * Supply voltage: 13.8V (overvoltage and polarity reversal protection)
-* Consumption current when receiving: ~0.7А (3'2 QRP), 0.9A (7' BIG)
-* Current consumption during transmission: ~2.5А+ (QRP), 15A+ (BIG)
+* Consumption current when receiving: ~0.7A (3'2 QRP), 0.9A (7' BIG)
+* Current consumption during transmission: ~2.5A+ (QRP), 15A+ (BIG)
 * Support for different displays: RA8875/HX8357B/HX8357C/ST7789/ST7796S/ST7735S/ILI9341/ILI9481/ILI9486/ILI9488
 
 ## Transceiver Features
@@ -51,36 +51,37 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * Panorama tweaks and themes
 * Dual receiver (mixing A + B or A&B audio in stereo)
 * Adjustable bandwidth: HPF from 0Hz to 2700Hz, LPF from 100Hz to 20kHz
-* Integrated SWR/power meter (HF)
+* Integrated SWR/power meter
+* SWR Graphs
+* Spectrum analyzer
 * Automatic and manual Notch filter
 * Switchable AGC (AGC) with adjustable attack rate
 * Range map, with the ability to automatically switch modes
 * Digital Noise Reduction (DNR), Pulse Noise Reduction (NB)
-* CAT virtual COM port (TS-2000 / FT-450 emulation, RTS - PTT, DTR - CW)
+* CAT virtual COM port (TS-2000 / FT-450 emulation, DTR - CW)
 * USB operation (audio transmission, IQ, CAT, KEY, PTT)
-* RDS/CW decoder, self-control, gauss filter
-* SWR Graphs
-* Spectrum analyzer
+* Self-control, CW gauss filter
+* SSTV/RDS/CW decoder
 * FT8/FT4 decoder/encoder
-* RTTY decoder/encoder
-* SSTV decoder 
-* Automatic send FT8/FT4 qso to log https://allqso.ru/
+* RTTY/PSK31 decoder/encoder
+* Sending a log of QSO and data to the log https://allqso.ru/ and https://www.wavelog.org/
 * WSPR Beacon
 * VOX / USB-VOX
-* Equalizer TX/RX, reverber
-* SSB/FM Scanner mode
+* Equalizer TX/RX, reverber, various DSP compressors, etc.
+* SSB/FM Scanner mode, fast switching between CW signals
 * Support SDHC/SDSC/SDXC memory cards up to 16Gb
-* WAV files radio recording and playback, fast broadcast recorded CQ message
+* WAV files radio recording and playback, broadcast recorded message
 * AGC takes into account the characteristics of human hearing (K-Weighting)
 * TCXO frequency stabilization (it is possible to use an external clock source, such as GPS)
 * WiFi operation: Time synchronization, external WiFi services
-* Tangent support Yaesu MH-36 и MH-48
+* Tangent support Yaesu MH-48 and MH-36
 * Hardware self-testing
 * CTCSS subtones and 1750 kHz start tone for opening repeaters
 * Assistance for visually impaired operators
 * Digital Pre Distortion
 * CW-trainer
-* And other.. (see menu)
+* Support for external PTT-sequencer control via CAT and transceiver
+* And other... (see menu)
 
 ### RF Parameters
 
@@ -100,19 +101,26 @@ Out-of-band emissions:
 I ordered the boards in the Chinese service JLCPCB, they and their schemes are in the Scheme folder. <br>
 After assembly, you need to flash FPGA and STM32 chips. <br>
 If necessary, calibrate the transceiver through the appropriate menu <br>
-WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT commands 1.7.4 and higher <br>
+WiFi module ESP-01 must have fresh firmware from Dropbox<br>
 
 ## Settings
 
-### TRX Settings
+### Operator
 
 * **Accessibility** - Assistance to visually impaired operators, telegraphing current transceiver parameters into the speaker when switching
+* **Callsign** - Operator callsign
+* **Locator** - User QTH locator
+* **Operator Name** - Operator name
+* **QTH xxx** - Setting the Latitude\Longitude\Altitude of your location to calculate the passage of satellites
+* **Timezone** - Time zone
+* **Tropo Region** - Region for tropospheric forecast https://www.dxinfocentre.com/tropo.html 
+* **URSI Code** - Ionogram URSI Code https://digisonde.com/index.html#stationmap-section
+
+### TRX Settings
+
 * **ANT type** - Select antenna type (TX/RX or RX only)
 * **Band Map** - Band Map, automatically switches mode depending on the frequency
 * **Beeper** - Beep on key press
-* **Callsign** - Operator callsign
-* **Operator Name** - Operator name
-* **Locator** - User QTH locator
 * **Channel Mode** - Channel frequency mode (for LPD/PMR and etc.)
 * **Custom Transverter** - Enable external transverter on non-ham band (just offset display frequency)
 * **Debug Type** - Output of debug and service information to USB / UART ports
@@ -120,6 +128,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **Encoder Accelerate** - Accelerate encoder on fast rates
 * **ENC2 Priority enbl** - Enables the encoder priority function, which is automatically switched to after 30 seconds of inactivity
 * **ENC2 Priority** - Selection of the secondary encoder priority function
+* **FAN Always on** - Forced activation of the fan (for heavy operating conditions)
 * **Fine RIT Tune** - Fine or coarse tuning for RIT/XIT (encoder or resistor)
 * **Freq Step xxx** - Frequency step by main encoder in each mode, Hz
 * **FAST Step Multiplier** - Frequency step multiplier for FAST mode
@@ -131,8 +140,6 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **XIT Interval** - Offset range XIT (+ -)
 * **Lock in IQ Mode** - Lock TRX in IQ Mode for external program
 * **Transverter XXcm** - Enable external ham band transverter support
-* **URSI Code** - Ionogram URSI Code https://digisonde.com/index.html#stationmap-section
-* **Tropo Region** - Region for tropospheric forecast https://www.dxinfocentre.com/tropo.html 
 * **Wolf Interface I2C** - Connect TRX to external I2C interface device (See STUFF folder for example)
 
 ### FILTERS Settings
@@ -142,6 +149,7 @@ WiFi module ESP-01 must have fresh firmware with SDK 3.0.4 and higher, and AT co
 * **CW LPF Pass** - LPF cutoff frequency when working in CW
 * **CW Gauss filter** - Use a filter with a Gaussian distribution (for CW), accepts only the peak in the center of the BW
 * **CW Gauss Q** - Quality of Gauss filter
+* **DeEmphasis FM, us** - Setting up a filter to reduce high-frequency noise when receiving NFM/WFM
 * **DIGI LPF Pass** - LPF cutoff frequency when working in DIGI
 * **FM LPF Pass** - LPF cutoff frequency when working in FM
 * **SSB HPF Pass** - HPF cutoff frequency when operating in SSB
@@ -295,6 +303,9 @@ Allowed insertions in macros:
 * **Color Theme** - Select colors theme (0 - black, 1 - white, 2 - black with colored frequency)
 * **Layout Theme** - Select interface theme (0 - default)
 * **FFT 3D Mode** - Enable FFT 3D mode (0 - disabled, 1 - lines, 2 - pixels)
+* **FFT 3D Slides** - Number of 3D FFT slides to display spectrum history
+* **FFT 3D X Offset** - Adjusting 3D FFT Perspective in X
+* **FFT 3D Y Offset** - Adjusting 3D FFT Perspective in Y
 * **FFT Automatic** - Automatic FFT scale
 * **FFT Averaging** - FFT burst averaging level. Full - automatic selection of upper and lower boundaries, Half - auto lower and manual upper, No - manual setting of the range of spectrum levels. (Remember to select the correct FFT Scale Type so that your range will fit on the screen)
 * **FFT BW Style** - FFT bandwidth style: high opacity, low opacity, lines
@@ -309,7 +320,8 @@ Allowed insertions in macros:
 * **TELNET Cluster Host** - Telnet server address for DX cluster
 * **TELNET Cluster Port** - Telnet server port for DX cluster
 * **Cluster Mask** - Cluster spot filtering by callsign mask: * - any count of characters, ? - any one character, numbers-letters - full match. For example "?A3R*"
-* **Wolf Cluster** - Display Wolf TRX users on spectrum and send self data
+* **WOLF Cluster** - Display Wolf TRX users on spectrum and send self data
+* **WOLF Cluster Models** - Enables display of user transceiver models in the wolf cluster
 * **FFT Enabled** - Enable waterfall and FFT
 * **FFT Freq Grid** - FFT and waterfall grids: 1(no grid), 2(fft grid), 3(fft+wtf grids), 4(wtf grid)
 * **FFT Height** - FFT and waterfall proportional height
@@ -339,6 +351,7 @@ Allowed insertions in macros:
 * **FTx Auto CQ** - Automatic transition to CQ mode after FT8/FT4 communication
 * **FTx Freq** - Selected transmission frequency
 * **FTx Correct time** - Allows you to adjust the time on the transceiver by calculating the average deviation from the FT8/FT4 decodes
+* **PSK31 Freq** - Carrier center frequency for PSK decoder/encoder
 * **RDS Decoder** - Enable RDS Decoder for WFM mode
 * **RTTY Freq** - Central frequency of RTTY decoding
 * **RTTY InvertBits** - RTTY invert 0 and 1 bits
@@ -369,9 +382,9 @@ Allowed insertions in macros:
 * **WIFI Enabled** - Enable WiFi module (need restart after enable)
 * **WIFI Network** - WiFi hotspot selection
 * **WIFI Network Pass** - Set password for WiFi hotspot
-* **WIFI Timezone** - Time zone (for updating the time via the Internet)
 * **WIFI NTP Server** - Selecting the NTP time synchronization server address
 * **ALLQSO.RU Token/LogId** - Token and LogID from https://allqso.ru/ web-log
+* **Wavelog** - Integration settings with https://www.wavelog.org/ web-log
 
 ### SD Card
 
@@ -389,7 +402,6 @@ Allowed insertions in macros:
 * **Download TLE** - Download current satellite data
 * **Select SAT** - Select a satellite from the downloaded TLE file
 * **Calc Pass** - Calculate future satellite passes over QTH (Local time)
-* **QTH xxx** - Setting the Latitude\Longitude\Altitude of your location
 
 ### Calibration [appears by long pressing the MENU button in the settings menu]
 
@@ -425,6 +437,7 @@ Allowed insertions in macros:
 * **DAC Driver Mode** - DAC Driver OPA2673 bias mode (2 = 100% bias, 1 = 75% bias, 0 = 50% bias)
 * **DAC Interpolation** - Using interpolation in the first DAC frequency zone (HF)
 * **EXT xxx** - External port control by band (EXT3, EXT2, EXT1, EXT0) - open drain
+* **External ATT** - Connecting control for an external attenuator 3-6-12 dB (Wolf-2)
 * **Encoder acceleration** - The encoder acceleration on faster rotation speeds
 * **Encoder debounce** - Time of debouncing contacts of the main encoder
 * **Encoder invert** - Invert the rotation of the main encoder
@@ -439,6 +452,7 @@ Allowed insertions in macros:
 * **LCD Rotate** - Rotate screen at 180 degrees
 * **LPF Timeout** - Disable TX LPF after 3 minutes of switching to RX
 * **MAX ChargePump, kHz** - Maximum PWM frequency for ChargePump circuit
+* **Mute AF AMP on TX** - Turn off the transceiver's low frequency amplifier during transmission (if there is no self-monitoring)
 * **RTC COARSE CALIBR** - Very coarse clock crystal calibration
 * **RTC FINE CALIBR** - Clock crystal calibration, one division is 0.954 ppm
 * **Sequencer support** - External sequencer support (output through line EXT_TUNE)
@@ -451,6 +465,7 @@ Allowed insertions in macros:
 * **Touchpad click timeout** - Maximum time for triggering a short click, ms
 * **Touchpad hold timeout** - Time before a long press is triggered, ms
 * **Touchpad swipe threshold** - Minimum distance to trigger a swipe, px
+* **Touchpad Offset X/Y** - Allows you to set an offset for the touchpad's click point (when working at an angle to the screen or due to hardware issues)
 * **Tangent Type** - Select tangent type
 * **Transverter Offset, MHz** - Offset frequency shown on the display (for custom transverters)
 * **Transverter xxx IF, MHz** - Setting the IF frequency of the transverter
@@ -465,6 +480,7 @@ Allowed insertions in macros:
 
 ### Calibration RF Power
 * **Power Control** - Specifies how the DAC signal level changes when adjusting the RF Power %: changing the power or changing the signal amplitude
+* **Sigmoid coeff** - Slope of the power control curve in Power Control mode = Sigmoid
 * **MAX Power in TUNE** - Maximum RF power in Tune mode
 * **SD Macros power** - Signal gain when playing SSB macros
 * **SD Recording power** - Signal gain coefficient when playing live recordings
@@ -511,10 +527,6 @@ Allowed insertions in macros:
 ### DFU Mode
 
 * Launch STM32 USB firmware update over DFU mode
-
-### OTA Update
-
-* Launch FPGA/STM32 firmware update over internet
 
 ### System info
 
@@ -590,6 +602,10 @@ Displays information about radio amateurs currently in the current band using "W
 ### Time Beacons
 
 * List of beacons of the exact time (for adjusting the frequency of reception by carrier)
+
+### Touchpad Test
+
+* Touchpad test: Draws a canvas where you can test one- and two-finger taps
 
 ### Self Test
 
