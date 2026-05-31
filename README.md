@@ -479,8 +479,10 @@ Allowed insertions in macros:
 * **VHF TCXO Correction** - Correction for VHF board TCXO generator frequency offset
 
 ### Calibration RF Power
+* **DAC Max Boost M1/2*** - Allows the DAC to reach maximum output power in two operating modes. Mode 2 is used in the 46-65 MHz range, Mode 1 in all other ranges. Use with caution and avoid overloading the W2 VHF board / HF drivers. Do not switch when in active TX
 * **Power Control** - Specifies how the DAC signal level changes when adjusting the RF Power %: changing the power or changing the signal amplitude
 * **Sigmoid coeff** - Slope of the power control curve in Power Control mode = Sigmoid
+* **Use Power table** - Use the correction table to accurately set the % of the maximum amplifier power, taking into account its nonlinearity (table calibration is performed in the service menu "Auto calibration" -> "Calibrate PWR %")
 * **MAX Power in TUNE** - Maximum RF power in Tune mode
 * **SD Macros power** - Signal gain when playing SSB macros
 * **SD Recording power** - Signal gain coefficient when playing live recordings
@@ -621,7 +623,9 @@ Displays information about radio amateurs currently in the current band using "W
 ### Auto calibration
 
 * **Calibrate SWR** - Assistant in measuring SWR and power meter
-* **Calibrate Power** - Assistant in adjusting RF Power output
+* **Calibrate RF GAIN** - Assistant in adjusting RF Power output
+* **Calibrate PWR %** - Assistant for setting up the correction table, for precise setting of the % output power taking into account the nonlinearity of the gain (for the Use Power table function/calibration)
+* **ATU Runner** - Assistant for setting up an automatic tuner, runs through all enabled bands / sections and performs tuning
 
 ### Web Skimmers 
 

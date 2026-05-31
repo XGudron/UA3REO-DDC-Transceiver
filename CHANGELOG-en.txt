@@ -1,3 +1,26 @@
+----Version 15.2.0----
++HARDW: Added Wolf-1-5D front panel schematics, board author RA6UAC
++HARDW: VHF board updated to v4.1, taking into account minor improvements after the launch of v4.0, author R7KBI
++STM32: The DAC has been set to maximum output power on all bands (with maximum RF Gain). The input attenuator on the W2 VHF board has been updated to prevent accidental damage, Tnx PY2MDA
++STM32: Added 70cm and 23cm bands to the SWR/Power autocalibration + minor interface fixes
++STM32: Added "Use Power Table" function/calibration, allowing the use of a correction table to accurately set the % of maximum power, taking into account gain nonlinearity.
++STM32: Added "Auto calibration" -> "Calibrate PWR %" service function for calibrating the correction table when adjusting the % power (for "Use Power Table" functionality)
++STM32: FT4 saving to log should work, Tnx UB4RGZ
++STM32: Improved Snap / Auto Snap functionality, Tnx Anatoly
++STM32: Fixed rare issue with opening pop-up windows with hardware buttons, Tnx SP7MFR
++STM32: On VHF bands (without a transverter with HF IF) TUN OFF is always displayed on the display, Tnx SP7MFR
++STM32: Added backup storage of calibrations in SPI FLASH, so that, if compatible, it would be possible to update to subsequent versions without resetting them
++STM32: The screen displays the error "PLL" when the RFFC2071 PLL loses synchronization
++STM32: Added a small visual highlighting of the current CW-LSB / CW-USB mode on the receive bandwidth, Tnx BD6MM
++STM32: Long press on the BreakIn button opens the CW PTT Type menu, Tnx SP7MFR
++STM32: Added "ATU Runner" service - an assistant in setting up an automatic tuner, runs through all enabled bands / sections and performs tuning
+
+----Version 15.1.0----
++FPGA: Fixed signal loss on 384kHz without an antenna/driver, Tnx SP7MFR
++STM32: Added protection against loss of PLL lock in RFFC2071 during operation
++STM32: Tuner enable prohibition takes into account enabled transverter and Ext PA Mode, Tnx Dispatcher, R1CDZ
++STM32: Fixes in FT8 interface, Tnx R9HCZ
+
 ----Version 15.0.0----
 +FPGA: Experimental DDC/DUC changes aimed at improving overload performance, reducing internal noise, and stabilizing bus timings
 +FPGA: During the experiment, the STM32 will work with both FPGA versions 14 and 15, but the S-meter will need to be recalibrated
@@ -27,7 +50,7 @@
 +STM32: Fixed incorrect font anti-aliasing in CW Trainer, Tnx R4PHD
 +STM32: In auto-calibration mode, SWR/Power values are reset when switching bands, Tnx R1CDZ
 +STM32: Minor optimization of settings import/export code
-+STM32: Improvements to the "FFT dBm Grid" function, Tnx ats
++STM32: Improvements to the "FFT dBm Grid" function, Tnx R1BLT
 +STM32: Added VFO-B, RTTY, PSK markers to the 3D FFT, Tnx Dire Wolf
 +STM32: Added "FFT 3D Slides", "FFT 3D X Offset", and "FFT 3D Y Offset" settings to control the 3D FFT appearance
 +STM32: The currently active filter settings preset is highlighted in color in the lower function panel, Tnx EA5GSA
