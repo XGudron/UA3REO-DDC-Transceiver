@@ -1,3 +1,14 @@
+----Version 15.3.0----
++STM32: Corrections + updates in the callsign prefix database, Tnx Oleksandr
++STM32: SNAP function improvements, Tnx SP7MFR, Anatoly
++STM32: Decoder improvements, Tnx Anatoly, RT3W
++STM32: VHF board wideband switching improvements, Tnx Vitaly
++STM32: FPGA bus stability improvements
++STM32: During FT8 decoding, the codec and AF amplifier are muted, Tnx RT3W
++STM32: When the transceiver is turned on, the active filter preset is correctly highlighted, Tnx EA5GSA
++STM32: The "Mute AF AMP on TX" function additionally mute the codec, not just the power amplifier, Tnx R3TKS
++STM32: Corrections to the names of some menu items
+
 ----Version 15.2.0----
 +HARDW: Added Wolf-1-5D front panel schematics, board author RA6UAC
 +HARDW: VHF board updated to v4.1, taking into account minor improvements after the launch of v4.0, author R7KBI
