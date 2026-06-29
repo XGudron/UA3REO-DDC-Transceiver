@@ -1,3 +1,14 @@
+----Version 15.4.0----
++STM32: Fixed clicking sounds when using NB / DOUBLE, Tnx SP7MFR, RV9CT
++STM32: Improved CW decoder performance during transmission and in the simulator, Tnx R3XG
++STM32: Optimized CPU load from the multi-decoder CW
++STM32: Wolf-2: Improved SWR meter performance in transverter mode with Wideband RX / 144 TX on the VHF board
++STM32: Disabled simultaneous use of Snap and FFT Lens, Tnx SP7MFR
++STM32: Improved screen font smoothing
++STM32: Minor CW decoder improvements
++STM32: Callsign database fixes, Tnx SP7MFR
++STM32: Improved self-testing when "Auto CW Mode" is active, Tnx SP7MFR
+
 ----Version 15.3.0----
 +STM32: Corrections + updates in the callsign prefix database, Tnx Oleksandr
 +STM32: SNAP function improvements, Tnx SP7MFR, Anatoly
