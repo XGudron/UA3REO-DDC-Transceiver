@@ -1,3 +1,26 @@
+----Version 15.5.0----
++STM32: Major improvements to the DNR3 noise suppressor, by DL2FW
++STM32: Various CAT fixes, by DJ7NT
++STM32: Wolf-2-PRO: Improved hardware support for the front, interface, motherboard, and DFT boards (currently in debug)
++STM32: Wolf-110D: Improved hardware support for the HF amplifier board (currently in debug)
++STM32: Wolf-Mini: Added support for boards with dual encoders
++STM32: Experimental code optimizations and fixes
++STM32: Minor WFM/SWFM/RDS optimizations, Tnx Oleksandr, SP7MFR
++STM32: Fixed issue with exiting RTTY/PSK mode (frequency offset remained), Tnx Andrey
++STM32: Increased the default "RX AGC CW Speed" value, Tnx UT8EU
++STM32: Fixed frequency display in the FT8 decoder on VHF bands, Tnx SP7MFR
++STM32: DX Split no longer disables when cursor goes out of range, Tnx SP7MFR
++STM32: Added active VOX indication
++STM32: Added "Invert LCD PWM" calibration for inverting the screen PWM operation (necessary for some types of backlight drivers), Tnx BI4JWL
++STM32: Improved AutoCQ performance with Break-In disabled, Tnx SP7MFR
++STM32: Improved distance calculation system to a correspondent in FT8, Tnx BI4JWL
++STM32: Improved CW decoder performance in QSB conditions
++STM32: Wolf-2: Experimental improvement of peak power detector in SSB in normal mode and with "SWR Hold Peaks" active
++STM32: The keywords "CQ", "599", "5NN" are highlighted in the CW multidecoder screen output, Tnx E72X
++STM32: Added prototype of the "AF Monitor" function: display of the low-frequency signal in the frequency and time domain, Tnx R3TKS
++STM32: Improved sensitivity of RTTY decoder, as well as operation in QSB conditions
++STM32: Updated default settings for Noise Blanker + experimental improvements to lightning suppression algorithms
+
 ----Version 15.4.0----
 +STM32: Fixed clicking sounds when using NB / DOUBLE, Tnx SP7MFR, RV9CT
 +STM32: Improved CW decoder performance during transmission and in the simulator, Tnx R3XG

@@ -299,6 +299,7 @@ Allowed insertions in macros:
 ### SCREEN Settings
 
 * **Language** - Select interface language
+* **AF Monitor** - Display of the AF (audio) signal in frequency and time domains under the waterfall. Off - disabled, TX Only - during transmission, Always - continuously on RX and TX
 * **Bottom navi buttons** - Show bottom menu navigation buttons (for 7 inch displays)
 * **Color Theme** - Select colors theme (0 - black, 1 - white, 2 - black with colored frequency)
 * **Layout Theme** - Select interface theme (0 - default)
@@ -448,6 +449,7 @@ Allowed insertions in macros:
 * **Encoder2 on fall** - Mode of operation of the secondary encoder (some encoders skip a step or make an extra one)
 * **Flash GT911** - Starting the touchpad update procedure according to LCD screen resolution
 * **INA226** - Activation and calibration of the INA226 voltage/current sensor on the I2C bus
+* **Invert LCD PWM** - Inverting the PWM backlight of the RA8875 screen
 * **KTY81 Calibration** - Calibration of the KTY81 sensor (setting the resistance of the divider arm)
 * **LCD Rotate** - Rotate screen at 180 degrees
 * **LPF Timeout** - Disable TX LPF after 3 minutes of switching to RX
