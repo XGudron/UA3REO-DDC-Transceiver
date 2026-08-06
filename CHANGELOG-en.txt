@@ -1,3 +1,8 @@
+----Version 15.5.1----
++STM32: Fixed issues with NB2, Tnx SP7MFR
++STM32: Fixed issues with exiting the menu via function keys, Tnx UB4RGZ
++STM32: AF Monitor disables if it doesn't fit in the waterfall (large FFT Height), Tnx R5ZX
+
 ----Version 15.5.0----
 +STM32: Major improvements to the DNR3 noise suppressor, by DL2FW
 +STM32: Various CAT fixes, by DJ7NT
