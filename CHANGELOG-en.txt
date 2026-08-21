@@ -1,3 +1,9 @@
+----Version 15.5.2----
++STM32: The S-meter/SWR calibration range of 6-20 MHz is divided into two sub-ranges: 6-12 and 12-20 MHz
++STM32: Fixed problem with turning on Split DX when VFO-B is active, Tnx SP7MFR
++STM32: Fixed an issue with AF Monitor freezing on some themes with high FFT Height, Tnx DL1EGQ
++STM32: Minor bug fixes, Tnx SP7MFR, Oleksandr
+
 ----Version 15.5.1----
 +STM32: Fixed issues with NB2, Tnx SP7MFR
 +STM32: Fixed issues with exiting the menu via function keys, Tnx UB4RGZ
