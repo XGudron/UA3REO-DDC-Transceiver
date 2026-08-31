@@ -62,7 +62,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * USB operation (audio transmission, IQ, CAT, KEY, PTT)
 * Self-control, CW gauss filter
 * SSTV/RDS/CW decoder
-* FT8/FT4 decoder/encoder
+* FT8/FT4/FT2 decoder/encoder
 * RTTY/PSK31 decoder/encoder
 * Sending a log of QSO and data to the log https://allqso.ru/ and https://www.wavelog.org/
 * WSPR Beacon
@@ -102,6 +102,70 @@ I ordered the boards in the Chinese service JLCPCB, they and their schemes are i
 After assembly, you need to flash FPGA and STM32 chips. <br>
 If necessary, calibrate the transceiver through the appropriate menu <br>
 WiFi module ESP-01 must have fresh firmware from Dropbox<br>
+
+## Functional buttons
+
+| Button | Short press | Long press |
+|--------|-------------|------------|
+| **A/B**, **XFC** | Select VFO A or B (XFC - while pressing) | Same |
+| **A<>B**, **A / B** | Swap VFO A and B | Same |
+| **B=A**, **A->B** | Copy active VFO to the other | Same |
+| **SPLIT** | Toggle split | Same |
+| **DOUBLE** | Toggle dual RX | Switch dual-RX mix: A&B stereo ↔ A+B |
+| **POWER** | RF power window / menu | Toggle external PA mode |
+| **CESSB** | Toggle CESSB | CESSB settings menu |
+| **DPD** | Toggle digital pre-distortion | Same |
+| **PRE** | Toggle LNA | Same |
+| **ATT** | Toggle attenuator | Step ATT level (dB) |
+| **NB** | Cycle NB: off → NB1 → NB2 → both | NB1/NB2 settings menu |
+| **NOTCH** | Toggle auto notch | Manual notch |
+| **DNR** | Cycle DNR type (0…3) | Same |
+| **AGC** | Toggle AGC | Same |
+| **FAST** | Toggle fast tuning | Same |
+| **SQL** | Toggle squelch | Squelch level menu |
+| **RIT** | Toggle RIT | XIT / Reset RIT |
+| **XIT** | Toggle XIT | RIT / Reset XIT |
+| **MONI** | Toggle self-hear | Self-hear settings for current mode |
+| **VOX** | Toggle VOX | VOX settings |
+| **SCAN** | Toggle scanner | Same |
+| **AUTOGN** | Toggle auto RF gain | Same |
+| **BANDMP** | Toggle band map | Same |
+| **BAND− / BAND+** | Previous / next band | The same, but in reverse |
+| **MODE− / MODE+** | Previous / next mode | The same, but in reverse |
+| **FFT− / FFT+** | Narrower / wider panorama | Same |
+| **HPF** | High-pass filter menu | Same |
+| **BW** | RX filter bandwidth menu | Same |
+| **LENS** | Toggle FFT zoom (lens) | Same |
+| **FILT 1…3** | Load filter preset | Save current filters to preset |
+| **BALANCE** | A/B audio balance menu | Same |
+| **ANT** | Cycle TX/RX antenna | Same |
+| **RXANT** | Toggle extra RX antenna (Wolf-2) | Same |
+| **TUNE** | ATU enable | Tune / carrier |
+| **ATU RST** | Reset ATU memory for band | Same |
+| **SWR** | SWR analyzer for current band | Same |
+| **REPIT** | Toggle repeater mode | Repeater offset menu |
+| **BREAKIN** | Toggle CW break-in (key+PTT) | CW PTT type menu |
+| **SNAP < / SNAP >** | Snap frequency to grid | Auto-snap on/off |
+| **M>VFO / VFO>M** | Read memory channel (MEMO mode) | Same / write channel |
+| **MEMORY** | Memory channels window | Same |
+| **REC** | Start/stop SD recording | Same |
+| **PLAY** | Play last recording | Transmit last recording on air |
+| **FILES** | SD file manager | Same |
+| **SERVICE** | Services menu | Save screenshot to SD |
+| **MENU** | System menu | Close all / hidden menu |
+| **LOCK** | Lock front panel | Same |
+| **FT8** | FT8 service | Same |
+| **WPM** | CW speed menu | Same |
+| **PTT OFF** | Toggle TX inhibit | Same |
+| **TX** | Soft PTT | Same |
+| **ACCESS** | Speak frequency and mode (TTS) | Same |
+| **EQ** | TX/RX equalizer window | Same |
+| **SLEEP** | LCD sleep mode | Same |
+| **DXCALL** | Correspondent / QSO info window | Same (touch models) |
+| **MACROS 1…8** | Run CW/SSB/RTTY/PSK macro | Edit macro; long on Macro 1 — Auto CQ toggle |
+| **NONE** | Not assigned | — |
+
+Assignments are editable in *Settings → Front buttons*.
 
 ## Settings
 
@@ -300,6 +364,7 @@ Allowed insertions in macros:
 
 * **Language** - Select interface language
 * **AF Monitor** - Display of the AF (audio) signal in frequency and time domains under the waterfall. Off - disabled, TX Only - during transmission, Always - continuously on RX and TX
+* **AF Monitor Time** - Time-domain window length for AF Monitor
 * **Bottom navi buttons** - Show bottom menu navigation buttons (for 7 inch displays)
 * **Color Theme** - Select colors theme (0 - black, 1 - white, 2 - black with colored frequency)
 * **Layout Theme** - Select interface theme (0 - default)
@@ -349,9 +414,9 @@ Allowed insertions in macros:
 * **CW Decoder** - Software CW receive decoder
 * **CW Decoder Threshold** - CW receive decoder sensivity
 * **CW Multi-Decoding** - Multiple signal decoding mode in the visible bandwidth
-* **FTx Auto CQ** - Automatic transition to CQ mode after FT8/FT4 communication
+* **FTx Auto CQ** - Automatic transition to CQ mode after FT8/FT4/FT2 communication
 * **FTx Freq** - Selected transmission frequency
-* **FTx Correct time** - Allows you to adjust the time on the transceiver by calculating the average deviation from the FT8/FT4 decodes
+* **FTx Correct time** - Allows you to adjust the time on the transceiver by calculating the average deviation from the FT8/FT4/FT2 decodes
 * **PSK31 Freq** - Carrier center frequency for PSK decoder/encoder
 * **RDS Decoder** - Enable RDS Decoder for WFM mode
 * **RTTY Freq** - Central frequency of RTTY decoding
@@ -360,23 +425,6 @@ Allowed insertions in macros:
 * **RTTY Speed** - Speed of RTTY data
 * **RTTY StopBits** - RTTY Stop bits
 * **SSTV Decoder** - Launching SSTV decoder (PD 50/90/120/180, Scottie 1/2, Martin 1/2)
-
-### Pre-Distortion (Digital Pre-Distortion is experimental for Wolf-2)
-
-* **DPD Enabled** - Activation of the digital pre-distortion system
-* **DPD Calibration** - Starts DPD calibration for the current bend
-* **DPD Reset** - Resets calibration coefficients for the current bend
-* **Draw chart** - Display a graph of applied distortion in amplitude and phase
-
-* The function is experimental, be sure to check your signal on the control receiver after calibration
-* DPD is designed to create an artificially distorted signal that, after passing through the PA, compensates for its non-linearities. In this regard, the IMD3 and IMD5 of the final signal decrease.
-* Calibration takes approximately 30 seconds
-* Calibration can produce excellent results between attempts, it is always worth monitoring the result and repeating if the required parameters have not been achieved
-* After resetting the coefficients, DPD has no effect, it is useful if you need to disable DPD for part of the bands, but not disable the entire system
-* Do not allow high SWR and overload of the ADC during calibration. If necessary, use an attenuator and a feedback circuit from the PA output to the RX input
-* If you change the PA settings (quiescent current, swing power), you must perform the calibration again
-* Weak growth of IMD7 and higher orders is possible due to compensation of IMD3/5
-* The result depends on the types of PA nonlinearity, on a high level of RF Gain calibrations, and on the quality of feedback (a 50db+ attenuator between the PA output and the RX input is preferable to capacitive coupling inside the transceiver)
 
 ### WIFI Settings
 
@@ -392,6 +440,7 @@ Allowed insertions in macros:
 * **File Manager** - Show SD Card file manager, support WAV playback and deleting files, listening and broadcasting recordings, as well as updating firmware from a memory card
 * **Record CQ message** - Record a short message for quick broadcast
 * **USB SD Card Reader** - Enable USB SD Card reader
+* **Profile Names** - Custom profile labels (up to 3 characters) for export/import settings and calibration buttons
 * **Export Settings** - Export settings and calibration data to SD card
 * **Import Settings** - Import settings and calibration data from SD card
 * **Format SD card** - Format media drive
@@ -400,9 +449,37 @@ Allowed insertions in macros:
 
 * **SAT Mode** - Enable satellite mode
 * **Auto Doppler** - Automatically shifts the transceiver frequency based on the calculated Doppler effect
-* **Download TLE** - Download current satellite data
-* **Select SAT** - Select a satellite from the downloaded TLE file
 * **Calc Pass** - Calculate future satellite passes over QTH (Local time)
+* **Download TLE** - Download current satellite data
+* **EME Info** - Moon position and EME path parameters for your QTH (see [EME Info](#eme-info))
+* **Select SAT** - Select a satellite from the downloaded TLE file
+
+### EME Info
+
+Information screen for Earth-Moon-Earth (EME) operation, similar to the Astronomical Data window in WSJT-X (but slightly simplified mathematically). Calculations use the current QTH coordinates (Operator settings) and the active VFO frequency; they do not depend on the satellite selected in **Select SAT**.
+
+* **MoonAz** - Horizontal direction to the Moon at your location, in degrees
+* **MoonEl** - Vertical angle of the Moon above the horizon at your location, in degrees
+* **SelfDop (Self-Doppler Shift)** - Two-way Doppler shift of your own EME echo (TX → Moon → RX)
+* **Width (Doppler Spread / Libration Fading)** - The spectral broadening (fuzziness) of your returned signal caused by lunar libration
+* **Delay (Round-Trip Time)** - The exact time it took for your radio wave to travel from your antenna to the moon and back
+* **Dec** - Topocentric declination of the moon, in degrees
+* **SunAz** - Azimuth of the Sun at your location, in degrees
+* **SunEl** - Elevation of the Sun above the horizon at your location, in degrees
+* **Tsky** - Estimated sky background temperature in the direction of the moon, scaled to the operating frequency (shown from 5 MHz and above)
+* **Dpol** - Spatial polarization offset, in degrees; difference between your station and the DX station when **DX Call** is set and recognized
+* **Dist** - Topocentric distance from your station to the moon, in km
+* **Dgrd** - Estimated signal degradation in dB relative to the best possible path (moon at perigee, cold sky)
+
+The following fields are shown **only when DX Call is set** (correspondent callsign from the **DXCALL**):
+
+* **DX Call** - Correspondent callsign used for DX path calculations
+* **DX Loc** - Maidenhead locator derived from the DX station coordinates
+* **DxAz** - Azimuth to the Moon at the DX station, in degrees
+* **DxEl** - Elevation of the Moon at the DX station, in degrees
+* **DxDop** - One-way Doppler shift at the DX station, in Hz
+* **DxWid** - Limb-to-limb Doppler spread at the DX station, in Hz
+* **MNR** - Maximum non-reciprocity of the EME path in dB due to spatial polarization
 
 ### Calibration [appears by long pressing the MENU button in the settings menu]
 
@@ -423,6 +500,7 @@ Allowed insertions in macros:
 * **FAN Medium PWM** - Adjusting the duty cycle of a PWM fan in Medium mode
 * **FAN Motherboard** - Starting the fan not only by the sensor, but also by the temperature of the STM32 processor
 * **IF Gain MIN/MAX** - IF Gain adjusting limits
+* **Inhibit VOX Button** - Disable the hardware VOX button
 * **Min Voltage protect** - Minimum supply voltage threshold, below which the protection will be triggered and the transceiver will be switched off (INA226)
 * **OTA Update** - Enable OTA firmware update over WiFi
 
@@ -574,6 +652,7 @@ Displays information about radio amateurs currently in the current band using "W
 * **Propagation Data** - Show propagation statistics (from internet)
 * **Tropo** - Show tropospheric forecast (from internet)
 * **Ionogram** - * Displaying the ionogram for the selected URSI Code (from internet)
+* **VOACAP Map** - HF propagation map for the current band and QTH (requires internet connection)
 
 ### DayNight Map 
 
@@ -586,6 +665,10 @@ Displays information about radio amateurs currently in the current band using "W
 ### RDA Statistics 
 
 * Print statistics from RDA award (from internet)
+
+### FT2
+
+* FT2 Receiver / transmitter (accelerated FT4, 3.75 s T/R)
 
 ### FT4
 
@@ -628,6 +711,24 @@ Displays information about radio amateurs currently in the current band using "W
 * **Calibrate RF GAIN** - Assistant in adjusting RF Power output
 * **Calibrate PWR %** - Assistant for setting up the correction table, for precise setting of the % output power taking into account the nonlinearity of the gain (for the Use Power table function/calibration)
 * **ATU Runner** - Assistant for setting up an automatic tuner, runs through all enabled bands / sections and performs tuning
+* **Pre-Distortion** - Digital pre-distortion settings
+
+#### Pre-Distortion
+
+* **DPD Enabled** - Activation of the digital pre-distortion system
+* **DPD Calibration** - Starts DPD calibration for the current bend
+* **DPD Reset** - Resets calibration coefficients for the current bend
+* **Draw chart** - Display a graph of applied distortion in amplitude and phase
+
+* The function is experimental, be sure to check your signal on the control receiver after calibration
+* DPD is designed to create an artificially distorted signal that, after passing through the PA, compensates for its non-linearities. In this regard, the IMD3 and IMD5 of the final signal decrease.
+* Calibration takes approximately 30 seconds
+* Calibration can produce excellent results between attempts, it is always worth monitoring the result and repeating if the required parameters have not been achieved
+* After resetting the coefficients, DPD has no effect, it is useful if you need to disable DPD for part of the bands, but not disable the entire system
+* Do not allow high SWR and overload of the ADC during calibration. If necessary, use an attenuator and a feedback circuit from the PA output to the RX input
+* If you change the PA settings (quiescent current, swing power), you must perform the calibration again
+* Weak growth of IMD7 and higher orders is possible due to compensation of IMD3/5
+* The result depends on the types of PA nonlinearity, on a high level of RF Gain calibrations, and on the quality of feedback (a 50db+ attenuator between the PA output and the RX input is preferable to capacitive coupling inside the transceiver)
 
 ### Web Skimmers 
 

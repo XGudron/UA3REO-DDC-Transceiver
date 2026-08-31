@@ -1,3 +1,37 @@
+----Version 16.0.0----
++STM32: AF Monitor performance improvements and optimizations
++STM32: RDS decoder improvements
++STM32: FTx decoder speed optimization
++STM32: Improved AF Monitor frequency spectrum smoothing
++STM32: AF Monitor can now be enabled when 3D FFT is active, Tnx RV9CT
++STM32: Added "AF Monitor Time" setting - sets the length of the AF Monitor time domain window, Tnx EA5GSA
++STM32: Improved Doppler shift correction when working in "Sat Mode"
++STM32: Secondary encoder mode is stored in memory channels, Tnx Oleksandr
++STM32: Added "Inhibit VOX Button" calibration - disables the hardware VOX button, Tnx RZ3RZ
++STM32: Added experimental support for FT2 mode, requires very precise timing settings to work, Tnx WC1J
++STM32: Added a customizable "PLAY" function button that enables playback or transmission (long press) of the last recorded file on air, Tnx R7KBI, YC1SEI
++STM32: Experimental DPD enabled for lower end transceiver models (be sure to use an external attenuator for calibration)
++STM32: README files describe all types of functional buttons of the transceiver
++STM32: Experimental improvements to the CESSB algorithm
++STM32: Wolf-2PRO: Inverted Mute signal, Tnx SP5TAA
++STM32: Screenshots are now saved in JPG format instead of BMP (minor loss of quality but smaller file size)
++STM32: A JPEG file viewer (for screenshots and some other regular photos) has been added to FileManager.
++STM32: Accelerated downloading and display of images in WiFi services (DayNight/Propagation)
++STM32: Various optimizations in SD card operation
++STM32: A/B button is blocked when FTx decoder is running, Tnx A L
++STM32: Minor AGC fixes in Dual RX mode
++STM32: Bug fixes, Tnx YC1SEI
++STM32: Added submenu SD Card -> Profile Names - custom names of profiles for exporting/importing settings from SD, Tnx UT8EU
++STM32: CAT subsystem improvements, Tnx UT8EU
++STM32: Experimental mode for adjusting RIT/XIT by encoder: now the step is tied to the step of the main encoder / FAST mode, Tnx SP7MFR
++STM32: Wolf-1 with "Fine RIT Tune" turned off, IF adjustment does not begin immediately after RIT is turned off, but only after rotation starts, Tnx R3TKS
++STM32: Improved formatting of the "Sattelites" -> "Calc pass" window output
++STM32: Added menu item "EME Info" displaying basic information on lunar communications + extended information when DXCall is specified
++STM32: Added "VOACAP Map" propagation calculation service, which draws a map of probable signal levels (where you can be heard) for the current frequency/time
++STM32: Wolf-2PRO: Initial support for FSC-BT1035 via SC16IS750 converter (prototype only)
++ESP: More accurate NTP clock sync (new ESP FW required)
++ESP: Fixed intermittent data loss when downloading large amounts of data (day/night and other maps), Tnx WC1J
+
 ----Version 15.5.2----
 +STM32: The S-meter/SWR calibration range of 6-20 MHz is divided into two sub-ranges: 6-12 and 12-20 MHz
 +STM32: Fixed problem with turning on Split DX when VFO-B is active, Tnx SP7MFR
