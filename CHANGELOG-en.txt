@@ -1,3 +1,9 @@
+----Version 16.0.1----
++STM32: Rollback of problematic SD card optimizations
++STM32: Fix for character truncation issues on FFT markers, Tnx SP7MFR
++STM32: Fixed IF Gain adjustment when Fine RIT is disabled, Tnx R3TKS
++STM32: When the Secondary COM Mode is set to ESP, Mute is enabled and the tooltip is displayed, Tnx RV9CT
+
 ----Version 16.0.0----
 +STM32: AF Monitor performance improvements and optimizations
 +STM32: RDS decoder improvements
