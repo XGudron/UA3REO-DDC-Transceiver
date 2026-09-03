@@ -1,3 +1,16 @@
+----Version 16.1.0----
++STM32: Added "DC Filter RX" and "DC Filter TX" settings to the Filters menu - enable/disable the DC corrector (cuts off the constant component and part of the low frequencies), Tnx YC1SEI
++STM32: Pressing the "Files" function button again closes the file manager, Tnx SP7MFR
++STM32: Correction of ATU operation at borderline C/I values
++STM32: Added "FTx Auto Frequency" setting, which allows you to control the FT8 decoder mode - automatically switch to a standard frequency or stay on the selected one, Tnx EA5GSA
++STM32: Improved RDS decoder performance, Tnx DL1EGQ
++STM32: Fixed marker display on FFT, Tnx SP7MFR
++STM32: CAT subsystem improvements, Tnx DJ7NT
++STM32: Slightly faster settings import
++STM32: Wolf-2/Mini: When in the menu, once an item is active, you can long-press the "F" button on the front panel. This will allow you to adjust the parameter using ENC2 directly from the main screen. Tnx R7KBI, RC3RF
++STM32: New customizable "CW KEYB" function key, allowing you to quickly type and transmit any text message via telegraph without using macros
++STM32: AF Monitor now continues to display the signal during SD recording playback (PLAY), Tnx Vitaly
+
 ----Version 16.0.1----
 +STM32: Rollback of problematic SD card optimizations
 +STM32: Fix for character truncation issues on FFT markers, Tnx SP7MFR

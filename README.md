@@ -162,6 +162,7 @@ WiFi module ESP-01 must have fresh firmware from Dropbox<br>
 | **EQ** | TX/RX equalizer window | Same |
 | **SLEEP** | LCD sleep mode | Same |
 | **DXCALL** | Correspondent / QSO info window | Same (touch models) |
+| **DX KEYB** | CW message broadcast window | Same |
 | **MACROS 1…8** | Run CW/SSB/RTTY/PSK macro | Edit macro; long on Macro 1 — Auto CQ toggle |
 | **NONE** | Not assigned | — |
 
@@ -213,6 +214,8 @@ Assignments are editable in *Settings → Front buttons*.
 * **CW LPF Pass** - LPF cutoff frequency when working in CW
 * **CW Gauss filter** - Use a filter with a Gaussian distribution (for CW), accepts only the peak in the center of the BW
 * **CW Gauss Q** - Quality of Gauss filter
+* **DC Filter RX** - Enable DC corrector filter on receive path (cuts off the constant component and part of the low frequencies)
+* **DC Filter TX** - Enable DC corrector filter on transmit path (cuts off the constant component and part of the low frequencies)
 * **DeEmphasis FM, us** - Setting up a filter to reduce high-frequency noise when receiving NFM/WFM
 * **DIGI LPF Pass** - LPF cutoff frequency when working in DIGI
 * **FM LPF Pass** - LPF cutoff frequency when working in FM
@@ -415,6 +418,7 @@ Allowed insertions in macros:
 * **CW Decoder Threshold** - CW receive decoder sensivity
 * **CW Multi-Decoding** - Multiple signal decoding mode in the visible bandwidth
 * **FTx Auto CQ** - Automatic transition to CQ mode after FT8/FT4/FT2 communication
+* **FTx Auto Frequency** - When enabled (default), switches to the standard FT8/FT4/FT2 dial frequency for the current band on decoder start; when disabled, the decoder runs on the current transceiver frequency
 * **FTx Freq** - Selected transmission frequency
 * **FTx Correct time** - Allows you to adjust the time on the transceiver by calculating the average deviation from the FT8/FT4/FT2 decodes
 * **PSK31 Freq** - Carrier center frequency for PSK decoder/encoder
