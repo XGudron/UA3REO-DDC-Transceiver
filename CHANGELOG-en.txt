@@ -1,3 +1,38 @@
+----Version 16.2.0----
++FPGA: Accelerated STM-FPGA data bus
++FPGA: Added experimental DAC modes "DAC Dither" and "DAC Rounding" for spectrum measurements in different modes.
++STM32: Fixed an issue in the FM modulator, Tnx RA9YON
++STM32: Fixed DXCluster FFT operation in 3D FFT mode, Tnx RV9CT
++STM32: Wolf-2: Added "VHF Path for HF Trsv" calibration, allowing transverters with an HF IF to be connected to the motherboard's VHF signal path, Tnx RA3WSA
++STM32: Added NB buffer reset when changing bands, Tnx Andrey
++STM32: Added reset of AFMonitor buffers when starting a macro with disabled Break-In, Tnx SP7MFR
++STM32: CW Keyboard now works correctly with Break-In disabled, Tnx Vitaly
++STM32: Reset BandMap stop flag when changing VFO via A/B function key, Tnx Rudi
++STM32: Corrections in the operation of adjusting menu items on the main screen via ENC2, Tnx RC3RF
++STM32: Removed personal data from Settings export
++STM32: CW Keyboard can now operate in RTTY and PSK31 mode
++STM32: Repeater Mode automatically disables when changing mode, Tnx E72X
++STM32: The names and descriptions of calibrations that adjust recording and playback levels from an SD card have been tidied up, Tnx YC1SEI
++STM32: CW decoder improvements
++STM32: CW multidecoder improvements: decoder markers are retained and continue to operate when frequency tuning
++STM32: "DAC DRV Shutdown" is now enabled by default, the operating logic has been changed: the driver is turned on before the relay and quiescent currents are turned on (to minimize the surge in the antenna/amplifier)
++STM32: Optimization of CPU load during frequency tuning
++STM32: Updated "Screens of Death" to display more useful information for finding the causes of software errors
++STM32: VHF-Board: Eliminated LO leakage in TX path during reception
++STM32: Reduced hold latency on power meter peaks, Tnx Evgeniy
++STM32: Updated the logic for long pressing the "SQL" button, in FM + active noise suppression it switches ENC2 to SQL mode, in others it opens the FM/VAD Squelch adjustment in the menu, Tnx R1CDZ
++STM32: Improvements to the "CW Keyboard" feature, added the ability to send a message without closing the window, Tnx BI4JWL
++STM32: Removed "DRV" menu, replaced with "QUICK" menu with quick access to various useful functions, Tnx R3TKS
++STM32: AFMonitor always works when the equalizer window is open, Tnx R7KBI
++STM32: Decoder line active during CW Keyboard operation
++STM32: Added a new type of DNR for CW mode Adaptive Line Enhancer (ALE), helps to improve signal strength at low SNR
++STM32: Enabling USB SD Card Reader no longer blocks the transceiver (but blocks the SD card from the firmware)
++STM32: N1MM when working in RRTY does not switch the transceiver to DIGI if it is already in RTTY mode, Tnx RM0A
++STM32: Added the ability to log ADIF communication on the SD card and network log to the "DX Call" window, Tnx RX3PX,R6UA
++STM32: Added the ability to use SPI FLASH as a small slow SD card, Tnx UT8EU
++STM32: Added "Dual FFT" mode - with Dual RX active, the spectrum and waterfall are split into two windows with independent display of VFO-A and VFO-B. Experimental, may be unstable
++STM32: Fixed issues with closing the SWR analyzer, Tnx RK6ZH
+
 ----Version 16.1.0----
 +STM32: Added "DC Filter RX" and "DC Filter TX" settings to the Filters menu - enable/disable the DC corrector (cuts off the constant component and part of the low frequencies), Tnx YC1SEI
 +STM32: Pressing the "Files" function button again closes the file manager, Tnx SP7MFR

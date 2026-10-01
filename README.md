@@ -162,7 +162,7 @@ WiFi module ESP-01 must have fresh firmware from Dropbox<br>
 | **EQ** | TX/RX equalizer window | Same |
 | **SLEEP** | LCD sleep mode | Same |
 | **DXCALL** | Correspondent / QSO info window | Same (touch models) |
-| **DX KEYB** | CW message broadcast window | Same |
+| **CW KEYB** | CW/RTTY/PSK message broadcast window | Same |
 | **MACROS 1…8** | Run CW/SSB/RTTY/PSK macro | Edit macro; long on Macro 1 — Auto CQ toggle |
 | **NONE** | Not assigned | — |
 
@@ -321,6 +321,7 @@ Assignments are editable in *Settings → Front buttons*.
 
 ### CW Settings
 
+* **Adaptive Line Ench** - Adaptive Line Enhancer - extracts a weak CW tone out of noise; works in CW mode, most effective at low SNR
 * **Auto CW Mode** - Automatic switching to CW mode when pressing the key, or only manipulation during transmission
 * **DotToDash Rate** - Keyer dash to dot length rate
 * **Debounce Rate** - The response threshold of the CW key anti-bounce system relative to the dot length
@@ -371,6 +372,7 @@ Allowed insertions in macros:
 * **Bottom navi buttons** - Show bottom menu navigation buttons (for 7 inch displays)
 * **Color Theme** - Select colors theme (0 - black, 1 - white, 2 - black with colored frequency)
 * **Layout Theme** - Select interface theme (0 - default)
+* **Dual FFT** - Splits the spectrum and waterfall into two windows: the top one shows VFO-A, the bottom one VFO-B (works with Dual RX enabled). Each window has its own BandMap, frequency labels and AGC indicator
 * **FFT 3D Mode** - Enable FFT 3D mode (0 - disabled, 1 - lines, 2 - pixels)
 * **FFT 3D Slides** - Number of 3D FFT slides to display spectrum history
 * **FFT 3D X Offset** - Adjusting 3D FFT Perspective in X
@@ -442,12 +444,12 @@ Allowed insertions in macros:
 ### SD Card
 
 * **File Manager** - Show SD Card file manager, support WAV playback and deleting files, listening and broadcasting recordings, as well as updating firmware from a memory card
-* **Record CQ message** - Record a short message for quick broadcast
-* **USB SD Card Reader** - Enable USB SD Card reader
 * **Profile Names** - Custom profile labels (up to 3 characters) for export/import settings and calibration buttons
 * **Export Settings** - Export settings and calibration data to SD card
 * **Import Settings** - Import settings and calibration data from SD card
 * **Format SD card** - Format media drive
+* **Use FLASH as SD** - Use SPI FLASH as a small, slow SD card. Remember to format it before use. Not intended for audio recording.
+* **USB SD Card Reader** - Enable USB SD Card reader
 
 ### Satellites
 
@@ -517,8 +519,10 @@ The following fields are shown **only when DX Call is set** (correspondent calls
 * **BPF x** - Bandpass filter parameters
 * **HPF START** - HPF filter parameters
 * **LPF END** - LPF filter parameters
+* **DAC Dither** - Adds TPDF dither noise (~±1 LSB) before the DAC quantizer, decorrelating quantization spurs into broadband noise
 * **DAC Driver Mode** - DAC Driver OPA2673 bias mode (2 = 100% bias, 1 = 75% bias, 0 = 50% bias)
 * **DAC Interpolation** - Using interpolation in the first DAC frequency zone (HF)
+* **DAC Rounding** - Convergent (round-half-to-even) rounding of the DAC quantizer instead of truncation
 * **EXT xxx** - External port control by band (EXT3, EXT2, EXT1, EXT0) - open drain
 * **External ATT** - Connecting control for an external attenuator 3-6-12 dB (Wolf-2)
 * **Encoder acceleration** - The encoder acceleration on faster rotation speeds
@@ -561,6 +565,7 @@ The following fields are shown **only when DX Call is set** (correspondent calls
 * **VHF Mixer Current** - Selecting the mixer current level
 * **VHF TCXO, kHz** - Select TCXO frequency for VHF board
 * **VHF TCXO Correction** - Correction for VHF board TCXO generator frequency offset
+* **VHF Path for HF Trsv"** - Enabling the VHF path on the motherboard when using transverters with HF IF (Wolf-2)
 
 ### Calibration RF Power
 * **DAC Max Boost M1/2*** - Allows the DAC to reach maximum output power in two operating modes. Mode 2 is used in the 46-65 MHz range, Mode 1 in all other ranges. Use with caution and avoid overloading the W2 VHF board / HF drivers. Do not switch when in active TX
@@ -568,9 +573,9 @@ The following fields are shown **only when DX Call is set** (correspondent calls
 * **Sigmoid coeff** - Slope of the power control curve in Power Control mode = Sigmoid
 * **Use Power table** - Use the correction table to accurately set the % of the maximum amplifier power, taking into account its nonlinearity (table calibration is performed in the service menu "Auto calibration" -> "Calibrate PWR %")
 * **MAX Power in TUNE** - Maximum RF power in Tune mode
-* **SD Macros power** - Signal gain when playing SSB macros
-* **SD Recording power** - Signal gain coefficient when playing live recordings
-* **SD TX Record level** - The recording level of your own signal on the memory card during transmission / macros recording
+* **SD TX Macros Level** - Signal gain coefficient when transmitting SSB macros (percent, 1 = 100%)
+* **SD TX Record Level** - Signal gain coefficient when transmitting live recordings (percent, 1 = 100%)
+* **SD Input Record Level** - The recording level of your own signal on the memory card during transmission / macros SSB recording (percent, 1 = 100%)
 * **SSB Power addition** - Addition of RF power in SSB power, %
 * **RF GAIN xxx** - Calibration of the maximum TX output power for each range (DAC Amplitude)
 * **PA RF GAIN xxx** - Analogue of RF GAIN, but for operation with an external amplifier (EXT PA Mode)
