@@ -1,3 +1,17 @@
+----Version 16.3.0----
++HARDW: Added schematic/gerberas for the additional BPF filter board, by RX3PX
++FPGA: Experiments with interference suppression at +-48 kHz from the carrier, by Tnx RA9YON
++STM32: Wolf-2: Reinstated the "RF Filters" calibration, by Tnx R1BLT
++STM32: Inverted the "AGC" stripe colors on the spectrum, by Tnx RK6ZH
++STM32: RX equalizer is now additionally applied to the sidetone path, by Tnx RM0A
++STM32: Improved firmware startup without a working FPGA, replacing NO-FPGA firmware, Tnx UB3DKI
++STM32: Added file system auto-formatting upon first activation of "Flash as SD", by Tnx UT8EU
++STM32: The "TX" function button changes color when switching to transmit, by Tnx RA9YON
++STM32: ALE in the DNR window only appears in CW mode + has its own button to disable, Tnx SP7MFR
++STM32: Expanded Quick menu, Tnx SP7MFR
++STM32: When Dual mode is active, the Quick menu expands to display the Dual RX Type mode control buttons, Tnx R6DGJ
++STM32: Various bug and issue fixes, Tnx UA9YHI, YC1SEI, SP7MFR, Andrey, Oleksandr, RK6ZH, RA9YON
+
 ----Version 16.2.0----
 +FPGA: Accelerated STM-FPGA data bus
 +FPGA: Added experimental DAC modes "DAC Dither" and "DAC Rounding" for spectrum measurements in different modes.
