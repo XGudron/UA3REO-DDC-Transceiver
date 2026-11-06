@@ -76,7 +76,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * WiFi operation: Time synchronization, external WiFi services
 * Tangent support Yaesu MH-48 and MH-36
 * Hardware self-testing
-* CTCSS subtones and 1750 kHz start tone for opening repeaters
+* CTCSS subtones, DCS codes and 1750 kHz start tone for opening repeaters
 * Assistance for visually impaired operators
 * Digital Pre Distortion
 * CW-trainer
@@ -283,6 +283,7 @@ Assignments are editable in *Settings → Front buttons*.
 * **CESSB** - Enable controlled-envelope single-sideband modulation
 * **CESSB Compress, dB** - Signal pre-amplification level before compression in CESSB
 * **CTCSS Frequency** - Transmit FM CTCSS sub-tone frequency
+* **DCS Code** - Transmit FM DCS (Digital Coded Squelch) code, 000 = off
 * **DRV Shutdown** - Turn off the DAC driver while RX
 * **EXT PA mode** - Operating mode with external amplifier, separately installed RF Gain calibrations are used
 * **EXT PTT in PA mode** - Send PTT signal to External connector only in "EXT PA mode"
@@ -586,6 +587,7 @@ The following fields are shown **only when DX Call is set** (correspondent calls
 * **CICCOMP Shift** - Bit shift after CIC compensator
 * **S METER** - S-meter calibration  (LHF 160/80, MHF 40/30/20/17, HHF 15/12/10, 6M, VHF, SHF)
 * **Swap USB IQ** - Swap USB IQ output
+* **Dual USB IQ** - Outputs raw IQ of both VFOs over USB instead of IQ + demodulated audio: "IQ WOLF Transceiver" device - VFO-A, "AUDIO WOLF Transceiver" device - VFO-B (with Dual RX off, both devices carry the current VFO's IQ). IQ output works only in 2x24 bit mode, it does not work in 1x16 bit mode
 
 ### Calibration TX
 * **AM Modulation Index** - Set TX AM Modulation Scale

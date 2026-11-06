@@ -1,4 +1,19 @@
-----Version 16.3.0----
+----Version 16.4.0----
++FPGA: Increased the order of the DUC anti-aliasing filter (both versions 16.4.0 and 16.3.0 are running during the experiment)
++STM32: FT8 interface improvements: added scrolling, a second column for callers, control of the lower buttons, and more. Author: R6AEB
++STM32: FT8: Added a caller response script; you can now respond directly with a report. Author R6AEB
++STM32: To improve stability, the FPGA firmware is checked twice from the SD card.
++STM32: Added DCS (Digital-Coded Squelch) code transmission function, not yet tested, Tnx UB4RGZ
++STM32: Improved compatibility of DualFFT and Split DX functions, Tnx SP7MFR
++STM32: Improved screenshot/JPEG viewer performance, Tnx SP7MFR, Andrey
++STM32: Rollback of experimental CESSB improvements from 16.0.0, Tnx Andrey
++STM32: Experimental improvements to TX AGC for fast recovery from sharp peaks in the microphone signal
++STM32: Added "Dual USB IQ" RX calibration: raw IQ of two VFOs is output via USB instead of IQ + demodulated signal, Tnx Dire Wolf
++STM32: Minor changes Autocalibration screen design, Tnx R7KBI
++STM32: AF Monitor resolution now adjusts to filter bandwidth, Tnx RX3PX
++STM32: AGC spectrum bar colors now vary depending on RX/TX, Tnx RK6ZH
+
+----Version 16.3.2----
 +HARDW: Added schematic/gerberas for the additional BPF filter board, by RX3PX
 +FPGA: Experiments with interference suppression at +-48 kHz from the carrier, by Tnx RA9YON
 +STM32: Wolf-2: Reinstated the "RF Filters" calibration, by Tnx R1BLT
