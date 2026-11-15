@@ -1,3 +1,32 @@
+----Version 16.5.0----
++FPGA: Various DDC/DUC/PLL code optimizations
++STM32: Added support for synchronization with DS3231 real-time clocks connected to the I2C bus, Tnx R3TAR
++STM32: Experimental TX AGC fast recovery enhancements can now be disabled in the TX -> AGC Fast Restore menu, Tnx RK6ZH
++STM32: "FM Deviation Scale" calibration is now set to "7" by default, Tnx RK6ZH
++STM32: Improvements to the "Add 2nd Harmonics," "Add 3rd Harmonics," and "Add Asymmetry" functions and their default settings
++STM32: Experimental ATU performance improvements; please select a new "ATU Averaging" calibration value to suit your needs, Tnx UT8EU
++STM32: Added lines for the CW-U bandwidth/frequencies to the FFT CW-L, RTTY, PSK31 for RX2 in dual reception, similar to RX1, Tnx SP7MFR
++STM32: Receiver FFT bar colors are now linked to VFO-A/B, not to the current/secondary VFO, Tnx SP7MFR
++STM32: Added a Split field to the automatic transceiver basic structure upload in Wolf-Interface, Tnx R3TLI
++STM32: The "Dual RX Type" setting can now be set to "Current VFO" or "Secondary VFO"
++STM32: Added the "&[ascii_code];" CAT command to emulate a keypress on the on-screen keyboard (8/127 - Backspace, 10/13 - Enter), Tnx R3TLI
++STM32: Reworked the FFT window function to work correctly with strong signals
++STM32: Added the "FFT DeNoise" function, which allows you to remove noise from the FFT spectrum without losing useful signals
++STM32: Improved S-meter operation, Tnx R3TKS, RZ1ZR
++STM32: Fixed the active filter preset button backlight, Tnx R3TKS
++STM32: Added CW "Fake Noise Floor" setting - mixes weak band-limited noise (+-400 Hz around CW pitch) after the AGC, creating an audible noise floor for narrow CW filters
++STM32: Added slight shading of inactive VFO FFT in Dual FFT mode
++STM32: FT8: Reworked the decoder pipeline. Author: R6AEB
++STM32: FT8: Added fractional frequency correction (Sub-bin) with spectral peak position estimation. Author: R6AEB
++STM32: FT8 WOLF-Mini: Added the third stage of multi-stage decoding, **Weak Signal Rescue** — advanced processing of weak, isolated signals using refined demodulation and BP/OSD-2 decoding. Author: R6AEB
++STM32: FT8 WOLF-Mini: Added the fourth stage, **Coherent SIC Rescue** — recovery of overlapping signals through coherent subtraction of previously decoded transmissions (Successive Interference Cancellation), followed by BP/OSD-2 re-decoding. Author: R6AEB
++STM32: FT8: Added adaptive background noise equalization (Noise Equalization) — local noise floor estimation and spectral metric correction to improve weak-signal decoding reliability. Author: R6AEB
++STM32: FT8: Added decoder configuration options to the transceiver's engineering menu. Author: R6AEB
++STM32: FT8:  Corrected highlighting of callsigns and QTHs with which a QSO has already been made. Author: R6AEB
++STM32: Added "SD Test" service to the SD Card menu - memory card diagnostics: allows you to roughly estimate what errors are observed in the operation of the SD card
++STM32: Added the ability to change the host of the Wolf Internet server, to enable the installation of mirroring servers, Tnx Vladimir
++STM32: Various performance optimizations and bug fixes
+
 ----Version 16.4.0----
 +FPGA: Increased the order of the DUC anti-aliasing filter (both versions 16.4.0 and 16.3.0 are running during the experiment)
 +STM32: FT8 interface improvements: added scrolling, a second column for callers, control of the lower buttons, and more. Author: R6AEB

@@ -33,6 +33,7 @@ typedef struct { // TRX information structure
 	char CAT_Answer[64];
 	bool TX;
 	bool Tune;
+	bool SPLIT_Enabled;
 } tWOLF;
 
 typedef struct { // Interface information structure

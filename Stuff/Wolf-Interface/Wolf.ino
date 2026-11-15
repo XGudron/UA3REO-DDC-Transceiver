@@ -68,6 +68,9 @@ static void WOLF_i2c_background_task(void *arg) {
 			if (WOLF_inBuff[0] == 0x08) {
 				i2c_slave_read_buffer(WOLF_I2C_SLAVE_NUM, (uint8_t *)&TRX_WOLF.Tune, sizeof(TRX_WOLF.Tune), 100 / portTICK_RATE_MS);
 			}
+			if (WOLF_inBuff[0] == 0x09) {
+				i2c_slave_read_buffer(WOLF_I2C_SLAVE_NUM, (uint8_t *)&TRX_WOLF.SPLIT_Enabled, sizeof(TRX_WOLF.SPLIT_Enabled), 100 / portTICK_RATE_MS);
+			}
 			continue;
 		}
 

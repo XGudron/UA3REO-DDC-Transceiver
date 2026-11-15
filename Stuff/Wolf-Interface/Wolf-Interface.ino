@@ -26,6 +26,7 @@ void loop() {
 	Serial.println("VFO B Mode: " + WOLF_modeToString(TRX_WOLF.VFO_B_Mode));
 	Serial.println("In TX? " + String(TRX_WOLF.TX ? "Yes" : "No"));
 	Serial.println("In Tune? " + String(TRX_WOLF.Tune ? "Yes" : "No"));
+	Serial.println("SPLIT Enabled? " + String(TRX_WOLF.SPLIT_Enabled ? "Yes" : "No"));
 
 	String CAT_Answer = WOLF_catCommand("SM2"); // run CAT command and get answer
 	Serial.println("CAT Answer (S-Meter dBm RX1): " + CAT_Answer);

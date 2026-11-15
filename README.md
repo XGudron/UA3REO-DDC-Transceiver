@@ -327,6 +327,7 @@ Assignments are editable in *Settings → Front buttons*.
 * **DotToDash Rate** - Keyer dash to dot length rate
 * **Debounce Rate** - The response threshold of the CW key anti-bounce system relative to the dot length
 * **Edges smooth, ms** - Smoothing signal edges
+* **Fake Noise Floor** - Mixes weak band-limited noise (±400 Hz around CW pitch) after the AGC, creating an audible noise floor on narrow filters to ease weak-signal reception; 0 - off, then +3 dB/step from -50 dB
 * **Iambic Keyer** - Enable Iambic mode keyer
 * **Iambic Type** - Type of Iambic keyer (A/B)
 * **Key Invert** - Invert dash/dot on key
@@ -371,29 +372,26 @@ Allowed insertions in macros:
 * **AF Monitor** - Display of the AF (audio) signal in frequency and time domains under the waterfall. Off - disabled, TX Only - during transmission, Always - continuously on RX and TX
 * **AF Monitor Time** - Time-domain window length for AF Monitor
 * **Bottom navi buttons** - Show bottom menu navigation buttons (for 7 inch displays)
+* **Cluster Mask** - Cluster spot filtering by callsign mask: * - any count of characters, ? - any one character, numbers-letters - full match. For example "?A3R*"
 * **Color Theme** - Select colors theme (0 - black, 1 - white, 2 - black with colored frequency)
-* **Layout Theme** - Select interface theme (0 - default)
 * **Dual FFT** - Splits the spectrum and waterfall into two windows: the top one shows VFO-A, the bottom one VFO-B (works with Dual RX enabled). Each window has its own BandMap, frequency labels and AGC indicator
+* **DX Cluster Type** - Selecting a Data Source for a DX Cluster (RBN, DXSummit, Telnet)
 * **FFT 3D Mode** - Enable FFT 3D mode (0 - disabled, 1 - lines, 2 - pixels)
 * **FFT 3D Slides** - Number of 3D FFT slides to display spectrum history
 * **FFT 3D X Offset** - Adjusting 3D FFT Perspective in X
 * **FFT 3D Y Offset** - Adjusting 3D FFT Perspective in Y
 * **FFT Automatic** - Automatic FFT scale
 * **FFT Averaging** - FFT burst averaging level. Full - automatic selection of upper and lower boundaries, Half - auto lower and manual upper, No - manual setting of the range of spectrum levels. (Remember to select the correct FFT Scale Type so that your range will fit on the screen)
-* **FFT BW Style** - FFT bandwidth style: high opacity, low opacity, lines
-* **FFT BW Position** - Position of the receiving band on FFT/WTF (everywhere \ at the top \ at the top + lines \ top + bottom with time delay)
 * **FFT Background** - Gradient FFT background
+* **FFT BW Position** - Position of the receiving band on FFT/WTF (everywhere \ at the top \ at the top + lines \ top + bottom with time delay)
+* **FFT BW Style** - FFT bandwidth style: high opacity, low opacity, lines
 * **FFT Color** - FFT colors: 1(blue -> yellow -> red), 2(black -> yellow -> red), 3(black -> yellow -> green), 4(black -> red), 5(black -> green), 6(black -> blue), 7(black -> white)
 * **FFT Compressor** - Enable FFT peak comressor
-* **DX Cluster Type** - Selecting a Data Source for a DX Cluster (RBN, DXSummit, Telnet)
-* **FFT DXCluster** - Show DXCluster info over FFT
+* **FFT dBm Grid** - FFT signal power grid
+* **FFT DeNoise** - Spectrum and waterfall noise reduction
 * **FFT DXCluster Azimuth** - Add azimuth data to DX-cluster
 * **FFT DXCluster Timeout** - Timeout of DX-cluster spots in minutes
-* **TELNET Cluster Host** - Telnet server address for DX cluster
-* **TELNET Cluster Port** - Telnet server port for DX cluster
-* **Cluster Mask** - Cluster spot filtering by callsign mask: * - any count of characters, ? - any one character, numbers-letters - full match. For example "?A3R*"
-* **WOLF Cluster** - Display Wolf TRX users on spectrum and send self data
-* **WOLF Cluster Models** - Enables display of user transceiver models in the wolf cluster
+* **FFT DXCluster** - Show DXCluster info over FFT
 * **FFT Enabled** - Enable waterfall and FFT
 * **FFT Freq Grid** - FFT and waterfall grids: 1(no grid), 2(fft grid), 3(fft+wtf grids), 4(wtf grid)
 * **FFT Height** - FFT and waterfall proportional height
@@ -407,12 +405,16 @@ Allowed insertions in macros:
 * **FFT Speed** - FFT and waterfall speed
 * **FFT Style** - FFT style: 1(gradient), 2(fill), 3(dots), 4(contour), 5(gradient + contour)
 * **FFT Window** - Select FFT window function
-* **FFT dBm Grid** - FFT signal power grid
 * **LCD Brightness** - Set LCD brightness (not all lcd support)
 * **LCD Sleep Timeout** - Idle time before the screen brightness decreases, sec (0 - disabled)
-* **S-Meter style** - Selecting layout of the analog S-Meter
+* **Layout Theme** - Select interface theme (0 - default)
 * **S-Meter smooth** - Smoothing coefficient of the S-meter value
+* **S-Meter style** - Selecting layout of the analog S-Meter
 * **Show Sec VFO** - Show secondary VFO position on spectrum
+* **TELNET Cluster Host** - Telnet server address for DX cluster
+* **TELNET Cluster Port** - Telnet server port for DX cluster
+* **WOLF Cluster** - Display Wolf TRX users on spectrum and send self data
+* **WOLF Cluster Models** - Enables display of user transceiver models in the wolf cluster
 * **WTF Color** - Waterfall colors: 1(blue -> yellow -> red), 2(black -> yellow -> red), 3(black -> yellow -> green), 4(black -> red), 5(black -> green), 6(black -> blue), 7(black -> white)
 * **WTF Moving** - Mowe waterfall with frequency changing
 
@@ -424,6 +426,11 @@ Allowed insertions in macros:
 * **FTx Auto Frequency** - When enabled (default), switches to the standard FT8/FT4/FT2 dial frequency for the current band on decoder start; when disabled, the decoder runs on the current transceiver frequency
 * **FTx Freq** - Selected transmission frequency
 * **FTx Correct time** - Allows you to adjust the time on the transceiver by calculating the average deviation from the FT8/FT4/FT2 decodes
+* **FTx List Sort** - Allows sorting displayed stations by distance, signal strength, or decoding order in FT8/FT4/FT2
+* **FTx Show CQ** - Enables/disables the display of stations making general CQ calls in FT8/FT4/FT2
+* **FTx Show Other** - Enables/disables the display of stations that are neither making general CQ calls nor calling your station in FT8/FT4/FT2
+* **FTx Show Calls** - Enables/disables the display of stations calling your station in FT8/FT4/FT2
+* **FTx Auto Reply** - Allows configuring the priority for automatically selecting a station to reply to when multiple stations respond to your CQ call in FT8/FT4/FT2
 * **PSK31 Freq** - Carrier center frequency for PSK decoder/encoder
 * **RDS Decoder** - Enable RDS Decoder for WFM mode
 * **RTTY Freq** - Central frequency of RTTY decoding
@@ -439,6 +446,7 @@ Allowed insertions in macros:
 * **WIFI Network** - WiFi hotspot selection
 * **WIFI Network Pass** - Set password for WiFi hotspot
 * **WIFI NTP Server** - Selecting the NTP time synchronization server address
+* **WIFI Services Host** - Selecting the Wolf server address for online services
 * **ALLQSO.RU Token/LogId** - Token and LogID from https://allqso.ru/ web-log
 * **Wavelog** - Integration settings with https://www.wavelog.org/ web-log
 
@@ -451,6 +459,7 @@ Allowed insertions in macros:
 * **Format SD card** - Format media drive
 * **Use FLASH as SD** - Use SPI FLASH as a small, slow SD card. Remember to format it before use. Not intended for audio recording.
 * **USB SD Card Reader** - Enable USB SD Card reader
+* **SD Test** - Memory card diagnostic service: card parameters and mount status, init command probe (CMD0/CMD8/ACMD41 etc.), CSD/CID/SD_STATUS register dump and parsing, 1 MB pattern write/read verify test, CRC/SPI/command error counters
 
 ### Satellites
 
@@ -524,6 +533,7 @@ The following fields are shown **only when DX Call is set** (correspondent calls
 * **DAC Driver Mode** - DAC Driver OPA2673 bias mode (2 = 100% bias, 1 = 75% bias, 0 = 50% bias)
 * **DAC Interpolation** - Using interpolation in the first DAC frequency zone (HF)
 * **DAC Rounding** - Convergent (round-half-to-even) rounding of the DAC quantizer instead of truncation
+* **DS3231 RTC** - Use an external DS3231 RTC module on the I2C bus as a time source: time is loaded into the internal clock at power-on and every 2 minutes; SNTP sync and manual time setting are written back to the module
 * **EXT xxx** - External port control by band (EXT3, EXT2, EXT1, EXT0) - open drain
 * **External ATT** - Connecting control for an external attenuator 3-6-12 dB (Wolf-2)
 * **Encoder acceleration** - The encoder acceleration on faster rotation speeds
@@ -603,6 +613,12 @@ The following fields are shown **only when DX Call is set** (correspondent calls
 * **TSignal Balance** - Sets the power balance between signals in Two signal tune mode
 * **TX Start Delay** - Delay before the RF signal is applied (ms), so that the relay has time to trigger
 * **TX End Delay** - Delay when switching from TX to RX (stopping the signal until the relay turns off)
+
+### Decoder
+* **FT8 Costas Treshol** -   Value from 8 to 12. Controls decoder sensitivity: the lower the value, the more sensitive the decoder
+* **FT8 Sub-bin Corr** - Enables/disables fractional frequency correction for received stations
+* **FT8 Noise EQ** - Enables/disables adaptive background noise equalization
+* **FT8 Local Refine** - Enables/disables local time and frequency refinement of FT8 signals after an unsuccessful decoding attempt
 
 ### Calibration Reset
 * **Settings reset** - Reset all settings to defaults
