@@ -1,3 +1,6 @@
+----Version 16.5.1----
++STM32: Fixed bug in DSP microphone circuit, Tnx SP7MFR
+
 ----Version 16.5.0----
 +FPGA: Various DDC/DUC/PLL code optimizations
 +STM32: Added support for synchronization with DS3231 real-time clocks connected to the I2C bus, Tnx R3TAR
