@@ -1,0 +1,253 @@
+#pragma once
+static const char PANEL[] PROGMEM = R"WOLF(<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0c1420"><title>WOLF · Панель трансивера</title>
+<style>
+:root{color-scheme:dark;--ice:#68dcff;--green:#a9f59a;--text:#e3edf5;--grey:#a4b1c0;--line:#334150;--bg:#111b27;--mono:ui-monospace,"Cascadia Mono",Consolas,monospace}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#203346,#0c131b 62%);color:var(--text);font:15px system-ui,Arial,sans-serif;min-height:100vh}main{max-width:1440px;margin:auto;padding:0 clamp(12px,3vw,48px) 30px}header,footer,.topline,.between,.lamps,.keys,.row,nav{display:flex;align-items:center}header,footer,.between,.topline{justify-content:space-between;gap:12px}header{min-height:78px}.identity{display:flex;align-items:center;gap:13px}.mark{width:36px;color:var(--ice);height:39px}.brand{font-size:23px;letter-spacing:.17em;font-weight:850}.sub{border-left:1px solid #466071;padding-left:14px;color:#a7b6c2;font-size:14px}.lamps{gap:12px;flex-wrap:wrap}.led{display:inline-flex;align-items:center;gap:7px;font:12px var(--mono);color:var(--grey)}.led:before{content:"";width:7px;height:7px;background:#758291;border-radius:50%}.led.good:before{background:var(--green);box-shadow:0 0 8px #91ef8b88}.led.bad:before{background:#ffa979}time{font:14px var(--mono);color:#adbfca}.shell{border:1px solid #384553;border-radius:14px;background:linear-gradient(115deg,#1b2734,#121d29 70%);box-shadow:0 14px 46px #0005,inset 0 1px #50606c50;padding:clamp(10px,1.3vw,19px)}.rxgrid{display:grid;grid-template-columns:minmax(203px,.85fr) minmax(260px,1.45fr) minmax(210px,1fr);gap:9px}.screen{background:linear-gradient(160deg,#101d29,#08131c);border:1px solid #354856;border-radius:7px;box-shadow:inset 0 3px 10px #0006}.meterbox{position:relative;padding:10px 12px;min-height:132px}.small,.scale,.eyebrow{font:11px var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--grey)}.eyebrow{color:var(--ice)}.dial{width:100%;height:77px;display:block}.strong{font:700 16px var(--mono);color:var(--green)}.vfo{padding:15px clamp(11px,1.3vw,20px);display:flex;flex-direction:column;justify-content:space-between;gap:7px;border-top:2px solid #41525f}.vfo.active{border-top-color:var(--green)}.vfo.active .freq{color:var(--green);text-shadow:0 0 15px #75ee5d33}.freq{font:600 clamp(24px,3.25vw,59px)/1.2 var(--mono);letter-spacing:-.075em;color:#c8d6e1;white-space:nowrap}.freq span{color:#607a70}.vfo small{font:12px var(--mono);color:#b5c2ce}.rxlabel,.mode{font:700 12px var(--mono);border-radius:4px;padding:3px 7px;color:var(--ice);background:#183647}.rxlabel.live{color:#172b18;background:var(--green)}.rxlabel.tx{background:#ff9078;color:#361a12}.row,nav,.keys{gap:6px;flex-wrap:wrap}button,select,input{font:inherit}button,select{color:#dce6f1;background:linear-gradient(#354656,#273642 48%,#202b37 52%,#253240);border:1px solid #435463;border-bottom-color:#101a24;border-radius:5px;box-shadow:inset 0 1px #60738570,0 2px 0 #081019;padding:7px 12px;cursor:pointer}button{font-size:13px;font-weight:660}button:enabled:hover{border-color:#74bace}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--ice);outline-offset:2px}button:active:enabled{transform:translateY(1px)}button.on,button[aria-pressed=true]{color:#b8f7a3;background:linear-gradient(#3e574b,#23382f);box-shadow:inset 0 1px #a6e7a677,0 2px #0b150e;border-color:#588463}button:disabled{cursor:default;color:#81909d}.keys button{min-width:54px;flex:1}.bandbar{margin:12px 0}.overview{display:grid;grid-template-columns:minmax(0,2.5fr) minmax(238px,.9fr);gap:10px}.plot{padding:16px 17px 10px;border-radius:7px;background:#0b1723;border:1px solid var(--line)}h2{font-size:16px;line-height:1.2;margin:0;font-weight:700}.plot .between{align-items:baseline}canvas{width:100%;display:block;height:clamp(160px,22vh,250px)}.scale{display:flex;justify-content:space-between;letter-spacing:0;font-size:10px;margin:0 3px 0 35px}.tune{padding:14px;background:#182431;border:1px solid var(--line);border-radius:7px;display:flex;flex-direction:column;justify-content:space-between;gap:13px}.tune label{font-size:12px;color:#b2bdc9;display:block;margin-bottom:5px}.field{display:flex;gap:5px}.field input{min-width:0;width:100%}input{color:var(--text);background:#0a1520;border:1px solid #455462;border-radius:4px;padding:7px 9px;font-family:var(--mono)}.tune .row{flex-wrap:nowrap}.tune select{min-width:0;flex:1;font-size:13px}select option{background:#192b3a}.groups{margin:12px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}.block{border:1px solid var(--line);border-radius:7px;padding:12px;background:#15212c}.block h2{margin-bottom:10px}.block .keys{gap:5px}.keys button:before{display:block;content:"";height:2px;width:13px;border-radius:4px;background:#647483;margin:0 auto 5px}.keys .on:before{background:var(--green);box-shadow:0 0 6px #a5eab2}.strip{display:flex;align-items:center;flex-wrap:wrap;gap:9px;border-top:1px solid #384753;padding-top:12px}.strip button{min-height:40px}.ptt{border-color:#895649;color:#ffb1a1;background:linear-gradient(#553a34,#382b2a);touch-action:none;user-select:none}.ptt.held{background:#c14e39;color:white}.hold{touch-action:none;user-select:none}.strip #note{font-size:12px;color:#b2c4d2;flex:1;text-align:right}.panel{margin-top:14px;padding:0 2px}details{border-bottom:1px solid #344451}summary{cursor:pointer;font-weight:700;padding:14px 1px}.readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(143px,1fr));gap:7px;padding:4px 0 12px}.tile{padding:10px;background:#14202c;border-radius:5px}.tile small{display:block;color:#a8b7c5;font-size:11px}.tile b{font:600 17px var(--mono);display:block;margin:6px 0 0}.diag{font:12px/1.55 var(--mono);color:#bbd2df;overflow-wrap:anywhere}.panel .row{margin-bottom:12px}.panel input{max-width:100%}footer{margin-top:14px;color:#8597a5;font:11px var(--mono);flex-wrap:wrap}.unit{color:#adc4d4;font:12px var(--mono)}[hidden]{display:none!important}@media(min-width:1000px){.vfo:nth-child(3) .freq{font-size:clamp(27px,2.6vw,44px)}}@media(max-width:850px){.rxgrid{grid-template-columns:1fr 1fr}.meterbox{grid-column:1/-1;min-height:0;display:grid;grid-template-columns:100px 1fr 95px;align-items:center}.dial{height:60px}.overview{grid-template-columns:1fr}.tune{display:grid;grid-template-columns:1fr 1fr;align-items:end}.tune h2{grid-column:1/-1}.groups{grid-template-columns:1fr}.sub{display:none}}@media(max-width:530px){main{padding:0 8px 18px}header{min-height:62px}.brand{font-size:19px}.mark{width:27px}.lamps{gap:7px}time{display:none}.rxgrid{gap:5px}.freq{font-size:clamp(19px,5.2vw,30px)}.vfo{padding:9px 7px}.meterbox{grid-template-columns:55px 1fr 70px;padding:4px 8px}.small,.eyebrow{font-size:10px}.tune{display:flex;align-items:stretch}.keys button{min-width:47px;padding:6px}.strip #note{flex-basis:100%;text-align:left}.plot{padding:12px 8px}.plot h2{font-size:14px}.brand+span{display:none}.shell{padding:8px}.led{font-size:10px}}
+.wordmark{display:flex;flex-direction:column;align-items:flex-start;line-height:1.05}.wordmark small{font:8px var(--mono);letter-spacing:.22em;color:#a1b5c7;margin-top:3px}.settingsLink{font-size:13px;color:#d5edf7;text-decoration:none;border:1px solid #445565;border-radius:5px;padding:7px 10px;background:#233342}.settingsLink:hover{border-color:var(--ice)}@media(max-width:530px){.settingsLink{font-size:12px;padding:6px}.identity{gap:6px}}
+#digital{margin:12px 0 0;background:#101f2b;border:1px solid var(--line);border-radius:7px;padding:0 14px}#digital summary small{margin-left:8px;color:var(--ice);font:12px var(--mono)}#digital p{font-size:13px;color:var(--grey);margin:0 0 10px}#digital a{color:var(--ice)}.decodes{width:100%;max-height:310px;overflow:auto;margin-bottom:12px}.decodes table{border-collapse:separate;border-spacing:0;width:100%;text-align:left;font:13px/1.5 var(--mono)}.decodes th,.decodes td{white-space:nowrap;border-bottom:1px solid #2a3d4b;padding:5px 9px}.decodes th{position:sticky;top:0;background:#1e303f;color:#bdccda;font-size:11px}.decodes td:nth-child(3){color:var(--green);font-weight:650}
+#digital{min-width:0;margin:0;min-height:202px;padding:15px}#digital p{margin:10px 0 12px}.audio-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:0 0 10px}.audio-controls small{color:var(--grey)}.audio-controls button{margin-top:4px;min-height:30px}.knob{position:relative;width:48px;height:48px;touch-action:none;cursor:ns-resize;border:3px solid #516775;border-radius:50%;background:radial-gradient(circle at 38% 30%,#546b7d,#243341 57%,#111b25 80%);box-shadow:0 2px 4px #0009,inset 0 0 0 2px #15232d}.knob:after{content:"";position:absolute;left:calc(50% - 2px);top:4px;width:4px;height:12px;border-radius:2px;background:var(--ice);transform-origin:2px 17px;transform:rotate(var(--angle));box-shadow:0 0 5px #68dcff88}.knob:focus-visible{outline:2px solid var(--ice);outline-offset:3px}
+.vfo{position:relative}.vfoSelect{position:absolute;inset:0;background:transparent!important;border:0!important;border-radius:6px;box-shadow:none!important;z-index:1}.vfoSelect:enabled:hover{outline:1px solid var(--ice)}.vfoSelect:focus-visible{outline:2px solid var(--ice);outline-offset:0}.vfo .between:last-child{min-height:42px}.encoder{z-index:2;position:relative;width:46px;height:46px;min-width:46px;transform:translateX(8px);padding:0;border-radius:50%;border:2px solid #506671;box-shadow:0 3px 5px #0009,inset 0 0 0 3px #26343a;background:repeating-conic-gradient(#526777 0 5deg,#273b48 6deg 13deg);touch-action:none;cursor:grab;user-select:none}.encoder:active{cursor:grabbing}.encoder span{position:absolute;inset:3px;border-radius:50%;background:radial-gradient(circle at 38% 28%,#566570,#192934 80%);transform:rotate(var(--turn,0deg))}.encoder span:after{content:"";position:absolute;top:2px;left:calc(50% - 2px);width:4px;height:9px;border-radius:3px;background:var(--green)}.antennaBox{position:relative}.antList{position:absolute;bottom:110%;left:0;background:#142432;border:1px solid #536875;padding:5px;border-radius:6px;z-index:4;display:grid;gap:4px;min-width:100px}.antList button{white-space:nowrap}#cqInfo{font-size:12px}#cqHelp{padding:8px;border-left:2px solid var(--ice)}
+#frontKeys{display:contents}.strip button{white-space:nowrap}.strip:has(#frontKeys){gap:5px;flex-wrap:wrap}.strip:has(#frontKeys) button{padding-inline:8px}#note{flex-basis:100%}#pan{min-width:0;padding:14px;border:1px solid var(--line);border-radius:7px;background:#0c1823}#pan a{color:var(--ice);font-size:13px}#pan p,#spotStatus,.axis{font:12px var(--mono);color:var(--grey)}#pan canvas{display:block;width:100%;background:#09131c}#spectrum{height:114px}#water{height:96px}.axis{margin:4px 0}.plot[hidden]{display:none!important}
+</style>
+<main><header><div class="identity"><svg class="mark" viewBox="0 0 44 46" aria-hidden="true"><path fill="currentColor" d="M2 4l14 7 6-4 6 4 14-7-4 22-16 17L6 26zm6 6 4 15 10 11 10-11 4-15-10 7-4-4-4 4z"/><path fill="currentColor" d="m13 22 7 2-2 3zm18 0-7 2 2 3z"/></svg><div class="wordmark"><b class="brand">WOLF</b><small>UA3REO</small></div><span class="sub">Панель трансивера</span></div><div class="lamps"><button id="connection" disabled>Связь с WOLF</button><span class="led" id="link">I²C</span><span class="led" id="cat">CAT</span><time id="clock"></time><a class="settingsLink" href="/settings">Настройки</a></div></header>
+<section class="shell"><div class="rxgrid"><div class="screen meterbox"><div class="eyebrow">S-метр</div><svg id="dial" class="dial" viewBox="0 0 224 82" role="img" aria-label="Шкала S-метра"></svg><div class="between"><b class="strong" id="dbm">—</b><span class="unit">dBm</span></div></div>
+<div class="screen vfo" id="card0"><button class="vfoSelect write" id="choose0" aria-label="Выбрать VFO A" type="button"></button><div class="between"><b class="eyebrow">VFO A</b><span class="mode" id="mode0">—</span></div><strong class="freq" id="hz0">—</strong><div class="between"><small>МГц</small><button class="encoder" id="enc0" type="button" aria-label="Валкодер VFO A" title="Вращайте ручку или колесо мыши. Стрелки — на один шаг." hidden><span aria-hidden="true"></span></button><span class="rxlabel" id="role0">—</span></div></div>
+<div class="screen vfo" id="card1"><button class="vfoSelect write" id="choose1" aria-label="Выбрать VFO B" type="button"></button><div class="between"><b class="eyebrow">VFO B</b><span class="mode" id="mode1">—</span></div><strong class="freq" id="hz1">—</strong><div class="between"><small>МГц</small><button class="encoder" id="enc1" type="button" aria-label="Валкодер VFO B" title="Вращайте ручку или колесо мыши. Стрелки — на один шаг." hidden><span aria-hidden="true"></span></button><span class="rxlabel" id="role1">—</span></div></div></div>
+<nav class="keys bandbar" id="bands" aria-label="Диапазоны"></nav>
+<div class="overview"><section id="digital" class="plot" hidden><div class="between"><h2>Цифровой приём</h2><div class="row"><small id="digiCount"></small><button type="button" id="cqInfo" aria-expanded="false" aria-controls="cqHelp">FTx Auto CQ · меню WOLF</button></div></div><p id="cqHelp" hidden>Настройка на трансивере: MENU → Decoders → FTx Auto CQ. В прошивке STM32 16.5.1 удалённая CAT-команда для этого пункта не подтверждена.</p>
+<p id="rttyInfo" hidden>RTTY · текст встроенного декодера WOLF недоступен по Wolf Interface. Для FT8 или FT4 выберите DIGL либо DIGU.</p><div id="digiLog"><p><span id="digiStatus" role="status">Ожидание состояния ESP32</span> · <a href="/settings#sound">Настройки приёма</a></p><div class="decodes" id="digiTable" tabindex="0" aria-label="Журнал цифрового приёма" hidden><table><thead><tr><th>UTC</th><th>Режим</th><th>Позывные</th><th>S/N, дБ</th><th>Δt, с</th><th>DF, Гц</th><th>RF, МГц</th><th>Сообщение</th><th>Источник</th></tr></thead><tbody id="digiRows"></tbody></table></div></div></section>
+<section id="pan" class="plot"><div class="between"><h2>Карта диапазона · I²C</h2><select id="span" aria-label="Ширина карты"><option value="12000">12 кГц</option><option value="48000">48 кГц</option><option value="96000">96 кГц</option></select></div><p id="panStatus" role="status">Ожидание трансивера</p><canvas id="spectrum" style="width:100%;height:154px" aria-label="Измерения RX1 в dBm на посещённых частотах"></canvas><div class="between axis" style="padding-left:38px;padding-right:8px"><span id="fLow">—</span><span id="fMid">—</span><span id="fHigh">—</span></div><small>Точки — замеры при перестройке за последние 3 мин. <span id="spotStatus"></span></small></section>
+<div class="tune"><div class="between"><h2>Настройка частоты</h2><span id="target" class="eyebrow">VFO —</span></div><div><label for="freqInput">Прямой ввод, Гц</label><form id="freqForm" class="field"><input id="freqInput" inputmode="numeric" autocomplete="off" placeholder="14 074 000" aria-label="Частота в герцах"><button class="write">Ввод</button></form></div><div><label for="step">Шаг перестройки</label><div class="row"><button class="write" id="down" aria-label="Уменьшить частоту">−</button><select id="step" aria-label="Шаг перестройки"></select><button class="write" id="up" aria-label="Увеличить частоту">+</button></div></div></div></div>
+
+<div class="groups"><div class="block"><h2>Вид работы</h2><div class="keys" id="modes"></div></div><div class="block"><h2>Приёмник</h2><div class="keys" id="switches"></div></div></div>
+<div class="strip"><div class="audio-controls"><div id="volume" class="knob" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-label="Громкость динамиков" title="Потяните вверх или вниз. Стрелки меняют громкость."></div><div><div class="small">Громкость <b id="volNumber">55%</b></div><button id="speaker" aria-pressed="false">Включить звук</button></div><small id="soundState" role="status">Звук выключен</small></div></div>
+<div class="strip"><button class="write" id="va">VFO A</button><button class="write" id="vb">VFO B</button><span class="antennaBox"><button id="antenna" title="Переключить антенну">Антенна —</button><button id="antMore" aria-label="Выбрать антенный порт" aria-expanded="false" aria-controls="antList">▾</button><span id="antList" class="antList" hidden></span></span><button class="write" id="copy">A → B</button><button class="write" id="split">SPLIT</button><span id="frontKeys"></span><button class="write ptt" id="ptt">● PTT · удерживать</button><button class="write hold" id="tune">TUNE · удерживать</button><button id="rx">RX</button><span id="note" role="status">Ожидание трансивера</span></div></section>
+<section class="panel"><details open><summary>Показания трансивера</summary><div class="readouts" id="mainTiles"></div></details>
+<details><summary>Расширенные параметры и управление</summary><div id="moreTiles" class="readouts"></div><form class="row" id="attForm"><label for="att">Аттенюатор, дБ</label><input id="att" type="number" min="0" max="31" required><button class="write">Применить</button></form><form class="row" id="powerForm"><label for="power">Мощность возбуждения, %</label><input id="power" type="number" min="0" max="100" required><button class="write">Применить</button></form></details>
+<details><summary>Диагностика I²C и CAT</summary><p class="diag" id="diag"></p><form id="queryForm" class="row"><label for="query">Запрос CAT</label><select id="query"></select><button id="ask">Прочитать</button></form><p class="diag" id="manual"></p><form class="row" id="msgForm"><label for="msg">Сообщение на дисплей Волка</label><input id="msg" maxlength="63" placeholder="До 63 знаков ASCII"><button id="sendMsg">Передать</button></form></details></section>
+<footer><span>Wolf Interface · YD-ESP32-S3</span><span id="pinInfo">I²C · 0x76</span></footer></main>
+<script src="/tci.js"></script><script src="/pan.js"></script><script>
+'use strict';
+const $=id=>document.getElementById(id), text=(id,s)=>$(id).textContent=s, modeNames=['LSB','USB','CW','NFM','WFM','AM','SAM','SAM-L','SAM-U','DIGL','DIGU','IQ','LOOP','RTTY','DSB'];
+let previousVfo=null,state=null, localNote='', noteUntil=0, browserOnline=false, held=null, busy=false, bootAt=0;
+const metrics={
+ SM2:['RX1','dBm'],SM3:['RX2','dBm'],FW:['Полоса RX','Гц'],AN:['Антенна',''],PC:['Возбуждение','%'],'RM.W':['Мощность TX','Вт'],'RM.S':['КСВ · шкала CAT','дел.'],
+ ID:['CAT ID',''],GC:['АРУ',''],NB:['Бланкер',''],NR:['Шумоподавление',''],NT:['Режектор',''],FS:['Быстрый шаг',''],PA:['Предусилитель',''],RA:['Аттенюатор','дБ'],MT:['Mute',''],LK:['Блокировка',''],SC:['Сканирование',''],AC:['Тюнер · код CAT',''],RG:['RF Gain · CAT',''],AG0:['AF RX1 · CAT',''],AG1:['AF RX2 · CAT',''],MG:['Mic Gain · CAT',''],KS:['Скорость CW','WPM'],GT:['АРУ · код CAT',''],XT:['XIT',''],VX:['VOX',''],NL:['Уровень NB · CAT',''],RL:['Уровень NR · CAT',''],SL:['Срез НЧ · CAT',''],SH:['Срез ВЧ · CAT',''],VD:['Задержка VOX · CAT',''],SM0:['Индикатор 0 · CAT',''],SM1:['Индикатор 1 · CAT','']};
+const switchInfo={PA:'PRE',GC:'AGC',NB:'NB',NR:'DNR',NT:'NOTCH',FS:'FAST',MT:'MUTE',LK:'LOCK',SC:'SCAN',XT:'XIT',VX:'VOX'};
+function known(k,limit=60000){const m=state?.m?.[k];return m&&browserOnline&&state.online&&((state.at-m[1])>>>0)<limit?m[0]:null}
+function say(s){localNote=s;noteUntil=Date.now()+3200;text('note',s)}
+function on(id,yes){$(id).classList.toggle('on',!!yes);$(id).setAttribute('aria-pressed',!!yes)}
+function newBtn(parent,id,label,act){const b=document.createElement('button');b.id=id;b.textContent=label;b.className='write';b.disabled=true;b.onclick=act;$(parent).append(b)}
+function post(op,v='',owner=0){return window.wolfTCI.command(op,v,owner)}
+async function send(op,v=''){
+ if(busy)return;busy=true;
+ try{const cmd=await post(op,v);say(cmd?'Ожидаем ответ Волка · '+cmd:'Запрос принят')}catch(e){say(e.message)}finally{busy=false}
+}
+function active(){return state?.v?.[1]}
+function freq(i){return state?.v?.[2+i]}
+function setHz(n){const i=active();if(i!==0&&i!==1)return say('Нет активного VFO');if(!Number.isSafeInteger(n)||n<=0||n>99999999999)return say('Проверьте частоту в герцах');send(i?'fb':'fa',String(n))}
+const bands=[['160 м',1850000,1800000,2000000],['80 м',3650000,3500000,4000000],['60 м',5357000,5250000,5450000],['40 м',7100000,7000000,7300000],['30 м',10120000,10100000,10150000],['20 м',14200000,14000000,14350000],['17 м',18100000,18068000,18168000],['15 м',21200000,21000000,21450000],['12 м',24915000,24890000,24990000],['10 м',28400000,28000000,29700000],['6 м',50125000,50000000,54000000],['2 м',145500000,144000000,148000000]];
+bands.forEach(([name,hz],i)=>newBtn('bands','band'+i,name,()=>setHz(hz)));
+const modes={'1':0,'2':1,'3':2,'4':3,'5':6,'6':9,'8':11,'9':10};
+for(const [cmd,num] of Object.entries(modes))newBtn('modes','m'+cmd,modeNames[num],()=>send('mode',cmd));
+function switchVal(k){const raw=known(k);if(raw===null)return null;if(k==='PA')return raw[0]==='1'?1:0;return Number(raw)}
+for(const [key,label] of Object.entries(switchInfo)){
+ newBtn(['PA','GC','NB','NR','NT','FS'].includes(key)?'switches':'frontKeys','sw'+key,label,()=>{
+ const val=switchVal(key);if(val===null)return send('query',key);
+ send('switch',key+(key==='NR'?((val+1)%3):Number(!val)));
+ });
+}
+for(const n of [1,10,50,100,500,1000,5000,10000,100000,1000000])$('step').add(new Option(n<1000?n+' Гц':n<1e6?n/1000+' кГц':'1 МГц',n));
+$('step').value='100';$('up').onclick=()=>setHz(freq(active())+Number($('step').value));$('down').onclick=()=>setHz(freq(active())-Number($('step').value));
+$('freqForm').onsubmit=e=>{e.preventDefault();const v=$('freqInput').value.replace(/\s/g,'');if(!/^\d{1,11}$/.test(v))return say('Введите частоту в герцах');setHz(Number(v))};
+$('va').onclick=()=>send('vfo','0');$('vb').onclick=()=>send('vfo','1');$('copy').onclick=()=>send('fb',String(freq(0)));$('split').onclick=()=>send('split',String(Number(!state.v[9])));
+$('attForm').onsubmit=e=>{e.preventDefault();send('atten',$('att').value)};
+$('powerForm').onsubmit=e=>{e.preventDefault();send('power',$('power').value)};
+$('queryForm').onsubmit=e=>{e.preventDefault();send('query',$('query').value)};$('msgForm').onsubmit=e=>{e.preventDefault();send('message',$('msg').value)};
+for(const [key,[name]] of Object.entries(metrics)){
+ const el=document.createElement('div');el.className='tile';const title=document.createElement('small'),v=document.createElement('b');
+ title.textContent=name;v.id='val'+key;v.textContent='—';el.append(title,v);
+ $(['SM2','SM3','FW','AN','PC','RM.W','RM.S'].includes(key)?'mainTiles':'moreTiles').append(el);
+ if(!key.startsWith('RM.'))$('query').add(new Option(key+' · '+name,key));
+}
+for(const k of ['FA','FB','VS','FT','MD','IF','OI'])$('query').add(new Option(k,k));
+$('query').value='SM2';
+function releaseHold(){
+ const h=held;if(!h)return;held=null;h.up=true;clearInterval(h.timer);$(h.op).classList.remove('held');
+ // If a release races the initial POST, release once more after it resolves.
+ post('release','',h.id,true).catch(()=>{});if(!h.started)h.request.finally(()=>post('release','',h.id,true).catch(()=>{})).catch(()=>{});
+}
+async function press(op,e){
+ if(held||$(op).disabled||e.repeat)return;e.preventDefault();
+ if(e.pointerId!==undefined){if(e.button!==0)return;$(op).setPointerCapture(e.pointerId)}
+ const h={op,id:crypto.getRandomValues(new Uint32Array(1))[0]||1,up:false,started:false,renewing:false};held=h;
+ h.request=post(op,'',h.id);
+ try{await h.request;h.started=true;if(h.up)return;$(op).classList.add('held');
+ h.timer=setInterval(async()=>{if(h.renewing||h.up)return;h.renewing=true;try{await post('renew','',h.id)}catch(e){releaseHold();say(e.message)}finally{h.renewing=false}},350);
+ }catch(e){if(held===h)held=null;say(e.message)}
+}
+for(const op of ['ptt','tune']){
+ const b=$(op);b.onpointerdown=e=>press(op,e);b.onpointerup=releaseHold;b.onpointercancel=releaseHold;b.onlostpointercapture=releaseHold;b.oncontextmenu=e=>e.preventDefault();
+ b.onkeydown=e=>{if(e.key===' '||e.key==='Enter')press(op,e)};b.onkeyup=e=>{if(e.key===' '||e.key==='Enter')releaseHold()};
+}
+window.addEventListener('blur',releaseHold);window.addEventListener('pagehide',releaseHold);document.addEventListener('visibilitychange',()=>{if(document.hidden)releaseHold()});
+$('rx').onclick=()=>{releaseHold();post('rx').then(()=>say('Запрошен приём')).catch(e=>say(e.message))};
+function formatHz(h){return h==null?'—':Math.floor(h/1e6)+'.'+String(Math.floor(h/1000)%1000).padStart(3,'0')+'.'+String(h%1000).padStart(3,'0')}
+function drawDial(value,base){
+ const svg=$('dial'),point=(n,r)=>{const a=(-33+66*n/15)*Math.PI/180;return [112+r*Math.sin(a),204-r*Math.cos(a)]};
+ const p=(n,r)=>point(n,r).join(' ');let html='';
+ for(let i=0;i<15;i++){html+='<path d="M '+p(i,176)+' L '+p(i+1,176)+'" stroke="'+(i>=9?'#f5aa71':'#a8de97')+'" stroke-width="2.3"/>'}
+ for(let i=0;i<=15;i++){const major=[1,3,5,7,9,11,13,15].includes(i);html+='<path d="M '+p(i,176)+' L '+p(i,major?183:180)+'" stroke="#aebcc5"/>';if(major){const [x,y]=point(i,191);html+='<text x="'+x+'" y="'+y+'" fill="'+(i>9?'#f1aa88':'#c6d2d8')+'" font-family="monospace" text-anchor="middle" font-size="9">'+(i<=9?i:'+'+(i-9)*10)+'</text>'}}
+ if(value!==null){const n=Math.max(0,Math.min(15,value<=base?9+(value-base)/6:9+(value-base)/10));html+='<path d="M '+p(n,120)+' L '+p(n,184)+'" stroke="#a8f791" stroke-width="2.4"/>'}
+ svg.innerHTML=html;
+}
+let digiRevision=-1, clockTry=0;
+function callsIn(row){
+ if(row.call)return row.call;
+ const words=row.msg.toUpperCase().replace(/[<>;]/g,' ').split(/\s+/);
+ const calls=words.filter(w=>/^[A-Z0-9/]{3,20}$/.test(w)&&/[0-9][A-Z]/.test(w)&&
+   !/^[A-R]{2}\d{2}([A-X]{2})?$/.test(w)&&!/^R?[+-]?\d+$/.test(w)&&w!=='RR73');
+ return [...new Set(calls)].join(' · ')||'—';
+}
+function showDecodes(rows){
+ const body=$('digiRows');body.replaceChildren();
+ for(const r of rows){
+  const tr=body.insertRow();tr.title='Источник: '+r.id;
+  const utc=new Date(r.utc).toISOString().slice(11,19);
+  for(const value of [utc,r.mode,callsIn(r),r.snr??'—',r.dt.toFixed(1),r.df??'—',r.rf==null?'—':(r.rf/1e6).toFixed(6),r.msg+(r.low?' · низкая достоверность':''),r.id]){
+   tr.insertCell().textContent=value;
+  }
+ }
+ $('digiTable').hidden=!rows.length;text('digiCount',rows.length?String(rows.length):'');
+}
+async function digitalPoll(){
+ if($('digital').hidden||$('digiLog').hidden){setTimeout(digitalPoll,500);return}
+ const ctr=new AbortController(), timer=setTimeout(()=>ctr.abort(),2500);
+ try{
+  const response=await fetch('/api/digital?v='+digiRevision,{cache:'no-store',signal:ctr.signal});
+  if(!response.ok)throw Error();
+  const data=await response.json();
+  if(Array.isArray(data.rows))showDecodes(data.rows);
+  digiRevision=data.rev;
+  const audio=data.audio;
+  let status=audio.capture==='off'?'Для FT8/FT4 нужен аудиовход ESP32 · захват выключен':audio.capture!=='ok'?'Ошибка захвата АЦП':!audio.mode?'Локальный декодер выключен':!audio.ready?'Декодеру недоступна память или задача':!audio.digi?'Пауза · нужен DIGL или DIGU на приёме':!audio.clock?'Ожидание UTC':audio.error?'Не хватает памяти для обработки слота':(audio.mode===2?'FT4':'FT8')+' · ESP32 · '+(audio.busy?'декодирование':audio.slots?'приём':'ожидание полного слота');
+  if(data.active)status+=' · WSJT-X на связи';
+  if(!audio.clock&&Date.now()-clockTry>15000){clockTry=Date.now();fetch('/api/clock',{method:'POST',headers:{'X-Wolf-Panel':'1'},body:new URLSearchParams({ms:String(Date.now())})}).catch(()=>{})}
+  text('digiStatus',status);
+ }catch{digiRevision=-1;text('digiStatus','Связь с панелью прервана')}
+ finally{clearTimeout(timer);setTimeout(digitalPoll,2000)}
+}
+let switching=false;
+$('connection').onclick=async()=>{
+ if(switching||!browserOnline||!state)return;
+ switching=true;$('connection').disabled=true;
+ try{
+  const desired=state.enabled===false?'1':'0';
+  await post('link',desired);
+  state={...state,enabled:desired==='1',online:false,ts:false,v:[],m:{}};resetDial();render();
+ }catch(e){say(e.message)}finally{switching=false;render()}
+};
+$('cqInfo').onclick=()=>{const h=$('cqHelp');h.hidden=!h.hidden;$('cqInfo').setAttribute('aria-expanded',String(!h.hidden))};
+function antMenu(open){$('antList').hidden=!open;$('antMore').setAttribute('aria-expanded',String(open))}
+$('antMore').onclick=()=>antMenu($('antList').hidden);
+$('antenna').onclick=()=>{
+ const a=known('AN');
+ if(a===null){send('query','AN');antMenu(true);return}
+ if(/^[0-3]$/.test(a))send('antenna',String(Number(a)^1));else antMenu(true);
+};
+for(let i=0;i<4;i++){
+ const b=document.createElement('button');b.textContent='ANT '+(i+1);b.onclick=()=>{antMenu(false);send('antenna',String(i))};$('antList').append(b);
+}
+document.addEventListener('pointerdown',e=>{if(!e.target.closest('.antennaBox'))antMenu(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')antMenu(false)});
+let dial=null;
+function resetDial(){if(dial)clearTimeout(dial.timer);dial=null}
+function matchesVfo(i){return browserOnline&&state?.online&&state.ts&&active()===i&&Number.isSafeInteger(freq(i))}
+function turn(i,ticks){
+ if(!matchesVfo(i)||!ticks)return;
+ if(dial&&dial.vfo!==i)resetDial();
+ if(!dial)dial={vfo:i,goal:freq(i),sent:null,pending:false,timer:0,started:performance.now()};
+ const d=dial;d.goal=Math.max(1,Math.min(99999999999,d.goal+ticks*Number($('step').value)));
+ const knob=$('enc'+i);knob.angle=(knob.angle||0)+ticks*15;knob.style.setProperty('--turn',knob.angle+'deg');
+ if(!d.pending&&!d.timer)d.timer=setTimeout(()=>flushDial(d),45);
+}
+async function flushDial(d){
+ d.timer=0;if(d!==dial||!matchesVfo(d.vfo)){if(d===dial)resetDial();return}
+ if(d.pending)return;
+ if(d.goal===freq(d.vfo)){resetDial();return}
+ d.pending=true;d.sent=d.goal;d.ack=false;
+ try{
+   await post(d.vfo?'dialB':'dialA',String(d.sent));
+   if(d!==dial)return;d.ack=true;
+   d.timer=setTimeout(()=>{if(d===dial){resetDial();say('Нет подтверждения частоты от WOLF')}},5000);
+   syncDial();
+ }catch(e){
+   if(d!==dial)return;
+   if(e.status===409&&performance.now()-d.started<3200){d.pending=false;d.timer=setTimeout(()=>flushDial(d),120)}
+   else{resetDial();say(e.message)}
+ }
+}
+function syncDial(){
+ const d=dial;if(!d)return;
+ if(!matchesVfo(d.vfo)){resetDial();return}
+ if(d.ack&&freq(d.vfo)===d.sent){
+   clearTimeout(d.timer);d.ack=d.pending=false;d.started=performance.now();
+   if(d.goal===d.sent)resetDial();else d.timer=setTimeout(()=>flushDial(d),20);
+ }
+}
+for(let i=0;i<2;i++){
+ $('choose'+i).onclick=()=>{if(active()!==i){resetDial();send('vfo',String(i))}};
+ const k=$('enc'+i);let last=null,acc=0;
+ function angle(e){const r=k.getBoundingClientRect();return Math.atan2(e.clientY-r.y-r.height/2,e.clientX-r.x-r.width/2)*180/Math.PI}
+ k.onpointerdown=e=>{if(e.button!==0)return;e.preventDefault();k.focus();k.setPointerCapture(e.pointerId);last=angle(e);acc=0};
+ k.onpointermove=e=>{if(last===null||!k.hasPointerCapture(e.pointerId))return;const a=angle(e);acc+=(a-last+540)%360-180;last=a;const n=Math.trunc(acc/15);if(n){turn(i,n);acc-=n*15}};
+ k.onlostpointercapture=()=>{last=null};k.addEventListener('wheel',e=>{e.preventDefault();turn(i,-Math.sign(e.deltaY))},{passive:false});
+ k.onkeydown=e=>{const n={ArrowUp:1,ArrowRight:1,ArrowDown:-1,ArrowLeft:-1}[e.key];if(n){e.preventDefault();turn(i,n)}};
+}
+function render(){
+ 
+ if(state?.pins)text('pinInfo','GPIO '+state.pins[0]+' SDA / GPIO '+state.pins[1]+' SCL / 0x76');
+ const live=browserOnline&&!!state?.online, v=live?state.v:[],ts=live&&state.ts,active=v[1], tx=v[7];
+ const m=(active===0||active===1)?v[4+active]:null;
+ const digitalView=m===9||m===10||m===13;
+ $('digiCount').hidden=m===13;$('digiLog').hidden=m===13;$('rttyInfo').hidden=m!==13;
+ $('digital').hidden=!digitalView;$('pan').hidden=digitalView;
+ window.wolfPan?.update({mode:m,rx:tx===0&&v[8]===0,active,vfo:v[2+active],sample:live?state.sample:null,a:v[2],b:v[3]});
+ syncDial();
+ const enabled=state?.enabled!==false;
+ $('connection').disabled=!state||!browserOnline||switching;
+ text('connection',!browserOnline?'Связь с WOLF':enabled?(live?'Отключить':'Отменить подключение'):'Подключить');
+ text('link',!enabled?'Отключено':live?'I²C на связи':browserOnline?'I²C ожидание':'ESP вне сети');$('link').className='led '+(live?'good':'bad');
+ text('cat',ts?'TS-2000':known('ID')==='0241'?'FT-450':'CAT —');$('cat').className='led '+(ts?'good':'');
+ document.querySelectorAll('.write').forEach(b=>b.disabled=!ts);$('rx').disabled=!live;$('ask').disabled=$('sendMsg').disabled=!live;
+ for(let i=0;i<2;i++){const isA=active===i,selectedTx=(v[9]===1?1-active:active)===i;
+ $('enc'+i).hidden=!isA;$('enc'+i).disabled=!ts||!matchesVfo(i);
+ $('choose'+i).setAttribute('aria-pressed',String(isA));
+ $('card'+i).classList.toggle('active',isA);text('hz'+i,formatHz(v[2+i]));text('mode'+i,modeNames[v[4+i]]??(v[4+i]!=null?'#'+v[4+i]:'—'));
+ const role=tx===1&&selectedTx?'TX':tx===0&&isA?'RX':selectedTx&&v[9]===1?'TX · SPLIT':isA?'VFO':'—';text('role'+i,role);$('role'+i).className='rxlabel '+(role==='RX'?'live':role==='TX'?'tx':'')}
+ const rawAnt=known('AN'),ant=rawAnt===null?-1:Number(rawAnt);
+ text('antenna',ant>=0&&ant<4?'Антенна · ANT '+(ant+1):'Антенна —');
+ $('antenna').disabled=!ts||tx!==0||v[8]!==0;$('antMore').disabled=$('antenna').disabled;if($('antenna').disabled)antMenu(false);
+ Array.from($('antList').children).forEach((b,i)=>b.setAttribute('aria-pressed',String(ant===i)));
+ on('va',active===0);on('vb',active===1);on('split',v[9]===1);on('tune',v[8]===1);
+ $('split').disabled=!ts||v[9]==null; $('copy').disabled=!ts||v[2]==null;
+ for(const op of ['ptt','tune'])$(op).disabled=!ts||((tx!==0||v[8]!==0||state.held)&&held?.op!==op);
+ if(active!==previousVfo){$('freqInput').value='';previousVfo=active}
+ text('target',active==null?'VFO —':'VFO '+(active?'B':'A'));
+ bands.forEach((b,i)=>on('band'+i,active!=null&&freq(active)>=b[2]&&freq(active)<=b[3]));for(const [c,n] of Object.entries(modes))on('m'+c,active!=null&&v[4+active]===n);
+ for(const [k,label] of Object.entries(switchInfo)){const val=switchVal(k);on('sw'+k,val!==null&&val!==0);$('sw'+k).title=val===null?'Нажмите для опроса CAT':label+' · '+val;if(k==='NR')text('sw'+k,val?label+' '+val:label)}
+ for(const [k,[,unit]] of Object.entries(metrics)){let raw=known(k,k.startsWith('SM')?10000:60000);if(k.startsWith('RM.')&&(tx!==1||known(k,12000)===null))raw=null;if((k==='SM2'||k==='SM3')&&tx!==0)raw=null;
+ const val=raw===null?'—':k==='SM2'||k==='SM3'?-Math.abs(Number(raw)):k==='AN'?'ANT '+(Number(raw)+1):['ID','PA','AC'].includes(k)?raw:Number(raw);
+ text('val'+k,String(val)+(raw!==null&&unit?' '+unit:''))}
+ const sm=known('SM2',5000),db=tx===0&&sm!==null?-Math.abs(Number(sm)):null;text('dbm',db===null?'—':db);drawDial(db,active!=null&&freq(active)>=30000000?-93:-73);
+ text('manual',state?.manual?'Ручной запрос · '+state.manual:'');const a=state?.stat||[];text('diag','Кадры состояния '+(a[0]??'—')+' · Опросы 20h '+(a[1]??'—')+' · Чтения CAT '+(a[2]??'—')+' · Ошибки кадров '+(a[3]??'—')+' · Короткие чтения '+(a[4]??'—')+' · Таймауты '+(a[5]??'—')+' | Последняя команда: '+(state?.cmd||'—')+' | Последний ответ: '+(state?.reply||'—'));
+ text('note',Date.now()<noteUntil?localNote:!browserOnline?'Нет связи TCI с ESP32 · проверьте Wi-Fi и порт 50001':!state.bus?'Ошибка запуска I²C':!enabled?'Связь с трансивером отключена':!live?'Ожидание опроса от Волка':!ts?'Ожидание ID019 · CAT Type TS-2000':state.note||'Управление готово');
+}
+window.addEventListener('wolf-state',e=>{
+ const s=e.detail;
+ if(bootAt>s.at){digiRevision=-1;window.wolfPan.reset()}
+ bootAt=s.at;state=s;browserOnline=true;render();
+});
+window.addEventListener('wolf-link',()=>{browserOnline=false;state=null;releaseHold();window.wolfPan.reset();render()});
+setInterval(()=>text('clock',new Date().toLocaleTimeString('ru-RU')),1000);render();window.wolfTCI.run();digitalPoll();
+</script><script src="/audio.js"></script></html>
+)WOLF";

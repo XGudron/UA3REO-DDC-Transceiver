@@ -1,0 +1,45 @@
+{
+  "name": "wolf-console",
+  "productName": "WOLF Console",
+  "version": "1.6.0",
+  "description": "Консоль трансивера WOLF по Wi-Fi / TCI",
+  "author": "WOLF Console contributors",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dmg": "bash make-dmg.sh",
+    "exe": "electron-builder --win portable --x64"
+  },
+  "devDependencies": {
+    "electron": "39.8.10",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "local.wolf.console",
+    "files": [
+      "main.js",
+      "connect.html",
+      "connect.js",
+      "assets/**/*",
+      "preload.js"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "identity": null,
+      "extendInfo": {
+        "NSLocalNetworkUsageDescription": "Подключение к трансиверу WOLF через ESP32 в локальной сети."
+      }
+    },
+    "win": {
+      "signAndEditExecutable": false
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "artifactName": "WolfConsole-${version}-${arch}.${ext}"
+  },
+  "overrides": {
+    "@electron/node-gyp": "https://codeload.github.com/electron/node-gyp/tar.gz/06b29aafb7708acef8b3669835c8a7857ebc92d2"
+  }
+}

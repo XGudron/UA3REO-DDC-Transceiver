@@ -1,0 +1,14 @@
+<!doctype html><html lang="ru"><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'">
+<title>Подключение · WOLF Console</title>
+<style>
+:root{color-scheme:dark;font:16px system-ui;color:#e3edf5;background:#0c131b}*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 0,#213345,transparent 68%)}
+main{width:min(440px,92vw)}header{font-size:22px;font-weight:850;letter-spacing:.16em;color:#6edbfc;border-bottom:1px solid #344854;padding-bottom:18px}
+h1{font-size:24px;margin:28px 0 10px}p{color:#b3c3ce;line-height:1.5}label{display:block;font-size:14px;margin:24px 0 6px}
+input,button{width:100%;font:inherit;padding:11px 14px;border-radius:6px}input{background:#0c1822;color:#e3edf5;border:1px solid #516776}
+button{margin:14px 0;background:#72d6e8;color:#0c1a24;border:0;font-weight:650;cursor:pointer}output{color:#f2bf85}
+</style><main><header>WOLF CONSOLE</header><h1>Подключение к трансиверу</h1>
+<p>Подключите компьютер к сети WOLF-Console или к той же домашней сети, что и ESP32.</p>
+<form><label for="host">Адрес ESP32</label><input id="host" value="192.168.4.1" spellcheck="false" autocomplete="off" required autofocus>
+<button>Открыть пульт</button></form><output role="status"></output></main><script src="connect.js"></script></html>
