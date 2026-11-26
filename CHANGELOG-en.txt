@@ -1,3 +1,16 @@
+----Version 16.6.0----
++STM32: WolfConsole software for remote control of the transceiver via the ESP32 Wolf-Interface has been added to the repository. Author RX3PX
++STM32: When VBAT (and VBAT Rechargable) is heavily discharged, the battery is initially charged with a high current, and then decreases towards the end of the charge, Tnx R7KBI
++STM32: Added "LCD Freq Shift" and "LCD PCLK Divider" Hardware calibrations for the RA8875 screen — shifting the display clocking to tune out LCD interference on some frequencies
++STM32: Added RX setting "Add DIGI Gain, dB" — additional receive path gain in digital modes (DIGI, RTTY, PSK31), -100..+100 dB, Tnx RM0A
++STM32: Improved support for some SD cards in card reader mode, Tnx RM0A
++STM32: The PLAY button, when pressed during transmission, now sends the last recording to the air; fixed lost playback start when the SD card was busy, Tnx YC1SEI
++STM32: Added reset icon for Func Buttons functions in the menu (similar to normal values)
++STM32: Added support for the QSO.su log (sending records to the log, displaying the latest records from the online log)
++STM32: Added the "Meteor Scatter" screen (Satellites menu) — a polar map of meteor shower radiants with Az/El
++STM32: Added a TONE function button (and a new Tune Type for it) - switches to transmission and gives a signal at zero beats, Tnx RV9CT
++STM32: Various performance optimizations and bug fixes, Tnx SP7MFR, RX3PX, R3TLI
+
 ----Version 16.5.1----
 +STM32: Fixed bug in DSP microphone circuit, Tnx SP7MFR
 

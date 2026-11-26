@@ -64,7 +64,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * SSTV/RDS/CW decoder
 * FT8/FT4/FT2 decoder/encoder
 * RTTY/PSK31 decoder/encoder
-* Sending a log of QSO and data to the log https://allqso.ru/ and https://www.wavelog.org/
+* Sending a log of QSO and data to the log https://allqso.ru/ , https://www.wavelog.org/ and https://qso.su/
 * WSPR Beacon
 * VOX / USB-VOX
 * Equalizer TX/RX, reverber, various DSP compressors, etc.
@@ -81,6 +81,7 @@ When transmitting, the process occurs in the opposite order, only at the end of 
 * Digital Pre Distortion
 * CW-trainer
 * Support for external PTT-sequencer control via CAT and transceiver
+* Satellite trajectory and meteor shower calculation
 * And other... (see menu)
 
 ### RF Parameters
@@ -141,6 +142,7 @@ WiFi module ESP-01 must have fresh firmware from Dropbox<br>
 | **ANT** | Cycle TX/RX antenna | Same |
 | **RXANT** | Toggle extra RX antenna (Wolf-2) | Same |
 | **TUNE** | ATU enable | Tune / carrier |
+| **TONE** | Zero-beat carrier TX at selected power | Same |
 | **ATU RST** | Reset ATU memory for band | Same |
 | **SWR** | SWR analyzer for current band | Same |
 | **REPIT** | Toggle repeater mode | Repeater offset menu |
@@ -232,6 +234,7 @@ Assignments are editable in *Settings → Front buttons*.
 * **ADC Randomizer** - Enables ADC digital line encryption
 * **AGC Gain target, LKFS** - Maximum AGC gain (Maximum volume with AGC on)
 * **AGC Threshold** - Enabling the AGC opening threshold
+* **Add DIGI Gain, dB** - Additional receive path gain in digital modes (DIGI, RTTY, PSK31), -100..+100 dB
 * **Att step, dB** - Attenuator tuning step
 * **Attenuation, dB** - Current attenuation
 * **Auto Snap** - Automatically track and snap to near signal frequency (CW mode)
@@ -372,7 +375,6 @@ Allowed insertions in macros:
 * **AF Monitor** - Display of the AF (audio) signal in frequency and time domains under the waterfall. Off - disabled, TX Only - during transmission, Always - continuously on RX and TX
 * **AF Monitor Time** - Time-domain window length for AF Monitor
 * **Bottom navi buttons** - Show bottom menu navigation buttons (for 7 inch displays)
-* **Cluster Mask** - Cluster spot filtering by callsign mask: * - any count of characters, ? - any one character, numbers-letters - full match. For example "?A3R*"
 * **Color Theme** - Select colors theme (0 - black, 1 - white, 2 - black with colored frequency)
 * **Dual FFT** - Splits the spectrum and waterfall into two windows: the top one shows VFO-A, the bottom one VFO-B (works with Dual RX enabled). Each window has its own BandMap, frequency labels and AGC indicator
 * **DX Cluster Type** - Selecting a Data Source for a DX Cluster (RBN, DXSummit, Telnet)
@@ -392,6 +394,7 @@ Allowed insertions in macros:
 * **FFT DXCluster Azimuth** - Add azimuth data to DX-cluster
 * **FFT DXCluster Timeout** - Timeout of DX-cluster spots in minutes
 * **FFT DXCluster** - Show DXCluster info over FFT
+* **FFT Cluster Mask** - Cluster spot filtering by callsign mask: * - any count of characters, ? - any one character, numbers-letters - full match. For example "?A3R*"
 * **FFT Enabled** - Enable waterfall and FFT
 * **FFT Freq Grid** - FFT and waterfall grids: 1(no grid), 2(fft grid), 3(fft+wtf grids), 4(wtf grid)
 * **FFT Height** - FFT and waterfall proportional height
@@ -443,12 +446,14 @@ Allowed insertions in macros:
 ### WIFI Settings
 
 * **WIFI Enabled** - Enable WiFi module (need restart after enable)
-* **WIFI Network** - WiFi hotspot selection
-* **WIFI Network Pass** - Set password for WiFi hotspot
+* **WIFI Flash Mode** - Switch WiFi module to firmware update mode (on supported hardware)
+* **WIFI Network 1/2/3** - WiFi hotspot selection
+* **WIFI Network 1/2/3 Pass** - Set password for WiFi hotspot
 * **WIFI NTP Server** - Selecting the NTP time synchronization server address
 * **WIFI Services Host** - Selecting the Wolf server address for online services
-* **ALLQSO.RU Token/LogId** - Token and LogID from https://allqso.ru/ web-log
-* **Wavelog** - Integration settings with https://www.wavelog.org/ web-log
+* **AllQSO.ru** - https://allqso.ru/ web-log integration submenu (Enabled, Token, LogId)
+* **Wavelog.org** - https://www.wavelog.org/ web-log integration submenu (Enabled, URL, API Key, Station ID, Radio)
+* **QSO.su** - https://qso.su/ web-log integration submenu (Enabled, API Key, Station ID, Operator ID, Last QSOs view)
 
 ### SD Card
 
@@ -469,6 +474,7 @@ Allowed insertions in macros:
 * **Download TLE** - Download current satellite data
 * **EME Info** - Moon position and EME path parameters for your QTH (see [EME Info](#eme-info))
 * **Select SAT** - Select a satellite from the downloaded TLE file
+* **Meteor Scatter** - Sky map of meteor shower radiants for meteor scatter operation (see [Meteor Scatter](#meteor-scatter))
 
 ### EME Info
 
@@ -496,6 +502,18 @@ The following fields are shown **only when DX Call is set** (correspondent calls
 * **DxDop** - One-way Doppler shift at the DX station, in Hz
 * **DxWid** - Limb-to-limb Doppler spread at the DX station, in Hz
 * **MNR** - Maximum non-reciprocity of the EME path in dB due to spatial polarization
+
+### Meteor Scatter
+
+Sky map of meteor shower radiants for Meteor Scatter operation (MSK144 and similar). The polar plot shows the sky over your QTH: zenith at the center, horizon at the rim, 30°/60° elevation rings and cardinal points. Calculations use the QTH coordinates from the Satellites settings, or the Maidenhead locator when they are empty. Shower data (activity windows, radiants, ZHR, velocity, daily radiant drift) are from the IMO working list, including the daytime radio showers that can only be observed by forward scatter.
+
+* **Numbered markers** - Active meteor showers: green when the radiant is above the horizon and the shower is within ±3 days of its peak, dim otherwise
+* **S marker** - Position of the Sun (daytime showers cluster near it)
+* **A marker** - Antihelion sporadic source (~15° past the antisolar point along the ecliptic), active year-round
+* **H marker** - Helion sporadic source (~30° ahead of the Sun on the ecliptic, evening sky), active year-round
+* **Text list** - Name, ZHR, velocity, Az/El and peak date for each source whose radiant is above the horizon (list colors match the markers), plus the next upcoming shower
+
+**ENC** shifts the preview time in ±1 hour steps, **ENC2** in ±1 day steps (up to ±90 days), **ENC2 click** returns to the current time. The header shows the selected date/time in local time.
 
 ### Calibration [appears by long pressing the MENU button in the settings menu]
 
@@ -548,6 +566,8 @@ The following fields are shown **only when DX Call is set** (correspondent calls
 * **INA226** - Activation and calibration of the INA226 voltage/current sensor on the I2C bus
 * **Invert LCD PWM** - Inverting the PWM backlight of the RA8875 screen
 * **KTY81 Calibration** - Calibration of the KTY81 sensor (setting the resistance of the divider arm)
+* **LCD Freq Shift** - Shift of the RA8875 screen clock PLL (pixel clock and its harmonics) to tune out LCD interference, ~9% step, range from -4 to +4
+* **LCD PCLK Divider** - RA8875 screen pixel clock divider (lowers the frame rate) to tune out LCD interference
 * **LCD Rotate** - Rotate screen at 180 degrees
 * **LPF Timeout** - Disable TX LPF after 3 minutes of switching to RX
 * **MAX ChargePump, kHz** - Maximum PWM frequency for ChargePump circuit
